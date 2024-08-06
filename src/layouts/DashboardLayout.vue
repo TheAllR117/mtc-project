@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen bg-gray-50">
+  <div class="w-full h-screen bg-gray-50">
     <button data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar"
       aria-controls="separator-sidebar" type="button"
       class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -55,7 +55,7 @@
       aria-label="Global">
       <div class="flex lg:flex-1">
         <a href="/" class="-m-1.5 p-1.5">
-          <IconOnexpo class="w-9" />
+          <IconCircle class="w-[50px]" />
         </a>
       </div>
       <div class="flex lg:hidden">
@@ -110,7 +110,7 @@
       </div>
     </nav>
 
-    <div class="z-0 w-full md:w-full h-full bg-white dark:bg-black">
+    <div class="z-0 w-full h-full bg-white dark:bg-black">
       <slot></slot>
     </div>
   </div>
@@ -126,6 +126,7 @@ import IconArrowCircle from '../components/icons/IconArrowCircle.vue'
 // import { useAuthStore } from '@/stores/auth'
 import { markRaw, ref } from 'vue'
 import IconTune from '../components/icons/IconTune.vue'
+import IconCircle from '../components/icons/IconCircle.vue'
 
 const routerList = ref([
   {
