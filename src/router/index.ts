@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,7 +19,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/download/DownloadView.vue'),
+      component: () => import('../views/download/DownloadView.vue'),
       meta: {
         requiresAuth: false,
         layout: 'DashboardLayout'
@@ -32,7 +31,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/sale/SaleView.vue'),
+      component: () => import('../views/sale/SaleView.vue'),
       meta: {
         requiresAuth: false,
         layout: 'DashboardLayout'
@@ -44,7 +43,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/more_solutions/MoreSolutionsView.vue'),
+      component: () => import('../views/more_solutions/MoreSolutionsView.vue'),
       meta: {
         requiresAuth: false,
         layout: 'DashboardLayout'
@@ -56,7 +55,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/earn_more/EarnMoreView.vue'),
+      component: () => import('../views/earn_more/EarnMoreView.vue'),
       meta: {
         requiresAuth: false,
         layout: 'DashboardLayout'
@@ -68,7 +67,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/blog/BlogView.vue'),
+      component: () => import('../views/blog/BlogView.vue'),
       meta: {
         requiresAuth: false,
         layout: 'DashboardLayout'
@@ -80,7 +79,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/portals/PortalsView.vue'),
+      component: () => import('../views/portals/PortalsView.vue'),
       meta: {
         requiresAuth: false,
         layout: 'DashboardLayout'
@@ -92,7 +91,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/mtc_family/MtcFamilyView.vue'),
+      component: () => import('../views/mtc_family/MtcFamilyView.vue'),
       meta: {
         requiresAuth: false,
         layout: 'DashboardLayout'
@@ -104,13 +103,12 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/doubts/DoubtsView.vue'),
+      component: () => import('../views/doubts/DoubtsView.vue'),
       meta: {
         requiresAuth: false,
         layout: 'DashboardLayout'
       }
-    },
-    
+    }
   ]
 })
 
