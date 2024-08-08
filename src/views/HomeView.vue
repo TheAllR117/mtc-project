@@ -1,3 +1,38 @@
+<script lang="ts" setup>
+import InputCustom from '../components/InputCustom.vue';
+import ButtonLoading from '../components/ButtonLoading.vue';
+import { nameRegexValidation, textEmptyRegexValidation, validateForm } from '../composable/validator';
+import { ref } from 'vue';
+import { reactive } from 'vue';
+import { computed } from 'vue';
+
+const search = ref<string>('')
+
+const isLoading = ref<boolean>(false)
+const form = reactive({
+  name: '',
+  icon: '',
+  image: '',
+  status: false,
+  type: false
+})
+
+const formValido = computed(() => {
+  return validateForm(
+    {
+      name: form.name,
+      status: form.status
+    },
+    {
+      name: nameRegexValidation,
+      status: nameRegexValidation
+    }
+  )
+})
+
+</script>
+
+
 <template>
   <div class="w-full h-full">
     <!-- Section 1 -->
@@ -203,12 +238,13 @@
       </div>
     </div>
     <!-- Section 3 -->
-    <div class="w-full h-screen bg-[#2530c7]">
+    <div class="w-full h-screen bg-[#2530c7] overflow-hidden">
       <div class="flex flex-row w-full h-full">
         <div class=" basis-full justify-center items-center flex relative w-full">
           <div class="absolute top-[10%] left-[10%] flex flex-col">
             <p class="text-white font-bold text-[3.5rem]">Todo en <br> tu app</p>
           </div>
+          <div class="status__icon"></div>
           <img src="/assets/img/celular-mtc-2.png" alt=""
             class="w-[600px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           <div class="absolute bottom-[10%] right-[10%] flex flex-col">
@@ -219,6 +255,176 @@
         </div>
       </div>
     </div>
+    <!-- Footer container -->
+    <footer
+      class="bg-zinc-50 text-center text-surface/75 dark:bg-neutral-700 dark:text-white lg:text-left bg-[#16215b]">
+      <!-- Main container div: holds the entire content of the footer, including four sections (TW Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
+      <div
+        class="py-10 text-center md:text-left mx-auto sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px]">
+        <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <!-- TW Elements section -->
+          <div>
+            <p class="mb-5 text-sm">
+              Suscribete para recibir ideas, noticias, tendencias <br> y mucho mas para tu negocio
+            </p>
+            <div class="h-auto mb-2.5">
+              <InputCustom key="search" id="search" type="text" label="Ingresa tu correo" v-model="search"
+                focus-color-border="focus:border-white" color-text="text-white" border-radius="rounded-full"
+                bg-label="bg-[#16215b]" bg-input="bg-[#16215b]" bg-label-dark="bg-[#16215b]" color-border="border-white"
+                :regexValidation="[textEmptyRegexValidation]" />
+            </div>
+            <div class="w-full flex justify-center pb-10">
+              <ButtonLoading width="!w-full" label="Guardar" border-radius="rounded-full" :disable="!formValido"
+                :is-loading="isLoading" color-button="bg-[#0e33ca]" color-button-hover="bg-[#0e33ca]/50" />
+            </div>
+            <p class="text-sm">
+              Av. Vicente Guerrero 1304 2do. Piso Col. Lomas de Cortés, 62240 Cuernavaca, Mor.
+            </p>
+          </div>
+          <!-- Products section -->
+          <div class="flex flex-col justify-start w-full ml-8">
+            <h6 class="mb-4 flex justify-center md:justify-start text-sm font-bold">
+              Ventas
+            </h6>
+            <div class="mb-4">
+              <ul class="text-sm">
+                <li>Telefono: 777 311 3066</li>
+                <li>Whatsapp: 777 307 8320</li>
+                <li>ventas@mtcenter.com.mx</li>
+              </ul>
+            </div>
+            <div class="flex flex-col items-center justify-between w-full !place-items-start mb-10">
+              <div class="mb-2 text-sm ">
+                <p>Conecta con nosotros</p>
+              </div>
+              <!-- Social network icons container -->
+              <div class="flex justify-between">
+                <a href="#!" class="me-6 [&>svg]:h-3 [&>svg]:w-3 border-[1.8px] border-white rounded-full p-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 320 512">
+                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                    <path
+                      d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+                  </svg>
+                </a>
+                <a href="#!" class="me-6 [&>svg]:h-3 [&>svg]:w-3 border-[1.8px] border-white rounded-full p-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512">
+                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                    <path
+                      d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                  </svg>
+                </a>
+                <a href="#!" class="me-6 [&>svg]:h-3 [&>svg]:w-3 border-[1.8px] border-white rounded-full p-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512">
+                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                    <path
+                      d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div>
+              <ul class="text-sm">
+                <li>Aviso de privacidad</li>
+                <li>Términos y condiciones</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Useful links section -->
+          <div>
+            <h6 class="mb-4 flex justify-center md:justify-start text-sm font-bold">
+              Atención a clientes
+            </h6>
+            <div class="mb-4">
+              <ul class="text-sm">
+                <li>Telefono: 777 311 3066</li>
+                <li>atnclientes@mtcenter.com.mx</li>
+              </ul>
+            </div>
+            <div class="mb-4">
+              <ul class="text-sm">
+                <li>Dudas sobre liberación de depósitos</li>
+                <li>Whatsapp: 777 789 1913</li>
+              </ul>
+            </div>
+            <div class="mb-4">
+              <ul class="text-sm">
+                <li class="mb-4 text-sm">Obtén asistencia con:</li>
+                <li>
+                  <a href="https://play.google.com/store/apps/details?id=com.digitalquo.onexpo"
+                    onclick="redirectToAppStore('googlePlay')"
+                    class="transition-all ease-in duration-150 w-auto sm:w-auto bg-transparent hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-md border-2 border-white inline-flex items-center justify-center px-10 py-2">
+                    <svg class="mr-3 w-3 h-3 sm:w-5 sm:h-5" aria-hidden="true" focusable="false" data-prefix="fab"
+                      data-icon="google-play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <path fill="currentColor"
+                        d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z">
+                      </path>
+                    </svg>
+                    <div class="text-left">
+                      <div class=" font-montserrat text-xs font-semibold">
+                        Play Store
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Contact section -->
+          <div>
+            <h6 class="mb-4 flex justify-center md:justify-start text-sm font-bold">
+              Descarga la plataforma
+            </h6>
+            <div class="items-center justify-start !place-items-start flex flex-col">
+              <a href="https://apps.apple.com/mx/app/onexpo-puebla/id1670473347"
+                onclick="redirectToAppStore('appStore')"
+                class="mb-5 transition-all ease-in duration-150 w-auto sm:w-auto bg-transparent hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-md border-2 border-white inline-flex items-center justify-center px-10 py-2">
+                <svg class="mr-3 w-3 h-3 sm:w-5 sm:h-5" aria-hidden="true" focusable="false" data-prefix="fab"
+                  data-icon="apple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path fill="currentColor"
+                    d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z">
+                  </path>
+                </svg>
+                <div class="text-left">
+                  <div class=" font-sans text-xs font-semibold">
+                    App Store
+                  </div>
+                </div>
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.digitalquo.onexpo"
+                onclick="redirectToAppStore('googlePlay')"
+                class="mb-5 transition-all ease-in duration-150 w-auto sm:w-auto bg-transparent hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-md border-2 border-white inline-flex items-center justify-center px-10 py-2">
+                <svg class="mr-3 w-3 h-3 sm:w-5 sm:h-5" aria-hidden="true" focusable="false" data-prefix="fab"
+                  data-icon="google-play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z">
+                  </path>
+                </svg>
+                <div class="text-left">
+                  <div class=" font-montserrat text-xs font-semibold">
+                    Play Store
+                  </div>
+                </div>
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.digitalquo.onexpo"
+                onclick="redirectToAppStore('googlePlay')"
+                class="transition-all ease-in duration-150 w-auto sm:w-auto bg-transparent hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-md border-2 border-white inline-flex items-center justify-center px-10 py-2">
+                <svg class="mr-3 w-3 h-3 sm:w-5 sm:h-5" aria-hidden="true" focusable="false" data-prefix="fab"
+                  data-icon="google-play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z">
+                  </path>
+                </svg>
+                <div class="text-left">
+                  <div class=" font-montserrat text-xs font-semibold">
+                    Play Store
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- Social link -->
     <div class="fixed bottom-[180px] right-[50px] flex flex-col gap-10">
       <div
@@ -252,3 +458,63 @@
 
   </div>
 </template>
+
+<style>
+:root {
+  --background: 86, 113, 254;
+  --size: 300px;
+  --duration: 3s;
+  --scale: 4;
+  --opacity: 1;
+}
+
+
+.status__icon {
+  width: var(--size);
+  height: var(--size);
+  background: rgb(var(--background));
+  border-radius: 100%;
+  position: relative;
+  animation: pulse-shadow var(--duration) calc(2 * var(--duration) / 3) linear infinite
+}
+
+.status__icon::after,
+.status__icon::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgb(var(--background));
+  border-radius: 100%;
+}
+
+.status__icon:after {
+  animation: pulse var(--duration) linear infinite
+}
+
+.status__icon:before {
+  animation: pulse var(--duration) calc(var(--duration) / 3) linear infinite
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: var(--opacity);
+  }
+
+  100% {
+    transform: scale(var(--scale));
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-shadow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--background), var(--opacity))
+  }
+
+  100% {
+    box-shadow: 0 0 0 calc((var(--scale) - 1) * var(--size) / 2) rgba(var(--background), 0)
+  }
+}
+</style>
