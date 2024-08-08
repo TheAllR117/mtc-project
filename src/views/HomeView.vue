@@ -37,7 +37,7 @@ const formValido = computed(() => {
   <div class="w-full h-full">
     <!-- Section 1 -->
     <div class="w-full h-screen bg-[#2530c7]">
-      <div class="flex flex-row h-full">
+      <div class="flex flex-row h-full mx-auto sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px]">
         <div class="basis-2/4 justify-center items-end flex relative">
           <img src="/assets/img/mtc-cliente-recarga.png" alt="" class="w-auto h-auto">
           <img src="/assets/img/celular-mtc-1.png" alt=""
@@ -62,7 +62,7 @@ const formValido = computed(() => {
     </div>
     <!-- Section 2 -->
     <div class="w-full h-screen bg-white">
-      <div class="flex flex-row h-full relative">
+      <div class="flex flex-row h-full relative mx-auto sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px]">
         <div class="basis-2/4 justify-end items-end flex flex-col pb-[140px]">
           <h2 class="text-[#2530c7] text-[3.5rem] font-bold leading-[60px] mb-8">
             La única plataforma <br> que te ofrece lo que <br> realmente necesitas
@@ -239,7 +239,7 @@ const formValido = computed(() => {
     </div>
     <!-- Section 3 -->
     <div class="w-full h-screen bg-[#2530c7] overflow-hidden">
-      <div class="flex flex-row w-full h-full">
+      <div class="flex flex-row w-full h-full mx-auto sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px]">
         <div class=" basis-full justify-center items-center flex relative w-full">
           <div class="absolute top-[10%] left-[10%] flex flex-col">
             <p class="text-white font-bold text-[3.5rem]">Todo en <br> tu app</p>
@@ -275,7 +275,7 @@ const formValido = computed(() => {
             </div>
             <div class="w-full flex justify-center pb-10">
               <ButtonLoading width="!w-full" label="Guardar" border-radius="rounded-full" :disable="!formValido"
-                :is-loading="isLoading" color-button="bg-[#0e33ca]" color-button-hover="bg-[#0e33ca]/50" />
+                :is-loading="isLoading" color-button="!bg-[#0e33ca]" color-button-hover="!bg-[#0e33ca]/50" />
             </div>
             <p class="text-sm">
               Av. Vicente Guerrero 1304 2do. Piso Col. Lomas de Cortés, 62240 Cuernavaca, Mor.

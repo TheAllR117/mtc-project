@@ -51,7 +51,7 @@
     </aside> -->
 
     <nav id="separator-sidebar"
-      class="flex max-w-full items-center justify-between p-2 md:p-1 lg:px-8 fixed top-0 left-0 w-full transition-transform -translate-x-full sm:translate-x-0 bg-[#2530c7] z-[9999]"
+      class="flex max-w-full items-center justify-between p-2 md:p-1 lg:px-8 fixed top-0 left-0 w-full transition-transform -translate-x-full sm:translate-x-0 bg-[#2530c7] z-[9999] "
       aria-label="Global">
       <div class="flex lg:flex-1">
         <a href="/" class="-m-1.5 p-1.5">
