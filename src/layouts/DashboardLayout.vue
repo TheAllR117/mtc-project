@@ -12,50 +12,12 @@
       </svg>
     </button>
 
-    <!-- <aside
-      
-      class="fixed top-0 left-0 w-full z-40 h-screen transition-transform -translate-x-full sm:translate-x-0 hidden md:block"
-      aria-label="Sidebar"
-    >
-      <div class="z-100 h-[10%] w-screen bg-black-400 flex flex-row">
-
-        <div class="h-1/5 w-1/12 flex flex-row justify-around items-center">
-          <IconOnexpo class="w-10"></IconOnexpo>
-        </div>
-
-        <div
-          class="h-3/5 w-full overflow-y-auto flex flex-row justify-evenly items-center landing-header"
-        >
-          <router-link
-            :to="item"
-            v-slot="{ isActive }"
-            class="relative"
-            v-for="(item, index) in routerList"
-            :key="index"
-          >
-            <span
-              v-if="isActive"
-              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secundary opacity-75"
-            ></span>
-            <div
-              :class="
-                'transition-all ease-in duration-[0.2s] flex h-10 w-10 justify-center items-center py-2 rounded-full  hover:bg-gray-100 dark:hover:bg-gray-900 group ico ' +
-                (isActive ? 'bg-blue/20 text-blue ' : 'text-green ')
-              "
-            >
-              <component v-bind:is="routerIcon[index]" :key="index + 'icon'"></component>
-            </div>
-          </router-link>
-        </div>
-      </div>
-    </aside> -->
-
     <nav id="separator-sidebar"
-      class="flex max-w-full items-center justify-between p-2 md:p-1 lg:px-8 fixed top-0 left-0 w-full transition-transform -translate-x-full sm:translate-x-0 bg-[#2530c7] z-[9999] "
+      class="flex max-w-full items-center justify-between px-5 min-[1024px]:px-8 py-2 min-[1024px]:py-0 fixed top-0 left-0 w-full transition-transform -translate-x-full sm:translate-x-0 bg-[#2530c7] z-[9999] "
       aria-label="Global">
       <div class="flex lg:flex-1">
         <a href="/" class="-m-1.5 p-1.5">
-          <IconCircle class="w-[50px]" />
+          <img src="/assets/img/logo.png" alt="" class="w-[40px] h-[40px]">
         </a>
       </div>
       <div class="flex lg:hidden">
@@ -83,28 +45,26 @@
         </router-link>
       </div>
       <div class="hidden lg:flex lg:gap-x-7 pl-7 pt-3 pb-3 items-center">
-        <a href="https://www.instagram.com/somosdigitalquo/?igshid=MzRlODBiNWFlZA%3D%3D"
-          class="text-sm font-bold leading-6 text-white hover:text-greenf focus:text-greenf hover:drop-shadow-[0_0_0.3em_#00FFCE] hover:animate-rotate-y"
-          target="_blank"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"
-            class="fill-white hover:fill-greenf transition ease-in delay-50">
-            <path
-              d="M15.34 3.71C15.1027 3.71 14.8707 3.78038 14.6733 3.91224C14.476 4.04409 14.3222 4.23151 14.2313 4.45078C14.1405 4.67005 14.1168 4.91133 14.1631 5.14411C14.2094 5.37689 14.3236 5.59071 14.4915 5.75853C14.6593 5.92635 14.8731 6.04064 15.1059 6.08694C15.3387 6.13324 15.5799 6.10948 15.7992 6.01866C16.0185 5.92783 16.2059 5.77402 16.3378 5.57668C16.4696 5.37935 16.54 5.14734 16.54 4.91C16.54 4.59174 16.4136 4.28652 16.1885 4.06147C15.9635 3.83643 15.6583 3.71 15.34 3.71ZM19.94 6.13C19.9206 5.3003 19.7652 4.4794 19.48 3.7C19.2257 3.03313 18.83 2.42928 18.32 1.93C17.8248 1.41743 17.2196 1.02418 16.55 0.78C15.7727 0.486161 14.9508 0.32721 14.12 0.31C13.06 0.25 12.72 0.25 10 0.25C7.28 0.25 6.94 0.25 5.88 0.31C5.04915 0.32721 4.22734 0.486161 3.45 0.78C2.78168 1.02665 2.17693 1.41956 1.68 1.93C1.16743 2.42518 0.774176 3.03044 0.53 3.7C0.236161 4.47734 0.07721 5.29915 0.0599999 6.13C-5.58794e-08 7.19 0 7.53 0 10.25C0 12.97 -5.58794e-08 13.31 0.0599999 14.37C0.07721 15.2008 0.236161 16.0227 0.53 16.8C0.774176 17.4696 1.16743 18.0748 1.68 18.57C2.17693 19.0804 2.78168 19.4734 3.45 19.72C4.22734 20.0138 5.04915 20.1728 5.88 20.19C6.94 20.25 7.28 20.25 10 20.25C12.72 20.25 13.06 20.25 14.12 20.19C14.9508 20.1728 15.7727 20.0138 16.55 19.72C17.2196 19.4758 17.8248 19.0826 18.32 18.57C18.8322 18.0726 19.2283 17.4682 19.48 16.8C19.7652 16.0206 19.9206 15.1997 19.94 14.37C19.94 13.31 20 12.97 20 10.25C20 7.53 20 7.19 19.94 6.13ZM18.14 14.25C18.1327 14.8848 18.0178 15.5137 17.8 16.11C17.6403 16.5452 17.3839 16.9384 17.05 17.26C16.7256 17.5905 16.3332 17.8464 15.9 18.01C15.3037 18.2278 14.6748 18.3427 14.04 18.35C13.04 18.4 12.67 18.41 10.04 18.41C7.41 18.41 7.04 18.41 6.04 18.35C5.38089 18.3623 4.72459 18.2609 4.1 18.05C3.68578 17.8781 3.31136 17.6228 3 17.3C2.66809 16.9787 2.41484 16.5852 2.26 16.15C2.01586 15.5452 1.88044 14.9019 1.86 14.25C1.86 13.25 1.8 12.88 1.8 10.25C1.8 7.62 1.8 7.25 1.86 6.25C1.86448 5.60106 1.98295 4.95795 2.21 4.35C2.38605 3.92791 2.65627 3.55166 3 3.25C3.30381 2.90617 3.67929 2.6331 4.1 2.45C4.70955 2.23004 5.352 2.11508 6 2.11C7 2.11 7.37 2.05 10 2.05C12.63 2.05 13 2.05 14 2.11C14.6348 2.11728 15.2637 2.23225 15.86 2.45C16.3144 2.61865 16.7223 2.89285 17.05 3.25C17.3777 3.55718 17.6338 3.93273 17.8 4.35C18.0223 4.95893 18.1373 5.60178 18.14 6.25C18.19 7.25 18.2 7.62 18.2 10.25C18.2 12.88 18.19 13.25 18.14 14.25ZM10 5.12C8.98581 5.12198 7.99496 5.42453 7.15265 5.98942C6.31035 6.55431 5.65438 7.3562 5.26763 8.29375C4.88089 9.23131 4.78072 10.2625 4.97979 11.2569C5.17886 12.2514 5.66824 13.1645 6.38608 13.881C7.10392 14.5974 8.01801 15.085 9.01286 15.2821C10.0077 15.4793 11.0387 15.3771 11.9755 14.9885C12.9123 14.6 13.7129 13.9424 14.2761 13.099C14.8394 12.2556 15.14 11.2642 15.14 10.25C15.1413 9.5751 15.0092 8.90661 14.7512 8.28296C14.4933 7.65931 14.1146 7.09281 13.6369 6.61605C13.1592 6.13929 12.5919 5.76168 11.9678 5.50493C11.3436 5.24818 10.6749 5.11736 10 5.12ZM10 13.58C9.34139 13.58 8.69757 13.3847 8.14995 13.0188C7.60234 12.6529 7.17552 12.1328 6.92348 11.5243C6.67144 10.9159 6.6055 10.2463 6.73398 9.60035C6.86247 8.95439 7.17963 8.36104 7.64533 7.89533C8.11104 7.42963 8.70439 7.11247 9.35035 6.98398C9.99631 6.8555 10.6659 6.92144 11.2743 7.17348C11.8828 7.42552 12.4029 7.85234 12.7688 8.39995C13.1347 8.94757 13.33 9.59139 13.33 10.25C13.33 10.6873 13.2439 11.1203 13.0765 11.5243C12.9092 11.9284 12.6639 12.2954 12.3547 12.6047C12.0454 12.9139 11.6784 13.1592 11.2743 13.3265C10.8703 13.4939 10.4373 13.58 10 13.58Z">
-            </path>
+        <a href="https://facebook.com/DigitalQuo/"
+          class="text-sm font-bold leading-6 text-[#2530c7] hover:text-greenf focus:text-greenf hover:drop-shadow-[0_0_0.3em_#00FFCE] hover:animate-rotate-y bg-white rounded-full w-8 h-8 flex justify-center items-center"
+          target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="21">
+            <path class="" fill="currentColor"
+              d="M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9l.3-.5z" />
           </svg>
         </a>
-        <a href="https://facebook.com/DigitalQuo/"
-          class="text-sm font-bold leading-6 text-white hover:text-greenf focus:text-greenf hover:drop-shadow-[0_0_0.3em_#00FFCE] hover:animate-rotate-y"
-          target="_blank"><svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg"
-            class="stroke-white hover:stroke-greenf transition ease-in delay-50">
-            <path
-              d="M10 0.75H7.54545C6.46048 0.75 5.41994 1.25044 4.65274 2.14124C3.88555 3.03204 3.45455 4.24022 3.45455 5.5V8.35H1V12.15H3.45455V19.75H6.72727V12.15H9.18182L10 8.35H6.72727V5.5C6.72727 5.24804 6.81347 5.00641 6.96691 4.82825C7.12035 4.65009 7.32846 4.55 7.54545 4.55H10V0.75Z"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <a href="https://www.instagram.com/somosdigitalquo/?igshid=MzRlODBiNWFlZA%3D%3D"
+          class="text-sm font-bold leading-6 text-[#2530c7] hover:text-greenf focus:text-greenf hover:drop-shadow-[0_0_0.3em_#00FFCE] hover:animate-rotate-y bg-white rounded-full w-8 h-8 flex justify-center items-center"
+          target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="21">
+            <path class="" fill="currentColor"
+              d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
           </svg>
         </a>
         <a href="#">
-          <button class="bg-white px-3 py-2 rounded-xl flex justify-evenly items-center text-green">
-            <p class="text-black">Comienza tu registro</p>
-            <IconArrowCircle class="text-black pl-5"/>      
+          <button class="bg-white px-3 rounded-xl flex justify-evenly items-center text-green">
+            <p class="text-[#2d71fc] font-medium">Comienza tu registro</p>
+            <IconArrowCircle class="text-[#2d71fc] pl-5 !w-10 !h-10" />
           </button>
         </a>
       </div>

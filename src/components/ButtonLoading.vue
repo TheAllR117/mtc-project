@@ -1,8 +1,8 @@
 <template>
-  <button type="submit" :class="`w-max px-4 justify-self-end uppercase block h-12 text-sm focus:outline-none font-black font-lato transition-all duration-500 ${colorText} ${isLoading ? widthLoading : width} ${!disable ?  colorButton + ' hover:opacity-[0.9] ' : colorButtonHover } ${isLoading ? ' cursor-progress rounded-full ' : borderRadius}`
+  <button type="submit" :class="`w-max px-4 justify-self-end uppercase block h-12 text-sm focus:outline-none font-black font-popins transition-all duration-500 ${colorText} ${isLoading ? widthLoading : width} ${!disable ?  colorButton + ' hover:opacity-[0.9] ' : colorButtonHover } ${isLoading ? ' cursor-progress rounded-full ' : borderRadius}`
     " :disabled="disable">
     <IconLoading v-if="isLoading" />
-    <p class="font-black font-lato" v-else>{{ label }}</p>
+    <p class="font-semibold font-popins" v-else>{{ label }}</p>
   </button>
 </template>
 

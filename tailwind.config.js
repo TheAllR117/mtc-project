@@ -121,6 +121,7 @@ export default {
       fontFamily: {
         montserrat: ['Montserrat'],
         lato: ['Lato'],
+        popins: ['Poppins'],
         garamond: ['Garamond']
       }
     },
