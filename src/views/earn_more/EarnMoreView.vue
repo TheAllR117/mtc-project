@@ -35,6 +35,37 @@ const formValido = computed(() => {
 <template>
   <div class="h-full w-full">
 
+    <div class="bg-[#1a205a]">
+      <div class="relative mx-auto flex h-screen max-w-screen-xl flex-col items-center p-8 px-4 sm:px-6 md:flex-row">
+        <div class="flex items-center py-5 md:w-1/2 md:pb-20 md:pr-10 md:pt-10">
+          <div class="text-left">
+            <h2 class="text-4xl font-bold leading-10 tracking-tight text-white sm:text-5xl sm:leading-none md:text-5xl">
+              Descarga la mejor <br> app de recargas
+            </h2>
+            <p class="mx-auto mt-3 max-w-md text-base text-white sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
+              Descarga MTCenter en tu celular o computadora y regístrate en tan solo 5 minutos para emepezar a vender
+              recargas electrónicas, pines electronicos, pagos de servicio, recargas de telepeaje, venta de SIM y eSIM Y
+              muuucho más.
+            </p>
+            <div class="mt-5 sm:flex md:mt-8">
+              <div class="rounded-md shadow"><a href=""
+                  class="focus:shadow-outline-blue flex w-full items-center justify-center rounded-md border border-transparent bg-blue-500 px-8 py-2 text-base font-medium text-white transition duration-150 ease-in-out hover:bg-blue-600 focus:outline-none md:text-lg">
+                  Descarga tu kit de publicidad </a></div>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center py-5 md:w-1/2 md:pb-20 md:pl-10 md:pt-10">
+          <div class="relative w-full rounded p-3 md:p-8">
+            <div class="w-full rounded-lg text-white">
+              <img src="https://picsum.photos/400/300" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <!-- Footer container -->
     <footer class="font-popins bg-[#16215b] py-5 text-center lg:text-left dark:text-white">
       <div

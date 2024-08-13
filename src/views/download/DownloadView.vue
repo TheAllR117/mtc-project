@@ -35,6 +35,169 @@ const formValido = computed(() => {
 <template>
   <div class="h-full w-full">
 
+    <div class="bg-[#2caced]">
+      <div class="relative mx-auto flex max-w-screen-xl flex-col items-center p-8 px-4 sm:px-6 md:flex-row h-screen">
+        <div class="flex items-center py-5 md:w-1/2 md:pb-20 md:pl-10 md:pt-10">
+          <div class="relative w-full rounded p-3 md:p-8">
+            <div class="w-full rounded-lg text-black">
+              <img src="https://picsum.photos/400/300" />
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center py-5 md:w-1/2 md:pb-20 md:pr-10 md:pt-10">
+          <div class="text-left">
+            <h2
+              class="text-4xl font-extrabold leading-10 tracking-tight text-gray-800 sm:text-5xl sm:leading-none md:text-6xl">
+              Hazte notar
+            </h2>
+            <p class="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">Descarga
+              e imprime para que tus <br> clientes sepan que eres un punto MTC</p>
+            <div class="mt-5 sm:flex md:mt-8">
+              <div class="rounded-md shadow"><a href=""
+                  class="focus:shadow-outline-blue flex w-full items-center justify-center rounded-md border border-transparent bg-blue-500 px-8 py-2 text-base font-medium text-white transition duration-150 ease-in-out hover:bg-blue-600 focus:outline-none md:text-lg">
+                  Descarga tu kit de publicidad </a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-[#eaeef1]">
+      <div class="mx-auto h-auto max-w-screen-xl px-10 py-16">
+        <div class="grid grid-cols-1 place-items-center items-center justify-center gap-10 md:grid-cols-2">
+          <div class="relative flex h-[300px] w-full flex-col overflow-hidden rounded-xl md:flex-row">
+            <div
+              class="left-0 top-0 h-full rounded-[0.7rem_0.7rem_0rem_0rem] bg-blue-500 bg-[url('https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500')] bg-cover bg-right md:absolute md:w-[54%] md:rounded-xl">
+            </div>
+            <div
+              class="right-0 top-0 flex h-full flex-col justify-center rounded-[0rem_0rem_0.7rem_0.7rem] bg-white px-3 py-5 md:absolute md:w-[50%] md:rounded-xl md:py-0">
+              <h3 class="mb-2 text-[1.5rem] font-bold text-black">Recargas electronicas</h3>
+              <p class="mb-2 text-sm font-normal text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Neque aliquam natus accusantium at odit</p>
+              <button class="w-[150px] rounded-xl bg-[#2530c7] px-3 py-2 text-white">Descarga aqui</button>
+            </div>
+          </div>
+          <div class="relative flex h-[300px] w-full flex-col overflow-hidden rounded-xl md:flex-row">
+            <div
+              class="left-0 top-0 h-full rounded-[0.7rem_0.7rem_0rem_0rem] bg-blue-500 bg-[url('https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500')] bg-cover bg-right md:absolute md:w-[54%] md:rounded-xl">
+            </div>
+            <div
+              class="right-0 top-0 flex h-full flex-col justify-center rounded-[0rem_0rem_0.7rem_0.7rem] bg-white px-3 py-5 md:absolute md:w-[50%] md:rounded-xl md:py-0">
+              <h3 class="mb-2 text-[1.5rem] font-bold text-black">Recargas electronicas</h3>
+              <p class="mb-2 text-sm font-normal text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Neque aliquam natus accusantium at odit</p>
+              <button class="w-[150px] rounded-xl bg-[#2530c7] px-3 py-2 text-white">Descarga aqui</button>
+            </div>
+          </div>
+          <div class="relative flex h-[300px] w-full flex-col overflow-hidden rounded-xl md:flex-row">
+            <div
+              class="left-0 top-0 h-full rounded-[0.7rem_0.7rem_0rem_0rem] bg-blue-500 bg-[url('https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500')] bg-cover bg-right md:absolute md:w-[54%] md:rounded-xl">
+            </div>
+            <div
+              class="right-0 top-0 flex h-full flex-col justify-center rounded-[0rem_0rem_0.7rem_0.7rem] bg-white px-3 py-5 md:absolute md:w-[50%] md:rounded-xl md:py-0">
+              <h3 class="mb-2 text-[1.5rem] font-bold text-black">Recargas electronicas</h3>
+              <p class="mb-2 text-sm font-normal text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Neque aliquam natus accusantium at odit</p>
+              <button class="w-[150px] rounded-xl bg-[#2530c7] px-3 py-2 text-white">Descarga aqui</button>
+            </div>
+          </div>
+          <div class="relative flex h-[300px] w-full flex-col overflow-hidden rounded-xl md:flex-row">
+            <div
+              class="left-0 top-0 h-full rounded-[0.7rem_0.7rem_0rem_0rem] bg-blue-500 bg-[url('https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500')] bg-cover bg-right md:absolute md:w-[54%] md:rounded-xl">
+            </div>
+            <div
+              class="right-0 top-0 flex h-full flex-col justify-center rounded-[0rem_0rem_0.7rem_0.7rem] bg-white px-3 py-5 md:absolute md:w-[50%] md:rounded-xl md:py-0">
+              <h3 class="mb-2 text-[1.5rem] font-bold text-black">Recargas electronicas</h3>
+              <p class="mb-2 text-sm font-normal text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Neque aliquam natus accusantium at odit</p>
+              <button class="w-[150px] rounded-xl bg-[#2530c7] px-3 py-2 text-white">Descarga aqui</button>
+            </div>
+          </div>
+          <div class="relative flex h-[300px] w-full flex-col overflow-hidden rounded-xl md:flex-row">
+            <div
+              class="left-0 top-0 h-full rounded-[0.7rem_0.7rem_0rem_0rem] bg-blue-500 bg-[url('https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500')] bg-cover bg-right md:absolute md:w-[54%] md:rounded-xl">
+            </div>
+            <div
+              class="right-0 top-0 flex h-full flex-col justify-center rounded-[0rem_0rem_0.7rem_0.7rem] bg-white px-3 py-5 md:absolute md:w-[50%] md:rounded-xl md:py-0">
+              <h3 class="mb-2 text-[1.5rem] font-bold text-black">Recargas electronicas</h3>
+              <p class="mb-2 text-sm font-normal text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Neque aliquam natus accusantium at odit</p>
+              <button class="w-[150px] rounded-xl bg-[#2530c7] px-3 py-2 text-white">Descarga aqui</button>
+            </div>
+          </div>
+          <div class="relative flex h-[300px] w-full flex-col overflow-hidden rounded-xl md:flex-row">
+            <div
+              class="left-0 top-0 h-full rounded-[0.7rem_0.7rem_0rem_0rem] bg-blue-500 bg-[url('https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500')] bg-cover bg-right md:absolute md:w-[54%] md:rounded-xl">
+            </div>
+            <div
+              class="right-0 top-0 flex h-full flex-col justify-center rounded-[0rem_0rem_0.7rem_0.7rem] bg-white px-3 py-5 md:absolute md:w-[50%] md:rounded-xl md:py-0">
+              <h3 class="mb-2 text-[1.5rem] font-bold text-black">Recargas electronicas</h3>
+              <p class="mb-2 text-sm font-normal text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Neque aliquam natus accusantium at odit</p>
+              <button class="w-[150px] rounded-xl bg-[#2530c7] px-3 py-2 text-white">Descarga aqui</button>
+            </div>
+          </div>
+          <div class="relative flex h-[300px] w-full flex-col overflow-hidden rounded-xl md:flex-row">
+            <div
+              class="left-0 top-0 h-full rounded-[0.7rem_0.7rem_0rem_0rem] bg-blue-500 bg-[url('https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500')] bg-cover bg-right md:absolute md:w-[54%] md:rounded-xl">
+            </div>
+            <div
+              class="right-0 top-0 flex h-full flex-col justify-center rounded-[0rem_0rem_0.7rem_0.7rem] bg-white px-3 py-5 md:absolute md:w-[50%] md:rounded-xl md:py-0">
+              <h3 class="mb-2 text-[1.5rem] font-bold text-black">Recargas electronicas</h3>
+              <p class="mb-2 text-sm font-normal text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Neque aliquam natus accusantium at odit</p>
+              <button class="w-[150px] rounded-xl bg-[#2530c7] px-3 py-2 text-white">Descarga aqui</button>
+            </div>
+          </div>
+          <div class="relative flex h-[300px] w-full flex-col overflow-hidden rounded-xl md:flex-row">
+            <div
+              class="left-0 top-0 h-full rounded-[0.7rem_0.7rem_0rem_0rem] bg-blue-500 bg-[url('https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500')] bg-cover bg-right md:absolute md:w-[54%] md:rounded-xl">
+            </div>
+            <div
+              class="right-0 top-0 flex h-full flex-col justify-center rounded-[0rem_0rem_0.7rem_0.7rem] bg-white px-3 py-5 md:absolute md:w-[50%] md:rounded-xl md:py-0">
+              <h3 class="mb-2 text-[1.5rem] font-bold text-black">Recargas electronicas</h3>
+              <p class="mb-2 text-sm font-normal text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Neque aliquam natus accusantium at odit</p>
+              <button class="w-[150px] rounded-xl bg-[#2530c7] px-3 py-2 text-white">Descarga aqui</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="mx-auto max-w-screen-xl px-4 py-20">
+      <div
+        class="mx-auto flex w-[100%] items-center justify-between rounded-2xl bg-gradient-to-br from-sky-400 via-sky-400 to-violet-400 p-6 text-white sm:p-20">
+        <div class="flex flex-col gap-6">
+          <div class="">
+            <span class="text-gray-200">Black friday sale</span>
+            <br />
+            <span class="text-4xl font-semibold text-white">20% off every Product</span>
+          </div>
+          <a href="" target="_blank" rel="noreferrer"
+            class="ease group flex w-fit items-center gap-1 rounded-lg bg-white px-4 py-2 text-black duration-300 hover:bg-gray-50">
+            <span>Buy now</span>
+            <svg data-v-e660a7a7="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true" role="img" class="ease transition-transform duration-200 group-hover:translate-x-1"
+              width="1em" height="1em" viewBox="0 0 256 256">
+              <path fill="currentColor"
+                d="m221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z">
+              </path>
+            </svg>
+          </a>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-gray-100" viewBox="0 0 15 15">
+            <path fill="currentColor" fill-rule="evenodd"
+              d="M4.5 0A2.5 2.5 0 0 0 2 2.5v.286c0 .448.133.865.362 1.214H1.5A1.5 1.5 0 0 0 0 5.5v1A1.5 1.5 0 0 0 1.5 8H7V4h1v4h5.5A1.5 1.5 0 0 0 15 6.5v-1A1.5 1.5 0 0 0 13.5 4h-.862c.229-.349.362-.766.362-1.214V2.5A2.5 2.5 0 0 0 10.5 0c-1.273 0-2.388.68-3 1.696A3.498 3.498 0 0 0 4.5 0ZM8 4h2.786C11.456 4 12 3.456 12 2.786V2.5A1.5 1.5 0 0 0 10.5 1A2.5 2.5 0 0 0 8 3.5V4ZM7 4H4.214C3.544 4 3 3.456 3 2.786V2.5A1.5 1.5 0 0 1 4.5 1A2.5 2.5 0 0 1 7 3.5V4Z"
+              clip-rule="evenodd"></path>
+            <path fill="currentColor" d="M7 9H1v3.5A2.5 2.5 0 0 0 3.5 15H7V9Zm1 6h3.5a2.5 2.5 0 0 0 2.5-2.5V9H8v6Z">
+            </path>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+
     <!-- Footer container -->
     <footer class="font-popins bg-[#16215b] py-5 text-center lg:text-left dark:text-white">
       <div
