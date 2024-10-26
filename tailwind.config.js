@@ -122,8 +122,53 @@ export default {
         montserrat: ['Montserrat'],
         lato: ['Lato'],
         popins: ['Poppins'],
-        garamond: ['Garamond']
-      }
+        garamond: ['Garamond'],
+        muller: ['Muller'],
+      },
+      animation: {
+        fadeUp: 'fadeUp 1s ease-out',
+        fadeDown: 'fadeDown 1s ease-out',
+        fadeLeft: 'fadeLeft 1s ease-out',
+        fadeRight: 'fadeRight 1s ease-out',
+        fadeUpOut: 'fadeUpOut 1s ease-in',
+        fadeDownOut: 'fadeDownOut 1s ease-in',
+        fadeLeftOut: 'fadeLeftOut 1s ease-in',
+        fadeRightOut: 'fadeRightOut 1s ease-in',
+      },
+      keyframes: {
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(60px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeDown: {
+          '0%': { opacity: '0', transform: 'translateY(-60px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeLeft: {
+          '0%': { opacity: '0', transform: 'translateX(60px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        fadeRight: {
+          '0%': { opacity: '0', transform: 'translateX(-60px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        fadeUpOut: {
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(-60px)' },
+        },
+        fadeDownOut: {
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(60px)' },
+        },
+        fadeLeftOut: {
+          '0%': { opacity: '1', transform: 'translateX(0)' },
+          '100%': { opacity: '0', transform: 'translateX(60px)' },
+        },
+        fadeRightOut: {
+          '0%': { opacity: '1', transform: 'translateX(0)' },
+          '100%': { opacity: '0', transform: 'translateX(-60px)' },
+        },
+      },
     },
     listStyleType: {
       none: 'none',

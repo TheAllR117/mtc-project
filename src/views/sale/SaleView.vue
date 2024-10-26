@@ -35,6 +35,51 @@ const formValido = computed(() => {
 <template>
   <div class="h-full w-full">
 
+    <div class="main-container">
+      <div class="post">
+        <div class="thumbnail">
+          <div class="img-container">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="no-image" />
+          </div>
+        </div>
+        <div class="header">
+          <div class="title">Amelia Doe</div>
+        </div>
+        <div class="body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat id distinctio facilis rerum optio, molestiae harum nesciunt rem et libero!</div>
+        <div class="footer">
+          <button>View More</button>
+        </div>
+      </div>
+      <div class="post">
+        <div class="thumbnail">
+          <div class="img-container">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="no-image" />
+          </div>
+        </div>
+        <div class="header">
+          <div class="title">Mary Doe</div>
+        </div>
+        <div class="body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat id distinctio facilis rerum optio, molestiae harum nesciunt rem et libero!</div>
+        <div class="footer">
+          <button>View More</button>
+        </div>
+      </div>
+      <div class="post">
+        <div class="thumbnail">
+          <div class="img-container">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="no-image" />
+          </div>
+        </div>
+        <div class="header">
+          <div class="title">Julia Doe</div>
+        </div>
+        <div class="body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat id distinctio facilis rerum optio, molestiae harum nesciunt rem et libero!</div>
+        <div class="footer">
+          <button>View More</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer container -->
     <footer class="font-popins bg-[#16215b] py-5 text-center lg:text-left dark:text-white">
       <div
@@ -235,5 +280,156 @@ const formValido = computed(() => {
     display: flex;
     align-items: center;
   }
+}
+
+
+* {
+   padding: 0;
+   margin: 0;
+   font-family: sans-serif;
+   box-sizing: border-box;
+}
+
+body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #0e47a1;
+   height: 100vh;
+   width: 100vw;
+}
+
+.main-container {
+   min-height: 100vh;
+   min-width: 400px;
+   display: flex;
+   align-items: center;
+   padding-block: 1rem;
+}
+.post {
+   --tint: #f443369a;
+   --border-radius: 30px;
+   --background: #FFF;
+   --color: #FFF;
+   min-height: 200px;
+   background-color: var(--background);
+   width: 300px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   overflow: hidden;
+   border-radius: var(--border-radius);
+   margin-right: 2rem;
+   cursor: pointer;
+   transition: all 0.25s ease-in-out;
+}
+.post:hover,
+.post:focus,
+.post.active {
+   transform: scale(1.1);
+}
+
+.thumbnail {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: var(--tint);
+   padding-block: 1rem;
+   border-bottom-left-radius: var(--border-radius);
+}
+.thumbnail .img-container {
+   width: 100px;
+   height: 100px;
+   overflow: hidden;
+   border-radius: 50%;
+   border: 4px solid var(--background);
+}
+
+.thumbnail .img-container img {
+   width: 100%;
+}
+.header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   position: relative;
+}
+
+.header .title {
+   flex: 1;
+   border-top-right-radius: var(--border-radius);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 0.5rem 0 0.5rem 0;
+   font-weight: bold;
+   position: relative;
+   background-color: inherit;
+}
+.header .title::before,
+.header .title::after {
+   content: '';
+   position: absolute;
+   height: 100%;
+   width: 30px;
+   right: 0;
+   top: 0;
+}
+
+.header .title::before {
+   background: var(--tint);
+}
+
+.header .title::after {
+   border-top-right-radius: var(--border-radius);
+   background-color: var(--background);
+}
+.post .body {
+   padding-inline: 0.85rem;
+}
+
+.post .footer {
+   padding-block: 20px;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.post button {
+   border: none;
+   outline: none;
+   background-color: var(--tint);
+   box-shadow: inset 3px 3px 2px 1px #00000045;
+   color: var(--color);
+   padding: 10px 20px;
+   border-radius: var(--border-radius);
+   width: 50%;
+   font-weight: bold;
+   cursor: pointer;
+}
+@media (min-width: 320px) and (max-width: 1024px) {
+   body {
+        flex-direction: column;
+        justify-content: unset;
+        align-items: unset;
+   }
+   
+   .main-container {
+        flex-direction: column;
+   }
+
+   .main-container .post {
+        margin-bottom: 1rem;
+        min-height: 360px;
+   }
+
+   .main-container .post:hover,
+   .main-container .post:focus {
+        transform: scale(1.05);
+   }
 }
 </style>

@@ -13,11 +13,11 @@
     </button>
 
     <nav id="separator-sidebar"
-      class="flex max-w-full items-center justify-between px-5 min-[1024px]:px-8 py-2 min-[1024px]:py-0 fixed top-0 left-0 w-full transition-transform -translate-x-full sm:translate-x-0 bg-[#2530c7] z-[9999] "
+      class="flex max-w-full items-center justify-between px-5 min-[1024px]:px-8 py-2 min-[1024px]:py-0 fixed top-0 left-0 w-full transition-transform -translate-x-full sm:translate-x-0 bg-[#FFFFFF] z-[9999] "
       aria-label="Global">
       <div class="flex lg:flex-1">
         <a href="/" class="-m-1.5 p-1.5">
-          <img src="/assets/img/logo.png" alt="" class="w-[40px] h-[40px]">
+          <img src="/assets/img/logo.png" alt="" class="w-[150px] h-auto">
         </a>
       </div>
       <div class="flex lg:hidden">
@@ -39,38 +39,26 @@
             (isActive ? 'bg-blue/20 text-blue ' : 'text-green ')
             ">
             <p
-              class="text-sm leading-6 text-white hover:text-greenf focus:text-greenf transition ease-in delay-50 hover:drop-shadow-[0_0_0.5em_#00FFCE] font-medium">
+              class="text-sm leading-6 text-[#1D394D] hover:text-greenf focus:text-greenf transition ease-in delay-50 hover:drop-shadow-[0_0_0.5em_#00FFCE] font-medium">
               {{ item.text }}</p>
           </div>
         </router-link>
       </div>
       <div class="hidden lg:flex lg:gap-x-7 pl-7 pt-3 pb-3 items-center">
-        <a href="https://facebook.com/DigitalQuo/"
-          class="text-sm font-bold leading-6 text-[#2530c7] hover:text-greenf focus:text-greenf hover:drop-shadow-[0_0_0.3em_#00FFCE] hover:animate-rotate-y bg-white rounded-full w-8 h-8 flex justify-center items-center"
-          target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="21">
-            <path class="" fill="currentColor"
-              d="M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9l.3-.5z" />
-          </svg>
-        </a>
-        <a href="https://www.instagram.com/somosdigitalquo/?igshid=MzRlODBiNWFlZA%3D%3D"
-          class="text-sm font-bold leading-6 text-[#2530c7] hover:text-greenf focus:text-greenf hover:drop-shadow-[0_0_0.3em_#00FFCE] hover:animate-rotate-y bg-white rounded-full w-8 h-8 flex justify-center items-center"
-          target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="21">
-            <path class="" fill="currentColor"
-              d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
-          </svg>
+        <a href="#">
+          <button class="bg-transparent px-3 rounded-xl flex justify-evenly items-center text-[#04B2CA] border-2 border-[#04B2CA]">
+            <p class="text-[#04B2CA] font-medium">CONTACTO</p>
+          </button>
         </a>
         <a href="#">
-          <button class="bg-white px-3 rounded-xl flex justify-evenly items-center text-green">
-            <p class="text-[#2d71fc] font-medium">Comienza tu registro</p>
-            <IconArrowCircle class="text-[#2d71fc] pl-5 !w-10 !h-10" />
+          <button class="bg-[#04B2CA] px-3 rounded-xl flex justify-evenly items-center text-green border-2 border-[#04B2CA]">
+            <p class="text-white font-medium">INICIAR SESIÓN</p>
           </button>
         </a>
       </div>
     </nav>
 
-    <div class="z-0 w-full h-full bg-white dark:bg-black">
+    <div class="z-0 w-full h-full bg-white">
       <slot></slot>
     </div>
   </div>
@@ -91,36 +79,16 @@ import IconCircle from '../components/icons/IconCircle.vue'
 const routerList = ref([
   {
     name: 'download',
-    text: 'Descarga'
+    text: '¿QUÉ TE OFRECEMOS?'
   },
   {
     name: 'sale',
-    text: 'Vende'
+    text: 'SOLUCIONES'
   },
   {
     name: 'more-solutions',
-    text: 'Más soluciones'
+    text: 'PRECIOS'
   },
-  {
-    name: 'earn-more',
-    text: 'Gana más'
-  },
-  {
-    name: 'blog',
-    text: 'Blog'
-  },
-  {
-    name: 'portals',
-    text: 'Portales'
-  },
-  {
-    name: 'family-mtc',
-    text: 'Familia MTC'
-  },
-  {
-    name: 'doubts',
-    text: 'Dudas'
-  }
   //   { name: 'staff' },
   //   { name: 'paymet-management' },
   //   { name: 'store' }
