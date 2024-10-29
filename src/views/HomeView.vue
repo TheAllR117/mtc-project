@@ -1,83 +1,79 @@
 <template>
-  <div class="h-full w-full !font-muller">
+  <div class="h-full w-full !font-muller  bg-white">
 
     <!-- Section 1 -->
-    <section class="h-max bg-red font-muller" id="section1">
+    <section class="h-max font-muller bg-white" id="section1">
       <div
-        class="w-full h-full pt-[60px] px-[15px] mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px]">
-        <div class="py-[50px] relative m-0 w-full h-full">
-          <div
-            class="w-full h-full bg-gradient-to-r from-[#1D394D] to-[#2D5A7A] rounded-[20px] overflow-hidden px-5 md:px-14 pb-14 relative">
+        class="w-full h-full pt-[120px] md:pb-[100px] px-[15px] mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px]">
 
-            <div class="absolute top-0 left-0 z-0 w-full h-full">
-              <img src="/assets/img/texture.png" alt=""
-                :class="[`${visibility.section1 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-full h-full`]">
-            </div>
+        <div
+          class="w-full h-full pt-[0px] pb-[50px] md:pb-[100px] flex flex-col relative bg-gradient-to-r from-[#1D394D] to-[#2D5A7A] rounded-[20px] overflow-hidden max-md:px-5">
 
-            <div class="w-full h-auto flex justify-center items-center mt-[60px] relative z-10">
-              <h2
-                class="text-white font-bold font-muller text-[1.6rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[1.9rem] 2xl:text-[2.3rem]">
-                ¡Facilitarte la vida es nuestra misión! 😎
-              </h2>
-            </div>
+          <div class="absolute top-0 left-0 z-0 w-full h-full">
+            <img src="/assets/img/texture.png" alt=""
+              :class="[`${visibility.section1 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-full h-full`]">
+          </div>
 
-            <div class="m-0 w-full h-auto flex justify-center items-center relative z-10">
-              <div class="w-full h-auto grid sm:grid-cols-12 gap-16 justify-center items-center">
+          <div class="w-full h-auto flex justify-center items-center mt-[40px] md:mt-[60px] md:mb-[20px] relative z-10">
+            <h2
+              class="text-white font-bold font-muller text-[1.3rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[1.9rem] 2xl:text-[2.3rem] md:mb-10 max-md:text-center">
+              ¡Facilitarte la vida es nuestra misión! 😎
+            </h2>
+          </div>
 
-                <div class="w-full h-full flex flex-col justify-center items-start col-span-8">
-                  <swiper @slideChange="updateCurrentIndex" v-model="currentIndex" :css-mode="true" :mousewheel="true" :slides-per-view="3"
-                    :slides-per-group="1" :space-between="20" :pagination="{ clickable: true }" :centeredSlides="true" :loop="true"
-                    :navigation="{
-                      nextEl: '.swiper-button-next',
-                      prevEl: '.swiper-button-prev',
-                    }" :modules="modules" :breakpoints="{
-                      0: { slidesPerView: 1, spaceBetween: 20 },
-                      500: { slidesPerView: 2, spaceBetween: 20 },
-                      1024: { slidesPerView: 3, spaceBetween: 20 },
-                      1300: { slidesPerView: 3, spaceBetween: 20 },
-                      1500: { slidesPerView: 3, spaceBetween: 20 },
-                    }" class="mySwiper flex justify-center items-center w-full h-[70%] !px-2">
-                    <swiper-slide v-for="(slide, index) in slides" :key="index"
-                      class="w-[500px] h-[500px] flex justify-center items-center place-items-center content-center md:pl-3 swiper-slide-opacity">
-                      <div
-                        class="w-full h-full rounded-xl relative transition-all ease-in duration-150 hover:scale-90 cursor-pointer">
-                        <div
-                          class="w-full h-full flex bg-[#1D394D] rounded-full shadow-black relative z-10 p-3 justify-center items-center">
-                          <img :src="slide.imgSrc" alt="" class="w-auto h-auto" />
-                        </div>
-                      </div>
-                    </swiper-slide>
+          <div class="flex flex-col max-md:flex-col-reverse items-center justify-between md:flex-row relative h-auto">
 
-                    <div class="swiper-button-prev">
-                      <IconArrowDownSolid class="rotate-90 !w-10 !h-10 text-black" />
-                    </div>
-                    <div class="swiper-button-next">
-                      <IconArrowDownSolid class="rotate-[-90deg] !w-10 !h-10 text-black" />
-                    </div>
-                  </swiper>
+            <!-- Left Side: Company Info -->
+            <div class="mb-8 w-full h-auto md:mb-0 md:w-[65%]">
+              <div
+                class="bg-stripes-fuchsia grid grid-cols-3 gap-4 rounded-lg text-center font-mono text-sm font-bold leading-6 text-white relative">
+                <div v-for="(item, index) in items" :key="index"
+                  :class="['transition-all ease-in duration-150 w-full h-full flex justify-center items-center place-items-center content-center cursor-pointer hover:scale-90', activeIndex === index ? '' : 'scale-90']"
+                  @click="setActive(index)">
 
+                  <div
+                    :class="['w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[200px] lg:h-[200px] xl:w-[260px] xl:h-[260px] 2xl:w-[330px] 2xl:h-[330px] transition-all ease-in duration-150 md:py-6 flex bg-[#1D394D] rounded-full relative z-10 justify-center items-center', { 'opacity-60': activeIndex !== index, 'opacity-100': activeIndex === index }]">
+                    <img :src="item.imgSrc" :alt="item.alt" class="w-[50%] h-auto" />
+                  </div>
 
                 </div>
 
-                <div class="w-full h-full flex justify-center items-center col-span-4">
-                  <h2>{{ texts[currentIndex] }}</h2>
+                <div
+                  class="absolute bottom-[-35px] left-0 w-full flex flex-row justify-center gap-x-3 md:gap-x-10 items-center bg-transparent">
+                  <div v-for="(item, index) in items" :key="'dot-' + index" @click="setActive(index)"
+                    :class="['transition-all ease-in duration-150 w-[50px] md:w-[100px] h-2 rounded-full cursor-pointer', activeIndex === index ? 'bg-[#04B2CA]' : 'bg-[#D9D9D9]']">
+                  </div>
                 </div>
 
+              </div>
+
+            </div>
+
+            <!-- Right xSide: Details and Buttons -->
+            <div class="md:w-[35%] h-auto md:px-16 max-md:mb-7 flex justify-center items-center">
+              <div class="flex flex-col items-center justify-center text-center w-auto md:w-max h-[150px]">
+                <h2
+                  class="text-white text-[1.1rem] md:text-[1.2rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5em] font-bold">
+                  {{ items[activeIndex].title }}</h2>
+                <hr class="w-full h-0.5 mx-auto my-4 bg-[#04B2CA] border-0 rounded md:my-2">
+                <p class="text-white text-[0.9rem] md:text-[0.95rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.1rem] font-light"
+                  v-html="items[activeIndex].text"></p>
               </div>
             </div>
 
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- Section 2 -->
-    <section class="h-max bg-yellow" id="section2">
+    <section class="h-max bg-white" id="section2">
       <div
         class="w-full h-full px-[15px] mx-auto sm:max-w-[540px] md:max-w-[720px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1620px]">
-        <div class="py-[50px] relative m-0 w-full h-full">
+        <div class=" py-[30px] md:py-[50px] relative m-0 w-full h-full">
           <div
-            class="w-full h-full border-2 border-transparent bg-white rounded-[20px] overflow-hidden px-5 md:px-14 pb-14">
+            class="w-full h-full border-2 border-transparent bg-white rounded-[20px] overflow-hidden px-5 md:px-14 pb-4 md:pb-14">
 
             <div class="w-full h-auto flex justify-center items-center my-[30px]">
               <h2
@@ -280,48 +276,40 @@
     </section>
 
     <!-- Section 3 -->
-    <section class="h-max bg-green font-muller" id="section3">
+    <section class="h-max bg-white font-muller" id="section3">
       <div
         class="w-full h-full px-[15px] mx-auto sm:max-w-[540px] md:max-w-[720px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1260px]">
-        <div class="py-[50px] relative m-0 w-full h-full">
+        <div class="py-[30px] md:py-[50px] relative m-0 w-full h-full">
           <div
             class="w-full h-full bg-gradient-to-r from-[#23465E] to-[#4992C4] rounded-[20px] overflow-hidden px-5 md:px-14 pb-14">
 
-            <div class="w-full h-auto flex justify-center items-center mt-[60px]">
+            <div class="w-full h-auto flex justify-center items-center mt-[60px] max-md:mb-[30px]">
               <h2
-                class="text-white font-bold font-muller text-[1.6rem] sm:text-[1.6rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem]">
-                No estas solo nosotros estamos contigo 😎
+                class="text-white font-bold font-muller text-[1.6rem] sm:text-[1.6rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem] max-md:text-center">
+                No estás solo nosotros <br class="md:hidden"> estamos contigo 😎
               </h2>
             </div>
 
             <div class="relative m-0 w-full h-auto flex justify-center items-center">
               <div class="w-full h-auto flex flex-col md:flex-row justify-between items-center px-7">
 
+                <!-- Sección de Texto -->
                 <div class="w-full h-full flex flex-col justify-center items-start max-md:mb-16 gap-y-10">
-                  <div class="relative">
-                    <div class="w-1 h-full bg-[#04B2CA] absolute top-0 left-[-20px] rounded-full"></div>
-                    <h4 class="text-white text-[1.5rem] font-bold">Acompañamiento en todo tu proceso</h4>
-                    <p class="text-white text-[1.1rem]">Nuestro equipo está aquí para guiarte asegurando <br> que todas
-                      tus dudas sean resueltas rápidamente.</p>
-                  </div>
-
-                  <div class="relative">
-                    <div class="w-1 h-full bg-[#CACACA] absolute top-0 left-[-20px] rounded-full"></div>
-                    <h4 class="text-white text-[1.5rem] font-bold">Apoyo por medio de correo electrónico</h4>
-                    <p class="text-white text-[1.1rem]">Soporte continuo a través de correo electrónico, con <br> una
-                      respuesta máxima de 60 minutos.</p>
-                  </div>
-
-                  <div class="relative">
-                    <div class="w-1 h-full bg-[#CACACA] absolute top-0 left-[-20px] rounded-full"></div>
-                    <h4 class="text-white text-[1.5rem] font-bold">Acceso a manuales y video tutoriales </h4>
-                    <p class="text-white text-[1.1rem]">Ponemos a tu disposición guías diseñadas para <br> apoyarte paso
-                      a paso en cada proceso.</p>
+                  <div v-for="(item, index) in item2" :key="index" class="relative cursor-pointer"
+                    @click="setActive2(index)">
+                    <div :class="[
+                      'w-1 h-full absolute top-0 left-[-20px] rounded-full transition-all',
+                      { 'bg-[#04B2CA]': activeIndex2 === index, 'bg-[#CACACA]': activeIndex2 !== index }
+                    ]">
+                    </div>
+                    <h4 class="text-white text-[1.5rem] font-bold">{{ item.title }}</h4>
+                    <p class="text-white text-[1.1rem]">{{ item.text }}</p>
                   </div>
                 </div>
 
+                <!-- Sección de Imagen -->
                 <div class="w-full h-full flex justify-center items-center">
-                  <img src="/assets/img/3d.png" alt=""
+                  <img :src="item2[activeIndex2].imgSrc" :alt="item2[activeIndex2].alt"
                     class="w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px]">
                 </div>
 
@@ -363,7 +351,7 @@
     </section>
 
     <!-- Section 5 -->
-    <section class="h-max bg-purple font-muller" id="section5">
+    <section class="h-max bg-white font-muller" id="section5">
       <div class="w-full h-full px-[70px] pt-[130px] pb-[130px]">
         <div class="relative m-0 w-full h-full">
           <div class="w-full sm:flex sm:flex-col sm:align-center">
@@ -564,7 +552,7 @@
 
     <!-- Footer -->
 
-    <footer class="w-full bg-[#1D394D]">
+    <footer class="w-full bg-[#1D394D]" id="footer">
       <div class="mx-auto max-w-full px-20">
         <!--Grid-->
         <div class="py-16 flex justify-between items-center flex-col gap-8 lg:flex-row">
@@ -691,19 +679,60 @@ const form = reactive({
   type: false
 });
 
-const slides = ref([
-  { imgSrc: '/assets/img/1.png', alt: 'Slide 1' },
-  { imgSrc: '/assets/img/2.png', alt: 'Slide 2' },
-  { imgSrc: '/assets/img/3.png', alt: 'Slide 3' },
-  { imgSrc: '/assets/img/3.png', alt: 'Slide 3' },
-  // Añade más slides según sea necesario
+const items = ref([
+  {
+    imgSrc: '/assets/img/1.png',
+    alt: 'Slide 1',
+    title: 'Control total de tus timbres',
+    text: 'Gestiona todas tus empresas desde un <br class="hidden lg:block"> solo lugar, sin complicaciones',
+  },
+  {
+    imgSrc: '/assets/img/2.png',
+    alt: 'Slide 2',
+    title: 'Timbrado múltiple simultáneo',
+    text: 'Ahorra tiempo timbrando varias facturas',
+  },
+  {
+    imgSrc: '/assets/img/3.png',
+    alt: 'Slide 3',
+    title: 'Descarga masiva de archivos',
+    text: 'Descarga todas tus facturas que necesites con <br class="hidden lg:block"> un solo clic',
+  },
 ]);
 
-const texts = [
-  'Texto 1 para el primer slide',
-  'Texto 2 para el segundo slide',
-  'Texto 3 para el tercer slide',
-];
+const item2 = ref([
+  {
+    imgSrc: '/assets/img/3d.png',
+    alt: 'Slide 1',
+    title: 'Acompañamiento en todo tu proceso',
+    text: 'Nuestro equipo está aquí para guiarte asegurando que todas tus dudas sean resueltas rápidamente.',
+  },
+  {
+    imgSrc: '/assets/img/3d.png',
+    alt: 'Slide 2',
+    title: 'Apoyo por medio de correo electrónico',
+    text: 'Soporte continuo a través de correo electrónico, con una respuesta máxima de 60 minutos.',
+  },
+  {
+    imgSrc: '/assets/img/3d.png',
+    alt: 'Slide 3',
+    title: 'Acceso a manuales y video tutoriales',
+    text: 'Ponemos a tu disposición guías diseñadas para apoyarte paso a paso en cada proceso.',
+  },
+]);
+
+const activeIndex = ref(0);
+
+function setActive(index: number) {
+  activeIndex.value = index;
+}
+
+const activeIndex2 = ref(0);
+
+function setActive2(index: number) {
+  activeIndex2.value = index;
+}
+
 const formValido = computed(() => {
   return validateForm(
     {
@@ -721,7 +750,7 @@ const formValido = computed(() => {
 const opciones = {
   root: null,
   rootMargin: '0px',
-  threshold: 0.8, // 80% de intersección para activar
+  threshold: 0, // 80% de intersección para activar
 };
 
 // Crear el Intersection Observer para manejar la visibilidad de múltiples elementos
@@ -758,6 +787,21 @@ onMounted(() => {
   elementosObservados.forEach(elemento => {
     if (elemento) observer.observe(elemento);
   });
+
+  const interval = setInterval(() => {
+    activeIndex.value = (activeIndex.value + 1) % items.value.length;
+  }, 5000);
+
+  const interval2 = setInterval(() => {
+    activeIndex2.value = (activeIndex2.value + 1) % item2.value.length;
+  }, 5000);
+
+  // Limpia el intervalo al desmontar el componente
+  onUnmounted(() => {
+    clearInterval(interval);
+    clearInterval(interval2);
+  });
+
 });
 
 onUnmounted(() => {

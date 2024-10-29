@@ -1,62 +1,127 @@
 <template>
-  <div class="w-full h-screen bg-gray-50">
-    <button data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar"
-      aria-controls="separator-sidebar" type="button"
-      class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-      <span class="sr-only">Open sidebar</span>
-      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg">
-        <path clip-rule="evenodd" fill-rule="evenodd"
-          d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-        </path>
-      </svg>
-    </button>
+  <div class="w-full h-screen bg-gray-50 font-muller">
 
+    <!-- Desktop -->
     <nav id="separator-sidebar"
-      class="flex max-w-full items-center justify-between px-5 min-[1024px]:px-8 py-2 min-[1024px]:py-0 fixed top-0 left-0 w-full transition-transform -translate-x-full sm:translate-x-0 bg-[#FFFFFF] z-[9999] "
+      class="hidden lg:flex max-w-full items-center justify-between px-5 min-[1024px]:px-8 min-[1024px]:py-0 fixed top-0 left-0 w-full transition-transform -translate-x-full sm:translate-x-0 bg-[#FFFFFF] z-[9999] "
       aria-label="Global">
-      <div class="flex lg:flex-1">
+
+      <div class="flex-1">
         <a href="/" class="-m-1.5 p-1.5">
           <img src="/assets/img/logo.png" alt="" class="w-[150px] h-auto">
         </a>
       </div>
-      <div class="flex lg:hidden">
-        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-full p-2.5 bg-white">
-          <span class="sr-only">Open main menu</span><svg width="54" height="39" viewBox="0 0 54 39" fill="none"
-            xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
-            <path
-              d="M4.28571 0.755859H23.2143C24.2183 0.755859 25.1812 1.15776 25.8912 1.87314C26.6011 2.58852 27 3.55879 27 4.57049C27 5.5822 26.6011 6.55246 25.8912 7.26785C25.1812 7.98323 24.2183 8.38513 23.2143 8.38513H4.28571C3.28168 8.38513 2.31877 7.98323 1.60881 7.26785C0.898851 6.55246 0.5 5.5822 0.5 4.57049C0.5 3.55879 0.898851 2.58852 1.60881 1.87314C2.31877 1.15776 3.28168 0.755859 4.28571 0.755859ZM30.7857 31.2729H49.7143C50.7183 31.2729 51.6812 31.6748 52.3912 32.3902C53.1011 33.1056 53.5 34.0759 53.5 35.0876C53.5 36.0993 53.1011 37.0695 52.3912 37.7849C51.6812 38.5003 50.7183 38.9022 49.7143 38.9022H30.7857C29.7817 38.9022 28.8188 38.5003 28.1088 37.7849C27.3988 37.0695 27 36.0993 27 35.0876C27 34.0759 27.3988 33.1056 28.1088 32.3902C28.8188 31.6748 29.7817 31.2729 30.7857 31.2729ZM4.28571 16.0144H49.7143C50.7183 16.0144 51.6812 16.4163 52.3912 17.1317C53.1011 17.8471 53.5 18.8173 53.5 19.829C53.5 20.8407 53.1011 21.811 52.3912 22.5264C51.6812 23.2418 50.7183 23.6437 49.7143 23.6437H4.28571C3.28168 23.6437 2.31877 23.2418 1.60881 22.5264C0.898851 21.811 0.5 20.8407 0.5 19.829C0.5 18.8173 0.898851 17.8471 1.60881 17.1317C2.31877 16.4163 3.28168 16.0144 4.28571 16.0144Z"
-              fill="#15082B"></path>
-          </svg>
-        </button>
-      </div>
-      <div class="hidden lg:flex lg:gap-x-7 border border-transparent pt-3 pb-3">
 
-        <router-link :to="item" v-slot="{ isActive }" class="relative" v-for="(item, index) in routerList" :key="index">
-          <span v-if="isActive"
-            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secundary opacity-75"></span>
-          <div :class="'transition-all ease-in duration-[0.2s] flex justify-center items-center py-2 rounded-full  hover:bg-gray-100 dark:hover:bg-gray-900 group ico ' +
-            (isActive ? 'bg-blue/20 text-blue ' : 'text-green ')
-            ">
+      <div class="flex gap-x-7 border border-transparent pt-6 pb-6">
+
+        <router-link :to="{ name: item.name, hash: item.hash }" v-slot="{ isActive }" class="relative"
+          v-for="(item, index) in routerList" :key="index">
+          <span v-if="isActive"></span>
+          <div
+            :class="'transition-all ease-in duration-150 flex justify-center items-center py-2 rounded-full group ico '">
             <p
-              class="text-sm leading-6 text-[#1D394D] hover:text-greenf focus:text-greenf transition ease-in delay-50 hover:drop-shadow-[0_0_0.5em_#00FFCE] font-medium">
+              class="transition-all ease-in duration-150 text-[0.8rem] sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.85rem] xl:text-[0.9rem] 2xl:text-[0.95rem] leading-6 text-[#1D394D] font-medium hover:font-bold ">
               {{ item.text }}</p>
           </div>
         </router-link>
+
       </div>
-      <div class="hidden lg:flex lg:gap-x-7 pl-7 pt-3 pb-3 items-center">
-        <a href="#">
-          <button class="bg-transparent px-3 rounded-xl flex justify-evenly items-center text-[#04B2CA] border-2 border-[#04B2CA]">
-            <p class="text-[#04B2CA] font-medium">CONTACTO</p>
+
+      <div class="flex gap-x-7 pl-7 pt-3 pb-3 items-center">
+        <router-link to="/faq">
+          <button
+            class="bg-transparent px-3 py-1 w-[130px] lg:w-[170px] xl:w-[190px] 2xl:w-[200px] h-auto rounded-full flex justify-center items-center text-[#04B2CA] border-2 border-[#04B2CA] group">
+            <p class="text-[#04B2CA] text-[0.8rem] sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.85rem] xl:text-[0.9rem] 2xl:text-[0.95rem] font-medium pr-2 h-auto flex justify-center items-center pt-0.5">CONTACTO</p>
+            <IconEast
+              class="transition-all ease-in duration-150 text-[#04B2CA] !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
           </button>
-        </a>
-        <a href="#">
-          <button class="bg-[#04B2CA] px-3 rounded-xl flex justify-evenly items-center text-green border-2 border-[#04B2CA]">
-            <p class="text-white font-medium">INICIAR SESIÓN</p>
+        </router-link>
+        <router-link to="/login">
+          <button
+            class="bg-[#04B2CA] px-3 py-1 w-[130px] lg:w-[170px] xl:w-[190px] 2xl:w-[200px] h-auto rounded-full flex justify-center items-center text-white border-2 border-[#04B2CA] group">
+            <p class="text-white text-[0.8rem] sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.85rem] xl:text-[0.9rem] 2xl:text-[0.95rem] font-medium pr-2 h-auto flex justify-center items-center pt-0.5">INICIAR SESIÓN</p>
+            <IconEast
+              class="transition-all ease-in duration-150 text-white !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
           </button>
-        </a>
+        </router-link>
       </div>
     </nav>
+
+    <!-- Mobil -->
+    <nav class="fixed lg:hidden inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md py-5 md:top-0 bg-white">
+      <div class="px-4">
+        <div class="flex items-center justify-between">
+          <div class="flex md:flex md:items-center md:justify-center ">
+            <button class="flex flex-col gap-y-[0.275rem] items-center justify-center text-white"
+              @click="toggleMobileMenu">
+              <div class="w-6 h-1 bg-[#232323] rounded-full"></div>
+              <div class="w-6 h-1 bg-[#232323] rounded-full"></div>
+              <div class="w-6 h-1 bg-[#232323] rounded-full"></div>
+            </button>
+          </div>
+          <div class="flex shrink-0">
+            <a href="/" class="-m-1.5 p-1.5">
+              <img src="/assets/img/logo.png" alt="" class="w-[100px] h-auto">
+            </a>
+          </div>
+          <div class="flex items-center justify-center">
+            <a class="inline-flex items-center justify-center rounded-full bg-[#04B2CA] px-2 py-2" href="/login">
+              <IconProfile class="text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      :class="'transition-all ease-in duration-150 navbar-menu relative z-50 ' + (isMobileMenuOpen ? 'opacity-100 ' : 'opacity-0 pointer-events-none')">
+      <div class="navbar-backdrop fixed inset-0 bg-[#1D394D] opacity-50"></div>
+      <nav
+        class="fixed bg-[#ffffff] top-0 left-0 bottom-0 flex flex-col w-70% max-w-sm py-2 px-5 overflow-y-auto rounded-[0px_10px_10px_0px]"
+        :class="'fixed bg-[#ffffff] top-0 bottom-0 flex flex-col w-70% max-w-sm py-5 px-5 overflow-y-auto rounded-[0px_10px_10px_0px] ' + (isMobileMenuOpen ? 'left-0 ' : 'left-[-350px]')">
+
+        <div class="flex justify-between items-center mb-8">
+          <p class="text-[#1D394D] text-[1.2rem] font-bold pt-1">Menu</p>
+
+          <IconCloseCircle class="text-[#1D394D] !w-8 !h-8" @click="toggleMobileMenu" />
+        </div>
+
+        <div class="relative mx-auto text-gray-600 w-full h-auto mt-8">
+          <div class="w-full h-full relative">
+            <router-link v-for="(item, index) in routerList" :key="index" :to="item.name" :class="[
+              `relative flex items-center justify-start mb-8`
+            ]" :data-intro="item.text" @click="toggleMobileMenu">
+              <div class="transition-all ease-in duration-[0.2s] flex justify-start items-center w-full rounded-[5px]">
+                <p class="transition-all ease-in duration-200 text-[#1D394D] w-44 text-[0.9rem]">
+                  {{ item.text }}
+                </p>
+              </div>
+            </router-link>
+
+          </div>
+        </div>
+
+        <div class="flex flex-col lg:gap-x-7 pt-3 pb-3 items-center">
+          <router-link to="/faq">
+            <button
+              class="bg-transparent px-3 py-0.5 w-[200px] h-auto rounded-full flex justify-center items-center text-[#04B2CA] border-2 border-[#04B2CA] group mb-4">
+              <p class="text-[#04B2CA] font-medium pr-2 h-auto flex justify-center items-center pt-0.5 text-[0.8rem]">CONTACTO</p>
+              <IconEast
+                class="transition-all ease-in duration-150 text-[#04B2CA] !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
+            </button>
+          </router-link>
+          <router-link to="/login">
+            <button
+              class="bg-[#04B2CA] px-3 py-0.5 w-[200px] h-auto rounded-full flex justify-center items-center text-white border-2 border-[#04B2CA] group">
+              <p class="text-white font-medium pr-2 h-auto flex justify-center items-center pt-0.5 text-[0.8rem]">INICIAR SESIÓN</p>
+              <IconEast
+                class="transition-all ease-in duration-150 text-white !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
+            </button>
+          </router-link>
+        </div>
+
+      </nav>
+    </div>
 
     <div class="z-0 w-full h-full bg-white">
       <slot></slot>
@@ -65,35 +130,34 @@
 </template>
 
 <script lang="ts" setup>
-import IconOnexpo from '../components/icons/IconOnexpo.vue'
-import IconDashboard from '../components/icons/IconDashboard.vue'
-import IconUsers from '../components/icons/IconUsers.vue'
-import IconProfile from '../components/icons/IconProfile.vue'
-import IconPayments from '../components/icons/IconPaymets.vue'
-import IconArrowCircle from '../components/icons/IconArrowCircle.vue'
-// import { useAuthStore } from '@/stores/auth'
-import { markRaw, ref } from 'vue'
-import IconTune from '../components/icons/IconTune.vue'
-import IconCircle from '../components/icons/IconCircle.vue'
+import { ref } from 'vue'
+import IconEast from '../components/icons/IconEast.vue';
+import IconProfile from '../components/icons/IconProfile.vue';
+import IconCloseCircle from '../components/icons/IconCloseCircle.vue';
+
+const isMobileMenuOpen = ref(false)
+
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
 
 const routerList = ref([
   {
-    name: 'download',
+    name: 'home',
+    hash: '#section3',
     text: '¿QUÉ TE OFRECEMOS?'
   },
   {
-    name: 'sale',
+    name: 'home',
+    hash: '#section2',
     text: 'SOLUCIONES'
   },
   {
-    name: 'more-solutions',
+    name: 'home',
+    hash: '#section5',
     text: 'PRECIOS'
   },
-  //   { name: 'staff' },
-  //   { name: 'paymet-management' },
-  //   { name: 'store' }
 ])
-const routerIcon = markRaw([IconDashboard, IconProfile, IconUsers, IconPayments, IconTune])
 
-// const authStore = useAuthStore()
 </script>
