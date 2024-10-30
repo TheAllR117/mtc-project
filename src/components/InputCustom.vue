@@ -69,7 +69,7 @@
             fill="currentColor"
             :class="[
               'w-6 h-4',
-              isFocused ? (errorInput !== '' ? 'text-red' : colorText) : 'text-primary'
+              isFocused ? (errorInput !== '' ? 'text-red' : colorText) : 'text-[#000000]'
             ]"
             viewBox="0 0 512 512"
           >

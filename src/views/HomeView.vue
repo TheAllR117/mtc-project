@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-full !font-muller  bg-white">
+  <div class="h-full w-full !font-muller bg-white ">
 
     <!-- Section 1 -->
     <section class="h-max font-muller bg-white" id="section1">
@@ -71,14 +71,14 @@
     <section class="h-max bg-white" id="section2">
       <div
         class="w-full h-full px-[15px] mx-auto sm:max-w-[540px] md:max-w-[720px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1620px]">
-        <div class=" py-[30px] md:py-[50px] relative m-0 w-full h-full">
+        <div class="py-[30px] md:py-[50px] relative m-0 w-full h-full">
           <div
             class="w-full h-full border-2 border-transparent bg-white rounded-[20px] overflow-hidden px-5 md:px-14 pb-4 md:pb-14">
 
             <div class="w-full h-auto flex justify-center items-center my-[30px]">
               <h2
-                class="text-[#1D394D] font-bold font-muller text-[1.6rem] sm:text-[1.6rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem]">
-                Nuestras soluciones</h2>
+                class="text-[#1D394D] font-bold font-muller text-[1.6rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[2rem] 2xl:text-[2.2rem]">
+                Nuestras <span class="text-[#04B2CA]">soluciones</span> 🤩</h2>
             </div>
 
             <div
@@ -110,7 +110,7 @@
                       <div class="relative group/item">
                         <IconInfo class="group-hover:text-white hover:scale-90" />
                         <div
-                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4 group-hover/item:animate-fadeRight">
+                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4">
                           Aplica solo en planes pospago.
                           <div
                             class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-[#000000] rotate-45">
@@ -157,7 +157,7 @@
                       <div class="relative group/item">
                         <IconInfo class="group-hover:text-white hover:scale-90" />
                         <div
-                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4 group-hover/item:animate-fadeRight">
+                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4">
                           Aplica solo en planes pospago.
                           <div
                             class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-[#000000] rotate-45">
@@ -203,7 +203,7 @@
                       <div class="relative group/item">
                         <IconInfo class="group-hover:text-white hover:scale-90" />
                         <div
-                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4 group-hover/item:animate-fadeRight">
+                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4">
                           Aplica solo en planes pospago.
                           <div
                             class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-[#000000] rotate-45">
@@ -248,7 +248,7 @@
                       <div class="relative group/item">
                         <IconInfo class="group-hover:text-white hover:scale-90" />
                         <div
-                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4 group-hover/item:animate-fadeRight">
+                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4">
                           Aplica solo en planes pospago.
                           <div
                             class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-[#000000] rotate-45">
@@ -351,128 +351,134 @@
     </section>
 
     <!-- Section 5 -->
-    <section class="h-max bg-white font-muller" id="section5">
-      <div class="w-full h-full px-[70px] pt-[130px] pb-[130px]">
-        <div class="relative m-0 w-full h-full">
-          <div class="w-full sm:flex sm:flex-col sm:align-center">
-            <div class="w-full sm:space-y-0 grid sm:grid-cols-12 gap-16 justify-center items-center">
-
-              <div
-                :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} rounded-[30px] overflow-hidden col-span-4`]">
-                <div class="p-6 text-center bg-[#1D394D]">
-                  <h2 class="text-xl leading-6 font-bold text-white text-[1.9rem]">Planes postpago:</h2>
-                  <p class="mt-2 text-base text-white leading-tight text-[1.2rem]"><b>Para empresas grandes</b>,
-                    adquiere un <br> plan y
-                    págalos conforme se utilicen</p>
+    <section class="font-muller h-max w-full" id="section5">
+      <div class="relative m-0 h-full w-full py-[50px] md:px-[70px] md:py-[130px]">
+        <div
+          class="grid grid-cols-1 grid-rows-1 items-center justify-center gap-10 py-4 max-sm:px-[20px] max-md:px-[40px] md:w-full md:grid-cols-2 md:h-[730px] lg:h-[650px] lg:grid-cols-3">
+          <div :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
+            <div class="h-[22%] bg-[#1D394D] p-6 text-center flex flex-col justify-center items-center">
+              <h2
+                class="text-[1.5rem] text-xl font-bold leading-6 text-white lg:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem]">
+                Planes pospago:</h2>
+              <p
+                class="mt-2 text-[0.95rem] text-base leading-tight text-white lg:text-[1rem] xl:text-[1rem] 2xl:text-[1.1rem]">
+                <b>Para empresas grandes</b>, adquiere un <br />
+                plan y págalos conforme se utilicen
+              </p>
+            </div>
+            <div class="h-[78%] w-full">
+              <div class="flex h-[33.33%] w-full flex-row items-center justify-between bg-[#1D394D0D] px-5 py-14">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">1500 timbres</p>
                 </div>
-                <div class="w-full h-auto">
-                  <div class="w-full flex flex-row justify-between items-center bg-[#1D394D0D] py-14 px-5">
-                    <div>
-                      <p class="text-[1.1rem]">1500 timbres</p>
-                    </div>
-                    <div class="flex flex-row items-center">
-                      <p class="text-[1.1rem] mr-2">$0000.00</p>
-                      <button class="px-7 py-1.5 bg-[#1D394D] text-white rounded-full">Adquirir</button>
-                    </div>
-                  </div>
-                  <div class="w-full flex flex-row justify-between items-center py-14 px-5">
-                    <div>
-                      <p class="text-[1.1rem]">1500 timbres</p>
-                    </div>
-                    <div class="flex flex-row items-center">
-                      <p class="text-[1.1rem] mr-2">$0000.00</p>
-                      <button class="px-7 py-1.5 bg-[#1D394D] text-white rounded-full">Adquirir</button>
-                    </div>
-                  </div>
-                  <div class="w-full flex flex-row justify-between items-center bg-[#1D394D0D] py-14 px-5">
-                    <div>
-                      <p class="text-[1.1rem]">1500 timbres</p>
-                    </div>
-                    <div class="flex flex-row items-center">
-                      <p class="text-[1.1rem] mr-2">$0000.00</p>
-                      <button class="px-7 py-1.5 bg-[#1D394D] text-white rounded-full">Adquirir</button>
-                    </div>
-                  </div>
+                <div class="flex flex-col items-center justify-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">$0000.00</p>
+                  <button
+                    class="rounded-full bg-[#1D394D] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
                 </div>
               </div>
-
-              <div
-                :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} rounded-[30px] overflow-hidden col-span-4`]">
-                <div class="p-6 text-center bg-[#04B2CA]">
-                  <h2 class="text-xl leading-6 font-bold text-white text-[1.9rem]">Planes postpago:</h2>
-                  <p class="mt-2 text-base text-white leading-tight text-[1.2rem]">Para pequeñas empresas, adquiere el
-                    <br>
-                    paquete de timbres que vayas a utilizar
-                  </p>
+              <div class="flex h-[33.33%] w-full flex-row items-center justify-between px-5 py-14">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">1500 timbres</p>
                 </div>
-                <div class="w-full h-auto">
-                  <div class="w-full flex flex-row justify-between items-center bg-[#1D394D0D] py-[1.65rem] px-5">
-                    <div>
-                      <p class="text-[1.1rem]">10 timbres</p>
-                    </div>
-                    <div class="flex flex-row items-center">
-                      <p class="mr-2 text-[1.1rem]">$0000.00</p>
-                      <button class="px-7 py-1.5 bg-[#1D394D] text-white rounded-full">Adquirir</button>
-                    </div>
-                  </div>
-                  <div class="w-full flex flex-row justify-between items-center py-[1.65rem] px-5">
-                    <div>
-                      <p class="text-[1.1rem]">25 timbres</p>
-                    </div>
-                    <div class="flex flex-row items-center">
-                      <p class="mr-2 text-[1.1rem]">$0000.00</p>
-                      <button class="px-7 py-1.5 bg-[#1D394D] text-white rounded-full">Adquirir</button>
-                    </div>
-                  </div>
-                  <div class="w-full flex flex-row justify-between items-center bg-[#1D394D0D] py-[1.65rem] px-5">
-                    <div>
-                      <p class="text-[1.1rem]">50 timbres</p>
-                    </div>
-                    <div class="flex flex-row items-center">
-                      <p class="mr-2 text-[1.1rem]">$0000.00</p>
-                      <button class="px-7 py-1.5 bg-[#1D394D] text-white rounded-full">Adquirir</button>
-                    </div>
-                  </div>
-                  <div class="w-full flex flex-row justify-between items-center py-[1.65rem] px-5">
-                    <div>
-                      <p class="text-[1.1rem]">150 timbres</p>
-                    </div>
-                    <div class="flex flex-row items-center">
-                      <p class="mr-2 text-[1.1rem]">$0000.00</p>
-                      <button class="px-7 py-1.5 bg-[#1D394D] text-white rounded-full">Adquirir</button>
-                    </div>
-                  </div>
-                  <div class="w-full flex flex-row justify-between items-center bg-[#1D394D0D] py-[1.65rem] px-5">
-                    <div>
-                      <p class="text-[1.1rem]">500 timbres</p>
-                    </div>
-                    <div class="flex flex-row items-center">
-                      <p class="mr-2 text-[1.1rem]">$0000.00</p>
-                      <button class="px-7 py-1.5 bg-[#1D394D] text-white rounded-full">Adquirir</button>
-                    </div>
-                  </div>
+                <div class="flex flex-col items-center justify-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">$0000.00</p>
+                  <button
+                    class="rounded-full bg-[#1D394D] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
                 </div>
               </div>
-
-              <div
-                :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} overflow-hidden h-full col-span-4 flex justify-center items-center]`]">
-                <div
-                  class="p-6 text-center bg-[#1D394D] h-full flex justify-center items-center relative w-[85%] overflow-hidden rounded-[30px]">
-                  <div
-                    class="absolute top-0 left-0 w-full h-full bg-[url('/assets/img/stamps-bg.jpeg')] z-[4] bg-cover bg-center">
-                  </div>
-                  <div
-                    class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#1D394DF2] to-[#2D5A7AF2] z-[5]">
-                  </div>
-                  <div class="flex flex-col justify-center items-center w-full">
-                    <h2 class="text-xl leading-[2.5rem] font-bold text-white text-[2.4rem] z-10">¿Necesitas un plan <br>
-                      a tu medida?</h2>
-                    <button
-                      class="px-7 py-1.5 text-white rounded-full z-10 w-max bg-[#04B2CA] mt-3">¡CONTACTANOS!</button>
-                  </div>
+              <div class="flex h-[33.33%] w-full flex-row items-center justify-between bg-[#1D394D0D] px-5 py-14">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">1500 timbres</p>
+                </div>
+                <div class="flex flex-col items-center justify-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">$0000.00</p>
+                  <button
+                    class="rounded-full bg-[#1D394D] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
                 </div>
               </div>
-
+            </div>
+          </div>
+          <div :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
+            <div class="h-[22%] bg-[#04B2CA] p-6 text-center flex flex-col justify-center items-center">
+              <h2
+                class="text-[1.5rem] text-xl font-bold leading-6 text-white lg:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem]">
+                Planes prepago:</h2>
+              <p
+                class="mt-2 text-[0.95rem] text-base leading-tight text-white lg:text-[1rem] xl:text-[1rem] 2xl:text-[1.1rem]">
+                Para pequeñas empresas, adquiere el
+                <br />
+                paquete de timbres que vayas a utilizar
+              </p>
+            </div>
+            <div class="h-[78%] w-full overflow-y-auto">
+              <div class="flex h-[20%] w-full flex-row items-center justify-between bg-[#1D394D0D] px-5">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">10 timbres</p>
+                </div>
+                <div class="flex flex-col items-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">$0000.00</p>
+                  <button
+                    class="rounded-full bg-[#04B2CA] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
+                </div>
+              </div>
+              <div class="flex h-[20%] w-full flex-row items-center justify-between px-5">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">25 timbres</p>
+                </div>
+                <div class="flex flex-col items-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">$0000.00</p>
+                  <button
+                    class="rounded-full bg-[#04B2CA] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
+                </div>
+              </div>
+              <div class="flex h-[20%] w-full flex-row items-center justify-between bg-[#1D394D0D] px-5">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">50 timbres</p>
+                </div>
+                <div class="flex flex-col items-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">$0000.00</p>
+                  <button
+                    class="rounded-full bg-[#04B2CA] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
+                </div>
+              </div>
+              <div class="flex h-[20%] w-full flex-row items-center justify-between px-5">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">150 timbres</p>
+                </div>
+                <div class="flex flex-col items-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">$0000.00</p>
+                  <button
+                    class="rounded-full bg-[#04B2CA] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
+                </div>
+              </div>
+              <div class="flex h-[20%] w-full flex-row items-center justify-between bg-[#1D394D0D] px-5">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">500 timbres</p>
+                </div>
+                <div class="flex flex-col items-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">$0000.00</p>
+                  <button
+                    class="rounded-full bg-[#04B2CA] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} flex h-full w-full items-center justify-center overflow-hidden max-md:col-auto md:col-span-2 lg:col-auto`]">
+            <div
+              class="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[20px] bg-[#1D394D] p-6 text-center lg:w-[85%]">
+              <div
+                class="absolute left-0 top-0 z-[4] h-full w-full bg-[url('/assets/img/stamps-bg.jpeg')] bg-cover bg-center">
+              </div>
+              <div class="absolute left-0 top-0 z-[5] h-full w-full bg-gradient-to-r from-[#1D394DF2] to-[#2D5A7AF2]">
+              </div>
+              <div class="flex w-full flex-col items-center justify-center">
+                <h2 class="z-10 text-[1.5rem] md:text-[1.6rem] lg:text-[1.2em] xl:text-[1.7rem] 2xl:text-[2.1rem] text-xl font-bold leading-[2.5rem] text-white">
+                  ¿Necesitas un plan <br />
+                  a tu medida?
+                </h2>
+                <button class="z-10 mt-3 w-max rounded-full bg-[#04B2CA] px-7 py-1.5 text-white">¡CONTACTANOS!</button>
+              </div>
             </div>
           </div>
         </div>
@@ -484,28 +490,28 @@
       <div
         class="w-full h-full px-[15px] mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px] py-[60px]">
         <div class="relative m-0 w-full h-full">
-          <div class="w-full h-full rounded-[20px] overflow-hidden px-5 md:px-14">
+          <div class="w-full h-full rounded-[20px] overflow-hidden px-0 lg:px-14">
 
             <div class="relative m-0 w-full h-auto flex justify-center items-center">
-              <div class="w-full h-auto flex flex-col md:flex-row justify-between items-center px-7">
+              <div class="w-full h-auto flex flex-col md:flex-row justify-between items-center md:px-7">
 
-                <div class="w-full h-full flex justify-center items-center">
+                <div class="w-full h-full hidden md:flex md:justify-start xl:justify-center items-center">
                   <img src="/assets/img/contact.png" alt=""
-                    :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[450px]`]">
+                    :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[300px] md:w-[300px] lg:w-[380px] xl:w-[425px] 2xl:w-[450px]`]">
                 </div>
 
                 <div class="w-full h-full flex justify-start items-center">
 
-                  <div class="grid w-[90%] h-full grid-cols-12 items-center gap-4">
-                    <div class="col-span-12 w-full text-left">
+                  <div class="grid w-full md:w-[90%] h-full grid-cols-12 items-center gap-4">
+                    <div class="col-span-12 w-full text-center md:text-left">
                       <h2
-                        :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} text-[2.8rem] font-bold text-black`]">
+                        :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} text-[1.7rem] md:text-[2rem] lg:text-[2rem] xl:text-[2.6rem] 2xl:text-[2.8rem] font-bold text-[#1D394D]`]">
                         ¿Tienes alguna duda?</h2>
                       <p
-                        :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} mb-8 text-[1.05rem] text-black max-[768px]:px-10`]">
+                        :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} mb-8 text-[0.9rem] md:text-[0.95rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.05rem] text-black max-md:px-6`]">
                         Contáctanos y te responderemos en un tiempo máximo de 24 horas.
                       </p>
-                      <div class="flex flex-col gap-8">
+                      <div class="flex flex-col gap-4 md:gap-8">
                         <div
                           :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex flex-col md:flex-row`]">
                           <InputCustom key="name" id="name" type="text" label="Nombre*" v-model="form.name"
@@ -523,7 +529,7 @@
                             :regexValidation="[textEmptyRegexValidation]" />
                         </div>
                         <div
-                          :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex flex-col w-full`]">
+                          :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} hidden md:flex flex-col w-full`]">
                           <TextAreaCustom key="description" id="description" type="text" label="Descripción"
                             v-model="form.comment" :value="form.comment" focus-color-border="focus:border-[#D4D4D4]"
                             color-text="!text-[#D4D4D4]" border-radius="rounded-[20px]" bg-label="bg-white"
@@ -531,11 +537,21 @@
                             :regexValidation="[comentaryRegexValidation]" rows="12" />
 
                         </div>
+
+                        <div
+                          :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex md:hidden flex-col w-full`]">
+                          <TextAreaCustom key="description" id="description" type="text" label="Descripción"
+                            v-model="form.comment" :value="form.comment" focus-color-border="focus:border-[#D4D4D4]"
+                            color-text="!text-[#D4D4D4]" border-radius="rounded-[20px]" bg-label="bg-white"
+                            bg-input="bg-white" bg-label-dark="bg-[#ffffff]" color-border="border-[#D4D4D4]"
+                            :regexValidation="[comentaryRegexValidation]" rows="5" />
+
+                        </div>
                         <div
                           :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex w-full justify-end`]">
-                          <ButtonLoading width="!w-[30%]" label="Enviar" border-radius="rounded-full"
-                            :disable="!formValido" :is-loading="isLoading" color-button="!bg-[#04B2CA]"
-                            color-button-hover="!bg-[#04B2CA]/50" />
+                          <ButtonLoading width="!w-[50%] md:!w-[40%] 2xl:!w-[30%]" label="Enviar"
+                            border-radius="rounded-full" :disable="!formValido" :is-loading="isLoading"
+                            color-button="!bg-[#04B2CA]" color-button-hover="!bg-[#04B2CA]/50" />
                         </div>
                       </div>
                     </div>

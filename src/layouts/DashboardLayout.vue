@@ -88,7 +88,7 @@
 
         <div class="relative mx-auto text-gray-600 w-full h-auto mt-8">
           <div class="w-full h-full relative">
-            <router-link v-for="(item, index) in routerList" :key="index" :to="item.name" :class="[
+            <router-link v-for="(item, index) in routerList" :key="index" :to="{ name: item.name, hash: item.hash }" :class="[
               `relative flex items-center justify-start mb-8`
             ]" :data-intro="item.text" @click="toggleMobileMenu">
               <div class="transition-all ease-in duration-[0.2s] flex justify-start items-center w-full rounded-[5px]">
