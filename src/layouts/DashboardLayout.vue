@@ -3,7 +3,8 @@
 
     <!-- Desktop -->
     <nav id="separator-sidebar"
-      class="hidden lg:flex max-w-full items-center justify-between px-5 min-[1024px]:px-8 min-[1024px]:py-0 fixed top-0 left-0 w-full transition-transform -translate-x-full sm:translate-x-0 bg-[#FFFFFF] z-[9999] "
+      class=""
+      :class="[`${isScrolled ? 'bg-white shadow-[0_0px_7px_3px_rgba(0,0,0,0.6)] rounded-[0px_0px_15px_15px]' : 'bg-[#FFFFFF]'} transition-all ease-in duration-150 hidden lg:flex max-w-full items-center justify-between px-5 min-[1024px]:px-8 min-[1024px]:py-0 fixed top-0 left-0 w-full -translate-x-full sm:translate-x-0 z-[9999] `]"
       aria-label="Global">
 
       <div class="flex-1">
@@ -33,7 +34,7 @@
             class="bg-transparent px-3 py-1 w-[130px] lg:w-[170px] xl:w-[190px] 2xl:w-[200px] h-auto rounded-full flex justify-center items-center text-[#04B2CA] border-2 border-[#04B2CA] group">
             <p class="text-[#04B2CA] text-[0.8rem] sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.85rem] xl:text-[0.9rem] 2xl:text-[0.95rem] font-medium pr-2 h-auto flex justify-center items-center pt-0.5">CONTACTO</p>
             <IconEast
-              class="transition-all ease-in duration-150 text-[#04B2CA] !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
+              class="transition-all ease-in duration-[0.3s] text-[#04B2CA] !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
           </button>
         </router-link>
         <router-link to="/login">
@@ -41,14 +42,15 @@
             class="bg-[#04B2CA] px-3 py-1 w-[130px] lg:w-[170px] xl:w-[190px] 2xl:w-[200px] h-auto rounded-full flex justify-center items-center text-white border-2 border-[#04B2CA] group">
             <p class="text-white text-[0.8rem] sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.85rem] xl:text-[0.9rem] 2xl:text-[0.95rem] font-medium pr-2 h-auto flex justify-center items-center pt-0.5">INICIAR SESIÓN</p>
             <IconEast
-              class="transition-all ease-in duration-150 text-white !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
+              class="transition-all ease-in duration-[0.3s] text-white !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
           </button>
         </router-link>
       </div>
     </nav>
 
     <!-- Mobil -->
-    <nav class="fixed lg:hidden inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md py-5 md:top-0 bg-white">
+    <nav 
+    :class="[`${isScrolled ? 'bg-white shadow-[0_0px_7px_3px_rgba(0,0,0,0.6)] rounded-[0px_0px_15px_15px]' : 'bg-[#FFFFFF]'} fixed lg:hidden inset-x-0 left-0 top-0 z-30 mx-auto w-full py-5 md:top-0`]">
       <div class="px-4">
         <div class="flex items-center justify-between">
           <div class="flex md:flex md:items-center md:justify-center ">
@@ -102,7 +104,7 @@
         </div>
 
         <div class="flex flex-col lg:gap-x-7 pt-3 pb-3 items-center">
-          <router-link to="/faq">
+          <router-link to="/faq" @click="toggleMobileMenu">
             <button
               class="bg-transparent px-3 py-0.5 w-[200px] h-auto rounded-full flex justify-center items-center text-[#04B2CA] border-2 border-[#04B2CA] group mb-4">
               <p class="text-[#04B2CA] font-medium pr-2 h-auto flex justify-center items-center pt-0.5 text-[0.8rem]">CONTACTO</p>
@@ -110,7 +112,7 @@
                 class="transition-all ease-in duration-150 text-[#04B2CA] !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
             </button>
           </router-link>
-          <router-link to="/login">
+          <router-link to="/login" @click="toggleMobileMenu">
             <button
               class="bg-[#04B2CA] px-3 py-0.5 w-[200px] h-auto rounded-full flex justify-center items-center text-white border-2 border-[#04B2CA] group">
               <p class="text-white font-medium pr-2 h-auto flex justify-center items-center pt-0.5 text-[0.8rem]">INICIAR SESIÓN</p>
@@ -123,24 +125,36 @@
       </nav>
     </div>
 
-    <div class="z-0 w-full h-full bg-white">
+    <div :class="[`${isMobileMenuOpen ? 'overflow-hidden' : ''} z-0 w-full h-full bg-white`]">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue';
 import IconEast from '../components/icons/IconEast.vue';
 import IconProfile from '../components/icons/IconProfile.vue';
 import IconCloseCircle from '../components/icons/IconCloseCircle.vue';
 
 const isMobileMenuOpen = ref(false)
-
+const isScrolled = ref(false);
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
 }
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 100;
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 
 const routerList = ref([
   {

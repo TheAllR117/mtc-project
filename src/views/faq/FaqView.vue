@@ -83,49 +83,43 @@
     </section>
 
     <!-- Section 7 -->
-    <section class="py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full">
-        <div class="w-full">
+    <section class="py-24" v-if="faqAllQuest.length != 0">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full">
+          <div class="w-full">
 
-          <div class="mb-6 lg:mb-16 bg-gradient-to-r from-[#23465E] to-[#4992C4] py-[30px] rounded-[30px_30px_0px_0px] flex justify-center items-center">
-            <h6 class="text-center text-white text-[2.2rem] font-bold">Preguntas frecuentes 😉</h6>
-          </div>
+            <div
+              class="mb-6 lg:mb-16 bg-gradient-to-r from-[#23465E] to-[#4992C4] py-[30px] rounded-[30px_30px_0px_0px] flex justify-center items-center">
+              <h6
+                class="text-center text-white text-[1.5rem] md:text-[1.7rem] lg:text-[1.9rem] xl:text-[2rem] 2xl:text-[2.2rem] font-bold">
+                Preguntas frecuentes 😉</h6>
+            </div>
 
-          <div v-for="(item, index) in accordionItems" :key="index" class="border-b-[2px] border-[#04B2CA] py-16">
-            <button
-              @click="toggleAccordion(index)"
-              class="accordion-toggle group inline-flex items-center justify-between text-xl font-normal leading-8 w-full transition duration-500"
-            >
-              <h5 class="text-[#1D394D] text-[1.8rem] font-bold">{{ item.title }}</h5>
-              <svg
-                :class="{'rotate-180': activeIndex === index}"
-                class="text-[#1D394D] transition-transform duration-500 transform"
-                width="50"
-                height="50"
-                viewBox="0 0 22 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-              </svg>
-            </button>
-            <transition name="accordion" mode="out-in">
-              <div v-show="activeIndex === index" class="accordion-content overflow-hidden transition-all duration-500">
-                <p class="text-base font-normal text-[#1D394D] mt-4">{{ item.content }}</p>
+            <div v-for="(item, index) in faqAllQuest" :key="index" class="border-b-[2px] border-[#04B2CA] py-10">
+              <button @click="toggleAccordion(index)"
+                class="accordion-toggle group inline-flex items-center justify-between text-xl font-normal leading-8 w-full transition duration-500">
+                <h5 class="text-[#1D394D] text-[1.2rem] md:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem] font-bold">
+                  {{ item.title }}</h5>
+                <svg
+                  :class="[`${activeIndex == index ? 'rotate-180' : 'rotate-0'} w-[40px] lg:w-[40px] xl:w-[40px] 2xl:w-[50px] h-[40px] lg:h-[40px] xl:h-[40px] 2xl:h-[50px] text-[#1D394D] transition-transform duration-[0.6s] transform`]"
+                  viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25"
+                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+
+              <div
+                :class="[`${activeIndex == index ? 'max-h-[305vh] opacity-100' : 'max-h-[0px] opacity-0'} accordion-content overflow-hidden transition-all ease-in-out duration-[0.6s]`]">
+                <p class="text-base font-normal text-[#1D394D] my-4" v-html="item.text?.markdown"></p>
               </div>
-            </transition>
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
     <!-- Footer -->
     <footer class="w-full bg-[#1D394D]" id="footer">
@@ -227,6 +221,11 @@ import InputCustom from '../../components/InputCustom.vue';
 import ButtonLoading from '../../components/ButtonLoading.vue';
 import { comentaryRegexValidation, nameRegexValidation, textEmptyRegexValidation, validateForm } from '../../composable/validator';
 import { ref, onMounted, onUnmounted, reactive, computed } from 'vue';
+import { FAQ, FAQAllCfdiResponse } from '../../interfaces/faq/faq_all_response';
+
+const faqAllQuest = ref<FAQ[]>([])
+const isLoading = ref<boolean>(false);
+const activeIndex = ref<number | null>(null);
 
 const visibility = reactive<Visibility>({
   section1: false,
@@ -238,7 +237,6 @@ const visibility = reactive<Visibility>({
   section7: false,
 });
 
-const isLoading = ref<boolean>(false);
 const form = reactive({
   name: '',
   email: '',
@@ -247,24 +245,13 @@ const form = reactive({
   type: false
 });
 
-interface AccordionItem {
-  title: string;
-  content: string;
-}
+// Configuración del Intersection Observer
+const opciones = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0, // 80% de intersección para activar
+};
 
-// Array de objetos que contienen el título y contenido de cada acordeón
-const accordionItems = ref<AccordionItem[]>([
-  { title: '¿Porque son la mejor opción?', content: 'Sabemos lo importante que es para ti mantener tus operaciones fiscales al día y sin complicaciones. Por eso, en CFDI Total te ofrecemos una solución confiable, rápida y económica para que puedas comprar tus timbres y facturar sin estrés.' },
-  { title: '¿Porque son la mejor opción?', content: 'Sabemos lo importante que es para ti mantener tus operaciones fiscales al día y sin complicaciones. Por eso, en CFDI Total te ofrecemos una solución confiable, rápida y económica para que puedas comprar tus timbres y facturar sin estrés.' },
-  { title: '¿Porque son la mejor opción?', content: 'Sabemos lo importante que es para ti mantener tus operaciones fiscales al día y sin complicaciones. Por eso, en CFDI Total te ofrecemos una solución confiable, rápida y económica para que puedas comprar tus timbres y facturar sin estrés.' },
-  { title: '¿Porque son la mejor opción?', content: 'Sabemos lo importante que es para ti mantener tus operaciones fiscales al día y sin complicaciones. Por eso, en CFDI Total te ofrecemos una solución confiable, rápida y económica para que puedas comprar tus timbres y facturar sin estrés.' },
-]);
-
-const activeIndex = ref<number | null>(null);
-
-function toggleAccordion(index: number) {
-  activeIndex.value = activeIndex.value === index ? null : index;
-}
 
 const formValido = computed(() => {
   return validateForm(
@@ -278,13 +265,6 @@ const formValido = computed(() => {
     }
   )
 });
-
-// Configuración del Intersection Observer
-const opciones = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0, // 80% de intersección para activar
-};
 
 // Crear el Intersection Observer para manejar la visibilidad de múltiples elementos
 const observer = new IntersectionObserver((entries) => {
@@ -300,7 +280,45 @@ const observer = new IntersectionObserver((entries) => {
 }, opciones);
 
 
-onMounted(() => {
+function toggleAccordion(index: number) {
+  activeIndex.value = activeIndex.value === index ? null : index;
+}
+
+async function getBlogs() {
+  let query = `query faq {
+  faqs(orderBy: createdAt_DESC, last: 100) {
+    title
+    text {
+      html
+      markdown
+      raw
+      text
+    }
+    id
+  }
+}`
+  // API CALL
+  try {
+    let res = await fetch(
+      // 'https://api-us-west-2.hygraph.com/v2/cln93v6c9168901ukf44r4tyv/master',
+      'https://api-us-west-2.hygraph.com/v2/cm2xfy7jh052307wawy5a538s/master',
+
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+      }
+    )
+    res = await res.json()
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+onMounted(async () => {
   // Selecciona los elementos que deseas observar
   const elementosObservados = [
     document.querySelector('#section1'),
@@ -317,6 +335,36 @@ onMounted(() => {
     if (elemento) observer.observe(elemento);
   });
 
+  const data = await getBlogs();
+
+  console.log('Datos obtenidos de getBlogs:', data);
+
+  if (data) {
+    const result = data as FAQAllCfdiResponse;
+    console.log('Resultado después del casting:', result);
+
+    if (result.data && result.data.faqs) {
+      faqAllQuest.value = result.data.faqs; // Asigna los FAQs directamente
+
+      // Acceder al texto de la primera FAQ
+      if (faqAllQuest.value.length > 0) {
+        const firstFAQ = faqAllQuest.value[0];
+
+        // Acceder a los diferentes formatos de texto
+        const textHTML = firstFAQ.text?.html; // Accediendo al HTML
+        const textMarkdown = firstFAQ.text?.markdown; // Accediendo al Markdown
+        const textRaw = firstFAQ.text?.raw?.children![0]?.children![0]?.text; // Accediendo al texto crudo
+
+        console.log('Texto HTML:', textHTML);
+        console.log('Texto Markdown:', textMarkdown);
+        console.log('Texto Crudo:', textRaw);
+      }
+    } else {
+      console.error("No se encontraron faqs en la respuesta.");
+    }
+  } else {
+    console.error("La llamada a getBlogs no devolvió datos.");
+  }
 });
 
 onUnmounted(() => {

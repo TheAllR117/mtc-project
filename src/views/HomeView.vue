@@ -27,21 +27,20 @@
             <div class="mb-8 w-full h-auto md:mb-0 md:w-[65%]">
               <div
                 class="bg-stripes-fuchsia grid grid-cols-3 gap-4 rounded-lg text-center font-mono text-sm font-bold leading-6 text-white relative">
-                <div v-for="(item, index) in items" :key="index"
-                  :class="['transition-all ease-in duration-150 w-full h-full flex justify-center items-center place-items-center content-center cursor-pointer hover:scale-90', activeIndex === index ? '' : 'scale-90']"
-                  @click="setActive(index)">
+
+                <div v-for="(item, index) in missionsAll" :key="index" @click="setActive(index)"
+                  :class="['transition-all ease-in duration-150 w-full h-full flex justify-center items-center place-items-center content-center cursor-pointer hover:scale-90', activeIndex == index ? '' : 'scale-90']">
 
                   <div
                     :class="['w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[200px] lg:h-[200px] xl:w-[260px] xl:h-[260px] 2xl:w-[330px] 2xl:h-[330px] transition-all ease-in duration-150 md:py-6 flex bg-[#1D394D] rounded-full relative z-10 justify-center items-center', { 'opacity-60': activeIndex !== index, 'opacity-100': activeIndex === index }]">
-                    <img :src="item.imgSrc" :alt="item.alt" class="w-[50%] h-auto" />
+                    <img :src="item.img?.url" class="w-[50%] h-auto" />
                   </div>
-
                 </div>
 
                 <div
                   class="absolute bottom-[-35px] left-0 w-full flex flex-row justify-center gap-x-3 md:gap-x-10 items-center bg-transparent">
-                  <div v-for="(item, index) in items" :key="'dot-' + index" @click="setActive(index)"
-                    :class="['transition-all ease-in duration-150 w-[50px] md:w-[100px] h-2 rounded-full cursor-pointer', activeIndex === index ? 'bg-[#04B2CA]' : 'bg-[#D9D9D9]']">
+                  <div v-for="(item, index) in missionsAll" :key="'dot-' + index" @click="setActive(index)"
+                    :class="['transition-all ease-in duration-150 w-[50px] md:w-[100px] h-2 rounded-full cursor-pointer', activeIndex == index ? 'bg-[#04B2CA]' : 'bg-[#D9D9D9]']">
                   </div>
                 </div>
 
@@ -52,16 +51,19 @@
             <!-- Right xSide: Details and Buttons -->
             <div class="md:w-[35%] h-auto md:px-16 max-md:mb-7 flex justify-center items-center">
               <div class="flex flex-col items-center justify-center text-center w-auto md:w-max h-[150px]">
-                <h2
+                <h2 v-if="missionsAll[activeIndex]"
                   class="text-white text-[1.1rem] md:text-[1.2rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5em] font-bold">
-                  {{ items[activeIndex].title }}</h2>
+                  {{ missionsAll[activeIndex].title }}
+                </h2>
                 <hr class="w-full h-0.5 mx-auto my-4 bg-[#04B2CA] border-0 rounded md:my-2">
-                <p class="text-white text-[0.9rem] md:text-[0.95rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.1rem] font-light"
-                  v-html="items[activeIndex].text"></p>
+                <p v-if="missionsAll[activeIndex]"
+                  class="text-white text-[0.9rem] md:text-[0.95rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.1rem] font-light"
+                  v-html="missionsAll[activeIndex].text?.markdown"></p>
               </div>
             </div>
 
           </div>
+
         </div>
 
       </div>
@@ -84,127 +86,33 @@
             <div
               class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-14 font-mono text-white text-sm text-center font-bold leading-6 rounded-lg">
 
-              <div
-                :class="[`${visibility.section2 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} transition-all ease-in duration-150 rounded-[20px] shadow-lg text-[#1D394D] overflow-hidden h-[320px] group bg-white hover:bg-[#1D394D] cursor-pointer `]">
 
-                <div class="w-full h-[60%] overflow-hidden relative">
-                  <img src="/assets/img/img-place-01.jpeg" alt=""
-                    class="transition-all ease-in duration-150 relative-0 group-hover:scale-110">
-                </div>
-
-                <div
-                  class="transition-all ease-in duration-150 w-full h-[40%] text-left relative z-10 bg-white rounded-[20px_0px_0px_0px] mt-[-15px] group-hover:bg-[#1D394D]">
-
-                  <svg width="53" height="45" viewBox="0 0 53 45" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="transition-all ease-in duration-150 absolute top-[-45px] right-[-1px] fill-white group-hover:fill-[#1D394D]">
-                    <path
-                      d="M52.5 2.64622V45H2.5C41.3887 39.765 51.8466 16.0617 52.5 2.64622V0C52.5434 0.825567 52.5456 1.71089 52.5 2.64622Z" />
-                  </svg>
-
-                  <div class="relative z-10 py-5 px-5">
-
-                    <div class="w-full h-auto flex justify-between items-center">
-                      <p
-                        class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white text-[1.4rem] font-muller">
-                        Multiempresa</p>
-                      <div class="relative group/item">
-                        <IconInfo class="group-hover:text-white hover:scale-90" />
-                        <div
-                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4">
-                          Aplica solo en planes pospago.
-                          <div
-                            class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-[#000000] rotate-45">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="transition-all ease-in duration-150 w-full h-[1px] bg-[#1D394D] my-2 group-hover:bg-[#04B2CA]">
-                    </div>
-                    <p
-                      class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white font-muller text-[1.1rem] font-light">
-                      Gestiona todas
-                      tus empresas desde un solo lugar</p>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div
+              <div v-for="(item, index) in solutionAll" :key="index"
                 :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 rounded-[20px] shadow-lg text-[#1D394D] overflow-hidden h-[320px] group bg-white hover:bg-[#1D394D] cursor-pointer `]">
 
                 <div class="w-full h-[60%] overflow-hidden relative">
-                  <img src="/assets/img/img-place-01.jpeg" alt=""
+                  <img :src="item.img!.url" alt=""
                     class="transition-all ease-in duration-150 relative-0 group-hover:scale-110">
                 </div>
 
                 <div
                   class="transition-all ease-in duration-150 w-full h-[40%] text-left relative z-10 bg-white rounded-[20px_0px_0px_0px] mt-[-15px] group-hover:bg-[#1D394D]">
-
                   <svg width="53" height="45" viewBox="0 0 53 45" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="transition-all ease-in duration-150 absolute top-[-45px] right-[-1px] fill-white group-hover:fill-[#1D394D]">
                     <path
                       d="M52.5 2.64622V45H2.5C41.3887 39.765 51.8466 16.0617 52.5 2.64622V0C52.5434 0.825567 52.5456 1.71089 52.5 2.64622Z" />
                   </svg>
-
-                  <div class="relative z-10 py-5 px-5">
-
-                    <div class="w-full h-auto flex justify-between items-center">
-                      <p
-                        class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white text-[1.4rem] font-muller">
-                        Catálogos a tu medida</p>
-                      <div class="relative group/item">
-                        <IconInfo class="group-hover:text-white hover:scale-90" />
-                        <div
-                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4">
-                          Aplica solo en planes pospago.
-                          <div
-                            class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-[#000000] rotate-45">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      class="transition-all ease-in duration-150 w-full h-[1px] bg-[#1D394D] my-2 group-hover:bg-[#04B2CA]">
-                    </div>
-                    <p
-                      class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white font-muller text-[1.1rem] font-light">
-                      Personaliza tus catálogos para que facturar sea aún más rápido</p>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div
-                :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 rounded-[20px] shadow-lg text-[#1D394D] overflow-hidden h-[320px] group bg-white hover:bg-[#1D394D] cursor-pointer `]">
-
-                <div class="w-full h-[60%] overflow-hidden relative">
-                  <img src="/assets/img/img-place-01.jpeg" alt=""
-                    class="transition-all ease-in duration-150 relative-0 group-hover:scale-110">
-                </div>
-
-                <div
-                  class="transition-all ease-in duration-150 w-full h-[40%] text-left relative z-10 bg-white rounded-[20px_0px_0px_0px] mt-[-15px] group-hover:bg-[#1D394D]">
-
-                  <svg width="53" height="45" viewBox="0 0 53 45" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="transition-all ease-in duration-150 absolute top-[-45px] right-[-1px] fill-white group-hover:fill-[#1D394D]">
-                    <path
-                      d="M52.5 2.64622V45H2.5C41.3887 39.765 51.8466 16.0617 52.5 2.64622V0C52.5434 0.825567 52.5456 1.71089 52.5 2.64622Z" />
-                  </svg>
-
                   <div class="relative z-10 py-5 px-5">
                     <div class="w-full h-auto flex justify-between items-center">
                       <p
                         class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white text-[1.4rem] font-muller">
-                        Duplica tus facturas</p>
+                        {{ item.title }}
+                      </p>
                       <div class="relative group/item">
                         <IconInfo class="group-hover:text-white hover:scale-90" />
                         <div
                           class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4">
-                          Aplica solo en planes pospago.
+                          {{ item.infoTooltip }}
                           <div
                             class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-[#000000] rotate-45">
                           </div>
@@ -216,56 +124,10 @@
                     </div>
                     <p
                       class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white font-muller text-[1.1rem] font-light">
-                      ¿Necesitas enviar la misma factura otra vez? ¡Sin problema!</p>
+                      {{ item.text }}
+                    </p>
                   </div>
-
                 </div>
-
-              </div>
-
-              <div
-                :class="[`${visibility.section2 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} transition-all ease-in duration-150 rounded-[20px] shadow-lg text-[#1D394D] overflow-hidden h-[320px] group bg-white hover:bg-[#1D394D] cursor-pointer `]">
-
-                <div class="w-full h-[60%] overflow-hidden relative">
-                  <img src="/assets/img/img-place-01.jpeg" alt=""
-                    class="transition-all ease-in duration-150 relative-0 group-hover:scale-110">
-                </div>
-
-                <div
-                  class="transition-all ease-in duration-150 w-full h-[40%] text-left relative z-10 bg-white rounded-[20px_0px_0px_0px] mt-[-15px] group-hover:bg-[#1D394D]">
-
-                  <svg width="53" height="45" viewBox="0 0 53 45" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="transition-all ease-in duration-150 absolute top-[-45px] right-[-1px] fill-white group-hover:fill-[#1D394D]">
-                    <path
-                      d="M52.5 2.64622V45H2.5C41.3887 39.765 51.8466 16.0617 52.5 2.64622V0C52.5434 0.825567 52.5456 1.71089 52.5 2.64622Z" />
-                  </svg>
-
-                  <div class="relative z-10 py-5 px-5">
-                    <div class="w-full h-auto flex justify-between items-center">
-                      <p
-                        class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white text-[1.4rem] font-muller">
-                        Timbres sin caducidad</p>
-                      <div class="relative group/item">
-                        <IconInfo class="group-hover:text-white hover:scale-90" />
-                        <div
-                          class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4">
-                          Aplica solo en planes pospago.
-                          <div
-                            class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-[#000000] rotate-45">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="transition-all ease-in duration-150 w-full h-[1px] bg-[#1D394D] my-2 group-hover:bg-[#04B2CA]">
-                    </div>
-                    <p
-                      class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white font-muller text-[1.1rem] font-light">
-                      Usa tus timbres cuando quieras y los necesites</p>
-                  </div>
-
-                </div>
-
               </div>
 
             </div>
@@ -285,7 +147,7 @@
 
             <div class="w-full h-auto flex justify-center items-center mt-[60px] max-md:mb-[30px]">
               <h2
-                class="text-white font-bold font-muller text-[1.6rem] sm:text-[1.6rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem] max-md:text-center">
+                :class="[`${visibility.section3 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} text-white font-bold font-muller text-[1.6rem] sm:text-[1.6rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem] max-md:text-center`]">
                 No estás solo nosotros <br class="md:hidden"> estamos contigo 😎
               </h2>
             </div>
@@ -295,7 +157,8 @@
 
                 <!-- Sección de Texto -->
                 <div class="w-full h-full flex flex-col justify-center items-start max-md:mb-16 gap-y-10">
-                  <div v-for="(item, index) in item2" :key="index" class="relative cursor-pointer"
+                  <!-- <div v-for="(item, index) in item2" :key="index"
+                    :class="[`${visibility.section3 ? 'animate-fadeRight' : 'animate-fadeRightOut  opacity-0'} relative cursor-pointer`]"
                     @click="setActive2(index)">
                     <div :class="[
                       'w-1 h-full absolute top-0 left-[-20px] rounded-full transition-all',
@@ -304,13 +167,26 @@
                     </div>
                     <h4 class="text-white text-[1.5rem] font-bold">{{ item.title }}</h4>
                     <p class="text-white text-[1.1rem]">{{ item.text }}</p>
+                  </div> -->
+
+                  <div v-for="(item, index) in offerAll" :key="index"
+                    :class="[`${visibility.section3 ? 'animate-fadeRight' : 'animate-fadeRightOut  opacity-0'} relative cursor-pointer`]"
+                    @click="setActive2(index)">
+                    <div :class="[
+                      'w-1 h-full absolute top-0 left-[-20px] rounded-full transition-all',
+                      { 'bg-[#04B2CA]': activeIndex2 === index, 'bg-[#CACACA]': activeIndex2 !== index }
+                    ]">
+                    </div>
+                    <h4 class="text-white text-[1.5rem] font-bold">{{ item.title }}</h4>
+                    <p class="text-white text-[1.1rem]" v-html="item.text?.markdown"></p>
                   </div>
+
                 </div>
 
                 <!-- Sección de Imagen -->
-                <div class="w-full h-full flex justify-center items-center">
-                  <img :src="item2[activeIndex2].imgSrc" :alt="item2[activeIndex2].alt"
-                    class="w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px]">
+                <div class="w-full h-full flex justify-center items-center" v-if="offerAll[activeIndex2]">
+                  <img :src="offerAll[activeIndex2].img?.url" :alt="offerAll[activeIndex2].title"
+                    :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px]`]">
                 </div>
 
               </div>
@@ -354,8 +230,17 @@
     <section class="font-muller h-max w-full" id="section5">
       <div class="relative m-0 h-full w-full py-[50px] md:px-[70px] md:py-[130px]">
         <div
+          :class="[`${visibility.section5 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} w-full h-auto flex flex-col justify-center items-center my-[30px] text-center`]">
+          <h2
+            class="text-[#1D394D] font-bold font-muller text-[1.8rem] sm:text-[2rem] md: lg:text-[2.2rem] xl:text-[2.3rem] 2xl:text-[2.5rem]">
+            ¿Cuántos timbres necesitas? 😉</h2>
+          <p class="px-10 md:px-16">Contamos con paquetes prepago y planes pospago para que elijas <span
+              class="text-[#04B2CA]">el que mejor se adapte a tu negocio:</span></p>
+        </div>
+        <div
           class="grid grid-cols-1 grid-rows-1 items-center justify-center gap-10 py-4 max-sm:px-[20px] max-md:px-[40px] md:w-full md:grid-cols-2 md:h-[730px] lg:h-[650px] lg:grid-cols-3">
-          <div :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
+          <div
+            :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
             <div class="h-[22%] bg-[#1D394D] p-6 text-center flex flex-col justify-center items-center">
               <h2
                 class="text-[1.5rem] text-xl font-bold leading-6 text-white lg:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem]">
@@ -367,7 +252,44 @@
               </p>
             </div>
             <div class="h-[78%] w-full">
-              <div class="flex h-[33.33%] w-full flex-row items-center justify-between bg-[#1D394D0D] px-5 py-14">
+              <div v-for="(plan, index) in postpaidPlanAll" :key="index" :class="[
+                'flex w-full flex-row items-center justify-between px-5 py-14',
+                index % 2 == 0 ? 'bg-[#1D394D0D]' : ''
+              ]" :style="{ height: (100 / postpaidPlanAll.length) + '%' }">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">
+                    {{ plan.numberStamps }} timbres
+                  </p>
+                </div>
+                <div class="flex flex-col items-center justify-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">
+                    ${{ plan.priceStampPackage!.toFixed(2) }}
+                  </p>
+                  <button
+                    class="rounded-full bg-[#1D394D] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">
+                    Adquirir
+                  </button>
+                </div>
+              </div>
+              <!-- <div v-for="(plan, index) in postpaidPlanAll" :key="index" :class="[
+                'flex h-[33.33%] w-full flex-row items-center justify-between px-5 py-14',
+                index % 2 == 0 ? 'bg-[#1D394D0D]' : ''
+              ]">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">{{ plan.numberStamps }}
+                    timbres</p>
+                </div>
+                <div class="flex flex-col items-center justify-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">
+                    ${{ plan.priceStampPackage!.toFixed(2) }}
+                  </p>
+                  <button
+                    class="rounded-full bg-[#1D394D] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">
+                    Adquirir
+                  </button>
+                </div>
+              </div> -->
+              <!-- <div class="flex h-[33.33%] w-full flex-row items-center justify-between bg-[#1D394D0D] px-5 py-14">
                 <div>
                   <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">1500 timbres</p>
                 </div>
@@ -396,10 +318,11 @@
                   <button
                     class="rounded-full bg-[#1D394D] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
-          <div :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
+          <div
+            :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
             <div class="h-[22%] bg-[#04B2CA] p-6 text-center flex flex-col justify-center items-center">
               <h2
                 class="text-[1.5rem] text-xl font-bold leading-6 text-white lg:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem]">
@@ -412,7 +335,27 @@
               </p>
             </div>
             <div class="h-[78%] w-full overflow-y-auto">
-              <div class="flex h-[20%] w-full flex-row items-center justify-between bg-[#1D394D0D] px-5">
+
+
+              <div v-for="(plan, index) in prepaidPackageAll" :key="index" :class="[
+                'flex h-[20%] w-full flex-row items-center justify-between px-5',
+                index % 2 === 0 ? 'bg-[#1D394D0D]' : ''
+              ]">
+                <div>
+                  <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">{{ plan.numberStamps }}
+                    timbres</p>
+                </div>
+                <div class="flex flex-col items-center lg:flex-row">
+                  <p class="mr-2 text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">${{
+                    plan.priceStampPackage!.toFixed(2) }}</p>
+                  <button
+                    class="rounded-full bg-[#04B2CA] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">
+                    Adquirir
+                  </button>
+                </div>
+              </div>
+
+              <!-- <div class="flex h-[20%] w-full flex-row items-center justify-between bg-[#1D394D0D] px-5">
                 <div>
                   <p class="text-[0.9rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem]">10 timbres</p>
                 </div>
@@ -461,10 +404,11 @@
                   <button
                     class="rounded-full bg-[#04B2CA] px-4 py-1.5 text-[0.9rem] text-white lg:px-5 lg:text-[0.95rem] xl:px-6 xl:text-[1rem] 2xl:text-[1.1rem]">Adquirir</button>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
-          <div :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} flex h-full w-full items-center justify-center overflow-hidden max-md:col-auto md:col-span-2 lg:col-auto`]">
+          <div
+            :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} flex h-full w-full items-center justify-center overflow-hidden max-md:col-auto md:col-span-2 lg:col-auto`]">
             <div
               class="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[20px] bg-[#1D394D] p-6 text-center lg:w-[85%]">
               <div
@@ -473,7 +417,8 @@
               <div class="absolute left-0 top-0 z-[5] h-full w-full bg-gradient-to-r from-[#1D394DF2] to-[#2D5A7AF2]">
               </div>
               <div class="flex w-full flex-col items-center justify-center">
-                <h2 class="z-10 text-[1.5rem] md:text-[1.6rem] lg:text-[1.2em] xl:text-[1.7rem] 2xl:text-[2.1rem] text-xl font-bold leading-[2.5rem] text-white">
+                <h2
+                  class="z-10 text-[1.5rem] md:text-[1.6rem] lg:text-[1.2em] xl:text-[1.7rem] 2xl:text-[2.1rem] text-xl font-bold leading-[2.5rem] text-white">
                   ¿Necesitas un plan <br />
                   a tu medida?
                 </h2>
@@ -567,7 +512,6 @@
     </section>
 
     <!-- Footer -->
-
     <footer class="w-full bg-[#1D394D]" id="footer">
       <div class="mx-auto max-w-full px-20">
         <!--Grid-->
@@ -668,13 +612,26 @@ import ButtonLoading from '../components/ButtonLoading.vue';
 import { comentaryRegexValidation, nameRegexValidation, textEmptyRegexValidation, validateForm } from '../composable/validator';
 import { ref, onMounted, onUnmounted, reactive, computed } from 'vue';
 import IconInfo from '../components/icons/IconInfo.vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/swiper-bundle.css';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Solution, SolutionsAllCfdiResponse } from '../interfaces/solutions/solutions_all_response';
+import { AllMissionsResponse, Mission } from '../interfaces/missions/all_missions_response';
+import { AllOffersResponse, Offer } from '../interfaces/offers/all_offers_response';
+import { PrePaidAllResponse, PrepaidPackage } from '../interfaces/prepaid/prepaid_packages_all_response';
+import { PostPaidAllResponse, PostpaidPlan } from '../interfaces/postpaid/postpaid_packages_all_response';
+// import { Swiper, SwiperSlide } from 'swiper/vue';
+// import 'swiper/swiper-bundle.css';
+// import { Pagination, Navigation } from 'swiper/modules';
+// import { Vue3Lottie } from 'vue3-lottie'
+// import AstronautJSON from '@/assets/lottie/bill.json'
 
 // Objeto para manejar la visibilidad de cada sección
-const modules = [Pagination, Navigation];
-const currentIndex = ref(0);
+// const modules = [Pagination, Navigation];
+// const currentIndex = ref(0);
+
+const missionsAll = ref<Mission[]>([])
+const solutionAll = ref<Solution[]>([])
+const offerAll = ref<Offer[]>([])
+const postpaidPlanAll = ref<PostpaidPlan[]>([])
+const prepaidPackageAll = ref<PrepaidPackage[]>([])
 
 const visibility = reactive<Visibility>({
   section1: false,
@@ -695,58 +652,65 @@ const form = reactive({
   type: false
 });
 
-const items = ref([
-  {
-    imgSrc: '/assets/img/1.png',
-    alt: 'Slide 1',
-    title: 'Control total de tus timbres',
-    text: 'Gestiona todas tus empresas desde un <br class="hidden lg:block"> solo lugar, sin complicaciones',
-  },
-  {
-    imgSrc: '/assets/img/2.png',
-    alt: 'Slide 2',
-    title: 'Timbrado múltiple simultáneo',
-    text: 'Ahorra tiempo timbrando varias facturas',
-  },
-  {
-    imgSrc: '/assets/img/3.png',
-    alt: 'Slide 3',
-    title: 'Descarga masiva de archivos',
-    text: 'Descarga todas tus facturas que necesites con <br class="hidden lg:block"> un solo clic',
-  },
-]);
+// const items = ref([
+//   {
+//     imgSrc: '/assets/img/1.gif',
+//     alt: 'Slide 1',
+//     title: 'Control total de tus timbres',
+//     text: 'Gestiona todas tus empresas desde un <br class="hidden lg:block"> solo lugar, sin complicaciones',
+//   },
+//   {
+//     imgSrc: '/assets/img/2.gif',
+//     alt: 'Slide 2',
+//     title: 'Timbrado múltiple simultáneo',
+//     text: 'Ahorra tiempo timbrando varias facturas',
+//   },
+//   {
+//     imgSrc: '/assets/img/3.gif',
+//     alt: 'Slide 3',
+//     title: 'Descarga masiva de archivos',
+//     text: 'Descarga todas tus facturas que necesites con <br class="hidden lg:block"> un solo clic',
+//   },
+// ]);
 
-const item2 = ref([
-  {
-    imgSrc: '/assets/img/3d.png',
-    alt: 'Slide 1',
-    title: 'Acompañamiento en todo tu proceso',
-    text: 'Nuestro equipo está aquí para guiarte asegurando que todas tus dudas sean resueltas rápidamente.',
-  },
-  {
-    imgSrc: '/assets/img/3d.png',
-    alt: 'Slide 2',
-    title: 'Apoyo por medio de correo electrónico',
-    text: 'Soporte continuo a través de correo electrónico, con una respuesta máxima de 60 minutos.',
-  },
-  {
-    imgSrc: '/assets/img/3d.png',
-    alt: 'Slide 3',
-    title: 'Acceso a manuales y video tutoriales',
-    text: 'Ponemos a tu disposición guías diseñadas para apoyarte paso a paso en cada proceso.',
-  },
-]);
+// const item2 = ref([
+//   {
+//     imgSrc: '/assets/img/3d.png',
+//     alt: 'Slide 1',
+//     title: 'Acompañamiento en todo tu proceso',
+//     text: 'Nuestro equipo está aquí para guiarte asegurando que todas tus dudas sean resueltas rápidamente.',
+//   },
+//   {
+//     imgSrc: '/assets/img/correo.png',
+//     alt: 'Slide 2',
+//     title: 'Apoyo por medio de correo electrónico',
+//     text: 'Soporte continuo a través de correo electrónico, con una respuesta máxima de 60 minutos.',
+//   },
+//   {
+//     imgSrc: '/assets/img/video.png',
+//     alt: 'Slide 3',
+//     title: 'Acceso a manuales y video tutoriales',
+//     text: 'Ponemos a tu disposición guías diseñadas para apoyarte paso a paso en cada proceso.',
+//   },
+// ]);
 
 const activeIndex = ref(0);
 
 function setActive(index: number) {
-  activeIndex.value = index;
+  if (index >= 0 && index < missionsAll.value.length) {
+    activeIndex.value = index;
+  } else {
+    console.warn(`Índice fuera de rango: ${index}`);
+  }
 }
-
 const activeIndex2 = ref(0);
 
 function setActive2(index: number) {
-  activeIndex2.value = index;
+  if (index >= 0 && index < offerAll.value.length) {
+    activeIndex2.value = index;
+  } else {
+    console.warn(`Índice fuera de rango: ${index}`);
+  }
 }
 
 const formValido = computed(() => {
@@ -762,14 +726,13 @@ const formValido = computed(() => {
   )
 });
 
-// Configuración del Intersection Observer
+
 const opciones = {
   root: null,
   rootMargin: '0px',
   threshold: 0, // 80% de intersección para activar
 };
 
-// Crear el Intersection Observer para manejar la visibilidad de múltiples elementos
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     const sectionId = entry.target.id as keyof Visibility; // Asegúrate de que `sectionId` es una clave de Visibility
@@ -783,11 +746,162 @@ const observer = new IntersectionObserver((entries) => {
 }, opciones);
 
 
-function updateCurrentIndex(swiper: any) {
-  currentIndex.value = swiper.realIndex;
+async function allMissions() {
+  let query = `query AllMissions {
+  missions {
+    title
+    text {
+      markdown
+    }
+    img {
+      url
+    }
+  }
+}`
+  // API CALL
+  try {
+    let res = await fetch(
+      // 'https://api-us-west-2.hygraph.com/v2/cln93v6c9168901ukf44r4tyv/master',
+      'https://api-us-west-2.hygraph.com/v2/cm2xfy7jh052307wawy5a538s/master',
+
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+      }
+    )
+    res = await res.json()
+    return res
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-onMounted(() => {
+async function allSolutions() {
+  let query = `query AllSolutions {
+  solution (orderBy: createdAt_ASC, last: 100) {
+    id
+    img {
+      url
+    }
+    title
+    text
+    infoTooltip
+  }
+}`
+  // API CALL
+  try {
+    let res = await fetch(
+      // 'https://api-us-west-2.hygraph.com/v2/cln93v6c9168901ukf44r4tyv/master',
+      'https://api-us-west-2.hygraph.com/v2/cm2xfy7jh052307wawy5a538s/master',
+
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+      }
+    )
+    res = await res.json()
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function allOffer() {
+  let query = `query AllOffers {
+  offers {
+    text {
+      markdown
+    }
+    title
+    img {
+      url
+    }
+  }
+}`
+  // API CALL
+  try {
+    let res = await fetch(
+      // 'https://api-us-west-2.hygraph.com/v2/cln93v6c9168901ukf44r4tyv/master',
+      'https://api-us-west-2.hygraph.com/v2/cm2xfy7jh052307wawy5a538s/master',
+
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+      }
+    )
+    res = await res.json()
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function allPostpaidPlan() {
+  let query = `query AllPostpaidPlans {
+  postpaidPlans {
+    numberStamps
+    priceStampPackage
+  }
+}`
+  // API CALL
+  try {
+    let res = await fetch(
+      // 'https://api-us-west-2.hygraph.com/v2/cln93v6c9168901ukf44r4tyv/master',
+      'https://api-us-west-2.hygraph.com/v2/cm2xfy7jh052307wawy5a538s/master',
+
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+      }
+    )
+    res = await res.json()
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function allPrepaidPackage() {
+  let query = `query AllPrepaidPackages {
+  prepaidPackages {
+    numberStamps
+    priceStampPackage
+  }
+}`
+  // API CALL
+  try {
+    let res = await fetch(
+      // 'https://api-us-west-2.hygraph.com/v2/cln93v6c9168901ukf44r4tyv/master',
+      'https://api-us-west-2.hygraph.com/v2/cm2xfy7jh052307wawy5a538s/master',
+
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+      }
+    )
+    res = await res.json()
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+onMounted(async () => {
   // Selecciona los elementos que deseas observar
   const elementosObservados = [
     document.querySelector('#section1'),
@@ -805,12 +919,79 @@ onMounted(() => {
   });
 
   const interval = setInterval(() => {
-    activeIndex.value = (activeIndex.value + 1) % items.value.length;
+    activeIndex.value = (activeIndex.value + 1) % missionsAll.value.length;
   }, 5000);
 
   const interval2 = setInterval(() => {
-    activeIndex2.value = (activeIndex2.value + 1) % item2.value.length;
+    activeIndex2.value = (activeIndex2.value + 1) % offerAll.value.length;
   }, 5000);
+
+
+  const data1 = await allMissions();
+
+  if (data1) {
+    const result = data1 as AllMissionsResponse;
+
+    if (result.data && result.data.missions) {
+      missionsAll.value = result.data.missions; // Asigna los FAQs directamente
+      console.log(missionsAll.value)
+    } else {
+      console.error("La llamada a getBlogs no devolvió datos.");
+    }
+  }
+
+  const data2 = await allSolutions();
+
+  if (data2) {
+    const result = data2 as SolutionsAllCfdiResponse;
+
+    if (result.data && result.data.solution) {
+      solutionAll.value = result.data.solution; // Asigna los FAQs directamente
+      console.log(solutionAll.value)
+    } else {
+      console.error("La llamada a getBlogs no devolvió datos.");
+    }
+  }
+
+
+  const data3 = await allOffer();
+
+  if (data3) {
+    const result = data3 as AllOffersResponse;
+
+    if (result.data && result.data.offers) {
+      offerAll.value = result.data.offers; // Asigna los FAQs directamente
+      console.log(offerAll.value)
+    } else {
+      console.error("La llamada a getBlogs no devolvió datos.");
+    }
+  }
+
+  const data4 = await allPostpaidPlan();
+
+  if (data4) {
+    const result = data4 as PostPaidAllResponse;
+
+    if (result.data && result.data.postpaidPlans) {
+      postpaidPlanAll.value = result.data.postpaidPlans; // Asigna los FAQs directamente
+      console.log(postpaidPlanAll.value)
+    } else {
+      console.error("La llamada a getBlogs no devolvió datos.");
+    }
+  }
+
+  const data5 = await allPrepaidPackage();
+
+  if (data5) {
+    const result = data5 as PrePaidAllResponse;
+
+    if (result.data && result.data.prepaidPackages) {
+      prepaidPackageAll.value = result.data.prepaidPackages; // Asigna los FAQs directamente
+      console.log(prepaidPackageAll.value)
+    } else {
+      console.error("La llamada a getBlogs no devolvió datos.");
+    }
+  }
 
   // Limpia el intervalo al desmontar el componente
   onUnmounted(() => {
