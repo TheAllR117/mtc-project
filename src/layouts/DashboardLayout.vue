@@ -4,12 +4,12 @@
     <!-- Desktop -->
     <nav id="separator-sidebar"
       class=""
-      :class="[`${isScrolled ? 'bg-white shadow-[0_0px_7px_3px_rgba(0,0,0,0.6)] rounded-[0px_0px_15px_15px]' : 'bg-[#FFFFFF]'} transition-all ease-in duration-150 hidden lg:flex max-w-full items-center justify-between px-5 min-[1024px]:px-8 min-[1024px]:py-0 fixed top-0 left-0 w-full -translate-x-full sm:translate-x-0 z-[9999] `]"
+      :class="[`${isScrolled ? 'bg-white shadow-[0_0px_7px_3px_rgba(0,0,0,0.1)] rounded-[0px_0px_15px_15px]' : 'bg-[#FFFFFF]'} transition-all ease-in duration-150 hidden lg:flex max-w-full items-center justify-between px-5 min-[1024px]:px-8 min-[1024px]:py-0 fixed top-0 left-0 w-full -translate-x-full sm:translate-x-0 z-[9999] `]"
       aria-label="Global">
 
       <div class="flex-1">
         <a href="/" class="-m-1.5 p-1.5">
-          <img src="/assets/img/logo.png" alt="" class="w-[150px] h-auto">
+          <img src="/assets/img/logo.png" alt="" class="transition-all ease-in duration-150 w-[150px] h-auto scale-100 hover:scale-90">
         </a>
       </div>
 
@@ -29,18 +29,18 @@
       </div>
 
       <div class="flex gap-x-7 pl-7 pt-3 pb-3 items-center">
-        <router-link to="/faq">
+        <router-link to="/faq" @click="scrollToTop()">
           <button
-            class="bg-transparent px-3 py-1 w-[130px] lg:w-[170px] xl:w-[190px] 2xl:w-[200px] h-auto rounded-full flex justify-center items-center text-[#04B2CA] border-2 border-[#04B2CA] group">
-            <p class="text-[#04B2CA] text-[0.8rem] sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.85rem] xl:text-[0.9rem] 2xl:text-[0.95rem] font-medium pr-2 h-auto flex justify-center items-center pt-0.5">CONTACTO</p>
+            class="bg-transparent px-3 py-1 w-[130px] lg:w-[170px] xl:w-[190px] 2xl:w-[200px] h-auto rounded-full flex justify-center items-center text-[#04B2CA] border-[1px] border-[#04B2CA] group">
+            <p class="text-[#04B2CA] text-[0.8rem] sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.85rem] xl:text-[0.9rem] 2xl:text-[0.95rem] font-medium group-hover:pr-2 h-auto flex justify-center items-center pt-0.5">CONTACTO</p>
             <IconEast
               class="transition-all ease-in duration-[0.3s] text-[#04B2CA] !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
           </button>
         </router-link>
         <router-link to="/login">
           <button
-            class="bg-[#04B2CA] px-3 py-1 w-[130px] lg:w-[170px] xl:w-[190px] 2xl:w-[200px] h-auto rounded-full flex justify-center items-center text-white border-2 border-[#04B2CA] group">
-            <p class="text-white text-[0.8rem] sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.85rem] xl:text-[0.9rem] 2xl:text-[0.95rem] font-medium pr-2 h-auto flex justify-center items-center pt-0.5">INICIAR SESIÓN</p>
+            class="bg-[#04B2CA] px-3 py-1 w-[130px] lg:w-[170px] xl:w-[190px] 2xl:w-[200px] h-auto rounded-full flex justify-center items-center text-white border-[1px] border-[#04B2CA] group">
+            <p class="text-white text-[0.8rem] sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.85rem] xl:text-[0.9rem] 2xl:text-[0.95rem] font-medium group-hover:pr-2 h-auto flex justify-center items-center pt-0.5">INICIAR SESIÓN</p>
             <IconEast
               class="transition-all ease-in duration-[0.3s] text-white !w-0 group-hover:!w-6 group-hover:animate-fadeRight" />
           </button>
@@ -50,7 +50,7 @@
 
     <!-- Mobil -->
     <nav 
-    :class="[`${isScrolled ? 'bg-white shadow-[0_0px_7px_3px_rgba(0,0,0,0.6)] rounded-[0px_0px_15px_15px]' : 'bg-[#FFFFFF]'} fixed lg:hidden inset-x-0 left-0 top-0 z-30 mx-auto w-full py-5 md:top-0`]">
+    :class="[`${isScrolled ? 'bg-white shadow-[0_0px_7px_3px_rgba(0,0,0,0.1)] rounded-[0px_0px_15px_15px]' : 'bg-[#FFFFFF]'} fixed lg:hidden inset-x-0 left-0 top-0 z-30 mx-auto w-full py-5 md:top-0`]">
       <div class="px-4">
         <div class="flex items-center justify-between">
           <div class="flex md:flex md:items-center md:justify-center ">
@@ -147,6 +147,10 @@ const toggleMobileMenu = () => {
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 100;
 };
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);

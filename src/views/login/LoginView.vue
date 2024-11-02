@@ -1,6 +1,6 @@
 <template>
   <section
-    class="h-dvh flex items-stretch bg-no-repeat bg-cover relative text-white bg-gradient-to-r from-[#1D394D] to-[#5083C2] !font-muller p-5">
+    class="h-dvh flex items-stretch bg-no-repeat bg-cover relative text-white bg-gradient-to-br from-[#1D394D] to-[#5083C2] !font-muller p-5">
 
     <div
       class="hidden md:flex lg:w-1/2 w-full items-center justify-center text-center md:px-16 px-0 z-1 bg-transparent rounded-[20px] relative">

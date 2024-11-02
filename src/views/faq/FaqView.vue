@@ -1,8 +1,8 @@
 <template>
-  <div class="h-full w-full !font-muller bg-white ">
+  <div class="h-full w-full !font-muller bg-white pt-[100px]">
 
     <!-- Section 6 -->
-    <section class="h-max bg-[#F3F5F6] font-muller pt-[100px]" id="section6">
+    <!-- <section class="h-max bg-[#F3F5F6] font-muller pt-[100px]" id="section6">
       <div
         class="w-full h-full px-[15px] mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px] py-[60px]">
         <div class="relative m-0 w-full h-full">
@@ -80,17 +80,18 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
+    <SectionSix/>
 
     <!-- Section 7 -->
-    <section class="py-24" v-if="faqAllQuest.length != 0">
+    <section class="pb-24" v-if="faqAllQuest.length != 0">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           class="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full">
           <div class="w-full">
 
             <div
-              class="mb-6 lg:mb-16 bg-gradient-to-r from-[#23465E] to-[#4992C4] py-[30px] rounded-[30px_30px_0px_0px] flex justify-center items-center">
+              class="mb-1 lg:mb-3 bg-gradient-to-tl from-[#23465E] to-[#4992C4] py-[30px] rounded-[30px_30px_0px_0px] flex justify-center items-center">
               <h6
                 class="text-center text-white text-[1.5rem] md:text-[1.7rem] lg:text-[1.9rem] xl:text-[2rem] 2xl:text-[2.2rem] font-bold">
                 Preguntas frecuentes 😉</h6>
@@ -222,6 +223,7 @@ import ButtonLoading from '../../components/ButtonLoading.vue';
 import { comentaryRegexValidation, nameRegexValidation, textEmptyRegexValidation, validateForm } from '../../composable/validator';
 import { ref, onMounted, onUnmounted, reactive, computed } from 'vue';
 import { FAQ, FAQAllCfdiResponse } from '../../interfaces/faq/faq_all_response';
+import SectionSix from '../../components/sections/SectionSix.vue';
 
 const faqAllQuest = ref<FAQ[]>([])
 const isLoading = ref<boolean>(false);
