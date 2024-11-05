@@ -3,6 +3,10 @@ export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     colors: {
+      bluecf:'#1D394D',
+      bluemdcf:'#2D5A7A',
+      bluelightcf:'#04B2CA',
+      graycf:'#EEEEEE',
       transparent: 'transparent',
       current: 'currentColor',
       white: '#ffffff',
@@ -134,6 +138,7 @@ export default {
         fadeDownOut: 'fadeDownOut 1s ease-in',
         fadeLeftOut: 'fadeLeftOut 1s ease-in',
         fadeRightOut: 'fadeRightOut 1s ease-in',
+        fadeArrowRight: 'fadeRight 0.3s ease-out',
       },
       keyframes: {
         fadeUp: {

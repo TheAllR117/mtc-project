@@ -2,7 +2,7 @@
     <div class="h-full w-full !font-muller bg-white">
         <!-- Social link -->
         <div class="fixed bottom-[20px] right-[20px] z-40 flex flex-col gap-5" id="section7">
-            <div :class="[`${showScrollTopButton ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} shadow-[0_0px_7px_3px_rgba(250,250,250,0.2)] flex w-[40px] md:w-[45px] lg:w-[40px] xl:h-[50px] h-[40px] md:h-[45px] lg:h-[40px] xl:w-[50px] cursor-pointer items-center justify-center rounded-full bg-[#1D394D] text-white transition-all duration-150 ease-in hover:scale-[0.80]`]"
+            <div :class="[`${showScrollTopButton ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} shadow-[0_0px_7px_3px_rgba(250,250,250,0.2)] flex w-[40px] md:w-[45px] lg:w-[40px] xl:h-[50px] h-[40px] md:h-[45px] lg:h-[40px] xl:w-[50px] cursor-pointer items-center justify-center rounded-full bg-bluecf text-white transition-all duration-150 ease-in hover:scale-[0.80]`]"
                 @click="scrollToTop">
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="w-[100%]">
@@ -83,7 +83,7 @@ onMounted(() => {
 
 
 <style>
-.swiper-slide-opacity {
+/* .swiper-slide-opacity {
     opacity: 0.5;
     transition: opacity 0.3s ease;
 }
@@ -103,5 +103,5 @@ onMounted(() => {
 
 .swiper-pagination-bullet-active {
     background: #00c1de;
-}
+} */
 </style>

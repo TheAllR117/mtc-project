@@ -4,59 +4,64 @@
         <!-- Section 2 -->
         <section class="h-max bg-white" id="section2">
             <div
-                class="w-full h-full px-[15px] mx-auto sm:max-w-[540px] md:max-w-[720px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1620px]">
+                class="w-full h-full mx-auto sm:max-w-[540px] md:max-w-[840px] md:text-left lg:max-w-[1000px] xl:max-w-[1240px] 2xl:max-w-[1620px]">
                 <div class="py-[30px] md:py-[50px] relative m-0 w-full h-full">
                     <div
-                        class="w-full h-full border-2 border-transparent bg-white rounded-[20px] overflow-hidden px-5 md:px-14 pb-4 md:pb-14">
+                        class="w-full h-full border-2 border-transparent bg-white rounded-[20px] overflow-hidden md:px-14 pb-4 md:pb-14">
 
                         <div class="w-full h-auto flex justify-center items-center my-[30px]">
                             <h2
-                                class="text-[#1D394D] font-bold font-muller text-[1.6rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[2rem] 2xl:text-[2.2rem]">
+                                class="text-bluecf font-bold font-muller text-[1.6rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[2rem] 2xl:text-[2.2rem]">
                                 Nuestras <span class="text-[#04B2CA]">soluciones</span> 🤩</h2>
                         </div>
 
                         <div
-                            class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-14 font-mono text-white text-sm text-center font-bold leading-6 rounded-lg">
+                            class="max-md:hidden grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4 gap-14 font-mono text-white text-sm text-center font-bold leading-6 rounded-lg">
 
 
                             <div v-for="(item, index) in solutionAll" :key="index"
-                                :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 rounded-[20px] shadow-lg text-[#1D394D] overflow-hidden h-[320px] group bg-white hover:bg-[#1D394D] cursor-pointer `]">
+                                :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 rounded-[20px] shadow-lg text-bluecf overflow-hidden h-[320px] group bg-white hover:bg-bluecf cursor-pointer `]">
 
                                 <div class="w-full h-[60%] overflow-hidden relative">
-                                    <img :src="item.img!.url" alt=""
-                                        class="transition-all ease-in duration-150 relative-0 group-hover:scale-110">
+                                    <img class="transition-all ease-in duration-150 relative-0 group-hover:scale-110"
+                                        v-lazy="{
+                                            src: item.img!.url,
+                                            loading: '/assets/img/placeholder.webp',
+                                            error: '/assets/img/placeholder.webp',
+                                            delay: 250
+                                        }" loading="lazy" alt="" />
                                 </div>
 
                                 <div
-                                    class="transition-all ease-in duration-150 w-full h-[40%] text-left relative z-10 bg-white rounded-[20px_0px_0px_0px] mt-[-15px] group-hover:bg-[#1D394D]">
+                                    class="transition-all ease-in duration-150 w-full h-[40%] text-left relative z-10 bg-white rounded-[20px_0px_0px_0px] mt-[-15px] group-hover:bg-bluecf">
                                     <svg width="53" height="45" viewBox="0 0 53 45" fill="none"
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="transition-all ease-in duration-150 absolute top-[-45px] right-[-1px] fill-white group-hover:fill-[#1D394D]">
+                                        class="transition-all ease-in duration-150 absolute top-[-45px] right-[-1px] fill-white group-hover:fill-bluecf">
                                         <path
                                             d="M52.5 2.64622V45H2.5C41.3887 39.765 51.8466 16.0617 52.5 2.64622V0C52.5434 0.825567 52.5456 1.71089 52.5 2.64622Z" />
                                     </svg>
                                     <div class="relative z-10 py-5 px-5">
                                         <div class="w-full h-auto flex justify-between items-center">
                                             <p
-                                                class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white text-[1.4rem] font-muller">
+                                                class="transition-all ease-in duration-150 text-bluecf group-hover:text-white text-[1.1rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.4rem] font-muller">
                                                 {{ item.title }}
                                             </p>
                                             <div class="relative group/item">
                                                 <IconInfo class="group-hover:text-white hover:scale-90" />
                                                 <div
-                                                    class="absolute right-0 hidden w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-[#000000] rounded-lg shadow-lg group-hover/item:block leading-4 font-muller">
+                                                    class="absolute right-0 hidden w-max max-w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-black rounded-lg shadow-lg group-hover/item:block leading-4 font-muller">
                                                     {{ item.infoTooltip }}
                                                     <div
-                                                        class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-[#000000] rotate-45">
+                                                        class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-black rotate-45">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div
-                                            class="transition-all ease-in duration-150 w-full h-[1px] bg-[#1D394D] my-2 group-hover:bg-[#04B2CA]">
+                                            class="transition-all ease-in duration-150 w-full h-[1px] bg-graycf my-2 group-hover:bg-bluelightcf">
                                         </div>
                                         <p
-                                            class="transition-all ease-in duration-150 text-[#1D394D] group-hover:text-white font-muller text-[1.1rem] font-light">
+                                            class="transition-all ease-in duration-150 text-bluecf group-hover:text-white font-muller text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1.1rem] font-light">
                                             {{ item.text }}
                                         </p>
                                     </div>
@@ -65,9 +70,160 @@
 
                         </div>
 
+                        <swiper :css-mode="true" :mousewheel="true" :slides-per-view="1.15" :centeredSlides="true"
+                            :space-between="15" :speed="500" :grabCursor="true" :pagination="{
+                                clickable: true,
+                            }" :navigation="{
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev',
+                            }" :modules="modules" :breakpoints="{
+                                0: { slidesPerView: 1.15, spaceBetween: 15 },
+                                500: { slidesPerView: 1.15, spaceBetween: 15 },
+                                1024: { slidesPerView: 1.15, spaceBetween: 15 },
+                                1300: { slidesPerView: 1.15, spaceBetween: 15 },
+                                1500: { slidesPerView: 1.15, spaceBetween: 15 },
+                            }"
+                            class="mySwiper max-md:!grid !hidden h-full text-white text-sm text-center font-bold leading-6 rounded-lg">
+
+                            <swiper-slide v-for="(item, index) in solutionAll" :key="index"
+                                :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-[0.1s] rounded-[20px] shadow-lg text-bluecf overflow-hidden !h-[320px] group bg-white cursor-pointer `]">
+                                <div class="w-full !h-[60%] overflow-hidden relative">
+                                    <!-- <img :src="item.img!.url" alt=""
+                                        class="transition-all ease-in duration-[0.1s] relative-0 group-hover:scale-110"> -->
+
+                                        <img class="transition-all ease-in duration-[0.1s] relative-0 group-hover:scale-110"
+                                        v-lazy="{
+                                            src: item.img!.url,
+                                            loading: '/assets/img/placeholder.webp',
+                                            error: '/assets/img/placeholder.webp',
+                                            delay: 250
+                                        }" loading="lazy" alt="" />
+                                </div>
+                                <div
+                                    class="transition-all ease-in duration-[0.1s] w-full !h-[50%] text-left relative z-10 bg-white rounded-[20px_0px_0px_0px] mt-[-15px] group-hover:bg-bluecf">
+                                    <svg width="53" height="45" viewBox="0 0 53 45" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="transition-all ease-in duration-[0.1s] absolute top-[-45px] right-[-1px] fill-white group-hover:fill-bluecf">
+                                        <path
+                                            d="M52.5 2.64622V45H2.5C41.3887 39.765 51.8466 16.0617 52.5 2.64622V0C52.5434 0.825567 52.5456 1.71089 52.5 2.64622Z" />
+                                    </svg>
+                                    <div class="relative z-10 py-5 px-5">
+                                        <div class="w-full h-auto flex justify-between items-center">
+                                            <p
+                                                class="transition-all ease-in duration-[0.1s] text-bluecf group-hover:text-white text-[1.1rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.4rem] font-muller">
+                                                {{ item.title }}
+                                            </p>
+                                            <div class="relative group/item">
+                                                <IconInfo class="group-hover:text-white hover:scale-90" />
+                                                <div
+                                                    class="absolute right-0 hidden w-max max-w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-black rounded-lg shadow-lg group-hover/item:block leading-4 font-muller">
+                                                    {{ item.infoTooltip }}
+                                                    <div
+                                                        class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-black rotate-45">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="transition-all ease-in duration-150 w-full h-[1px] bg-graycf my-2 group-hover:bg-bluelightcf">
+                                        </div>
+                                        <p
+                                            class="transition-all ease-in duration-150 text-bluecf group-hover:text-white font-muller text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1.1rem] font-light">
+                                            {{ item.text }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </swiper-slide>
+
+                            <div class="slider__controls py-[20px] flex justify-center items-center">
+                                <div class="slider__pagination"></div>
+                            </div>
+
+                        </swiper>
+
                     </div>
                 </div>
             </div>
+
+
+            <!-- <div
+                class="max-md:flex hidden w-full h-full md:px-[15px] mx-auto sm:max-w-[540px] md:max-w-[720px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1620px]">
+                <div class="py-[30px] md:py-[50px] relative m-0 w-full h-full">
+                    <div
+                        class="w-full h-full border-2 border-transparent bg-white rounded-[20px] overflow-hidden px-5 md:px-14 pb-4 md:pb-14">
+
+                        <div class="w-full h-auto flex justify-center items-center my-[30px]">
+                            <h2
+                                class="text-bluecf font-bold font-muller text-[1.6rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[2rem] 2xl:text-[2.2rem]">
+                                Nuestras <span class="text-[#04B2CA]">soluciones</span> 🤩</h2>
+                        </div>
+
+                        <swiper :css-mode="true" :mousewheel="true" :slides-per-view="3" :centeredSlides="true"
+                            :space-between="56" :speed="500" :grabCursor="true" :pagination="{
+                                clickable: true,
+                            }"  :navigation="{
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev',
+                            }" :modules="modules" :breakpoints="{
+                                0: { slidesPerView: 1, spaceBetween: 56 },
+                                500: { slidesPerView: 1, spaceBetween: 56 },
+                                1024: { slidesPerView: 1, spaceBetween: 56 },
+                                1300: { slidesPerView: 1, spaceBetween: 56 },
+                                1500: { slidesPerView: 1, spaceBetween: 56 },
+                            }"
+                            class="mySwiper grid h-full text-white text-sm text-center font-bold leading-6 rounded-lg">
+
+                            <swiper-slide v-for="(item, index) in solutionAll" :key="index"
+                                :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-[0.1s] rounded-[20px] shadow-lg text-bluecf overflow-hidden !h-[320px] group bg-white cursor-pointer `]">
+                                <div class="w-full !h-[60%] overflow-hidden relative">
+                                    <img :src="item.img!.url" alt=""
+                                        class="transition-all ease-in duration-[0.1s] relative-0 group-hover:scale-110">
+                                </div>
+                                <div
+                                    class="transition-all ease-in duration-[0.1s] w-full !h-[50%] text-left relative z-10 bg-white rounded-[20px_0px_0px_0px] mt-[-15px] group-hover:bg-bluecf">
+                                    <svg width="53" height="45" viewBox="0 0 53 45" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="transition-all ease-in duration-[0.1s] absolute top-[-45px] right-[-1px] fill-white group-hover:fill-bluecf">
+                                        <path
+                                            d="M52.5 2.64622V45H2.5C41.3887 39.765 51.8466 16.0617 52.5 2.64622V0C52.5434 0.825567 52.5456 1.71089 52.5 2.64622Z" />
+                                    </svg>
+                                    <div class="relative z-10 py-5 px-5">
+                                        <div class="w-full h-auto flex justify-between items-center">
+                                            <p
+                                                class="transition-all ease-in duration-[0.1s] text-bluecf group-hover:text-white text-[1.1rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.4rem] font-muller">
+                                                {{ item.title }}
+                                            </p>
+                                            <div class="relative group/item">
+                                                <IconInfo class="group-hover:text-white hover:scale-90" />
+                                                <div
+                                                    class="absolute right-0 hidden w-max max-w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-black rounded-lg shadow-lg group-hover/item:block leading-4 font-muller">
+                                                    {{ item.infoTooltip }}
+                                                    <div
+                                                        class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-black rotate-45">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="transition-all ease-in duration-150 w-full h-[1px] bg-graycf my-2 group-hover:bg-bluelightcf">
+                                        </div>
+                                        <p
+                                            class="transition-all ease-in duration-150 text-bluecf group-hover:text-white font-muller text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1.1rem] font-light">
+                                            {{ item.text }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </swiper-slide>
+
+                            <div class="slider__controls py-[20px] flex justify-center items-center">
+                                <div class="slider__pagination"></div>
+                            </div>
+
+                        </swiper>
+
+                    </div>
+                </div>
+            </div> -->
         </section>
 
     </div>
@@ -81,9 +237,15 @@ import { Solution } from '../../interfaces/solutions/solutions_all_response';
 import IconInfo from '../../components/icons/IconInfo.vue';
 // Vue
 import { ref, onMounted, onUnmounted, reactive } from 'vue';
+// Swiper
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.css';
+import 'swiper/css/effect-coverflow';
+import { Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
 
 const solutionAll = ref<Solution[]>([]);
 const showScrollTopButton = ref<boolean>(false);
+const modules = [Pagination, Navigation, EffectCoverflow];
 
 const visibility = reactive({
     section1: false,
@@ -164,7 +326,7 @@ onMounted(() => {
 
 .swiper-pagination-bullet {
     background: #c2c2c2;
-    width: 130px;
+    width: 30px;
     height: 6px;
     border-radius: 3px;
     opacity: 1;
@@ -173,5 +335,17 @@ onMounted(() => {
 
 .swiper-pagination-bullet-active {
     background: #00c1de;
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.swiper-slide {
+    width: 326px;
+    min-height: 310px;
+    max-height: 600px;
 }
 </style>

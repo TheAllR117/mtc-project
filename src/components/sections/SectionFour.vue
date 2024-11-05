@@ -2,7 +2,7 @@
     <div class="h-full w-full !font-muller bg-white overflow-hidden">
 
         <!-- Section 4 -->
-        <section class="h-[550px] md:h-[320px] bg-gradient-to-tl from-[#1D394D] to-[#2D5A7A]" id="section4">
+        <section class="h-[550px] md:h-[320px] bg-gradient-to-tl from-bluecf to-bluemdcf" id="section4">
             <div
                 class="w-full h-full px-[15px] mx-auto sm:max-w-[540px] md:max-w-[850px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px] flex justify-center items-center">
                 <div class="relative m-0 w-full h-auto flex justify-center items-center">
@@ -75,7 +75,7 @@ onMounted(() => {
 
 
 <style>
-.swiper-slide-opacity {
+/* .swiper-slide-opacity {
     opacity: 0.5;
     transition: opacity 0.3s ease;
 }
@@ -95,5 +95,5 @@ onMounted(() => {
 
 .swiper-pagination-bullet-active {
     background: #00c1de;
-}
+} */
 </style>

@@ -17,41 +17,77 @@
                         </div>
 
                         <div class="relative m-0 w-full h-auto flex justify-center items-center">
-                            <div class="w-full h-auto flex flex-col md:flex-row justify-between items-center px-7">
+                            <div class="w-full h-auto flex flex-col md:flex-row justify-between items-center md:px-7">
 
-                                <!-- Sección de Texto -->
+                                <!-- Sección de Texto Desktop-->
                                 <div
-                                    class="w-full h-full flex flex-col justify-center items-start max-md:mb-16 gap-y-10">
-                                    <!-- <div v-for="(item, index) in item2" :key="index"
-                      :class="[`${visibility.section3 ? 'animate-fadeRight' : 'animate-fadeRightOut  opacity-0'} relative cursor-pointer`]"
-                      @click="setActive2(index)">
-                      <div :class="[
-                        'w-1 h-full absolute top-0 left-[-20px] rounded-full transition-all',
-                        { 'bg-[#04B2CA]': activeIndex2 === index, 'bg-[#CACACA]': activeIndex2 !== index }
-                      ]">
-                      </div>
-                      <h4 class="text-white text-[1.5rem] font-bold">{{ item.title }}</h4>
-                      <p class="text-white text-[1.1rem]">{{ item.text }}</p>
-                    </div> -->
+                                    class="max-md:hidden w-full h-full flex flex-col justify-center items-start max-md:mb-16 gap-y-10">
+
 
                                     <div v-for="(item, index) in offerAll" :key="index"
                                         :class="[`${visibility.section3 ? 'animate-fadeRight' : 'animate-fadeRightOut  opacity-0'} relative cursor-pointer`]"
                                         @click="setActive2(index)">
                                         <div :class="[
                                             'w-1 h-full absolute top-0 left-[-20px] rounded-full transition-all',
-                                            { 'bg-[#04B2CA]': activeIndex2 === index, 'bg-[#CACACA]': activeIndex2 !== index }
+                                            { 'bg-bluelightcf': activeIndex2 === index, 'bg-[#CACACA]': activeIndex2 !== index }
                                         ]">
                                         </div>
-                                        <h4 class="text-white text-[1.5rem] font-bold">{{ item.title }}</h4>
-                                        <p class="text-white text-[1.1rem]" v-html="item.text?.markdown"></p>
+                                        <h4
+                                            class="text-white text-1.1rem md:text-[1.2rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5rem] font-bold">
+                                            {{ item.title }}</h4>
+                                        <p class="text-white text-[0.9rem] md:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.1rem]"
+                                            v-html="item.text?.markdown"></p>
                                     </div>
 
                                 </div>
 
-                                <!-- Sección de Imagen -->
-                                <div class="w-full h-full flex justify-center items-center"
+
+                                <!-- Sección de Imagen Desktop-->
+                                <div class="max-md:hidden w-full h-full flex justify-center items-center"
                                     v-if="offerAll[activeIndex2]">
                                     <img :src="offerAll[activeIndex2].img?.url" :alt="offerAll[activeIndex2].title"
+                                        :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px] floating`]">
+                                </div>
+
+                                <!-- Sección de Texto Mobil-->
+                                <div
+                                    class="max-md:flex hidden w-full h-full flex-col justify-center items-start gap-y-10">
+                                    <swiper :css-mode="true" :mousewheel="true" :slides-per-view="3"
+                                        :centeredSlides="true" :space-between="56" :speed="500" :grabCursor="true"
+                                         :pagination="{
+                                            clickable: true,
+                                        }" :navigation="{
+                                            nextEl: '.swiper-button-next',
+                                            prevEl: '.swiper-button-prev',
+                                        }" :modules="modules" :breakpoints="{
+                                            0: { slidesPerView: 1, spaceBetween: 56 },
+                                            500: { slidesPerView: 1, spaceBetween: 56 },
+                                            1024: { slidesPerView: 1, spaceBetween: 56 },
+                                            1300: { slidesPerView: 1, spaceBetween: 56 },
+                                            1500: { slidesPerView: 1, spaceBetween: 56 },
+                                        }" class="mySwiper !h-max !w-full flex justify-center"
+                                        @slideChange="onSlideChange">
+
+                                        <swiper-slide v-for="(item, index) in offerAll" :key="index"
+                                            :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} !w-full !h-full !min-h-full !max-h-full flex flex-col justify-center items-center gap-y-10`]">
+                                            <h4
+                                                class="text-white text-1.1rem md:text-[1.2rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5rem] font-bold border-b-2 border-bluelightcf w-full px-5 text-center pb-3">
+                                                {{ item.title }}</h4>
+                                            <p class="text-white text-[0.9rem] md:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.1rem] text-center pt-3"
+                                                v-html="item.text?.markdown"></p>
+                                        </swiper-slide>
+
+                                        <div class="slider__controls py-[20px] flex justify-center items-center">
+                                            <div class="slider__pagination"></div>
+                                        </div>
+
+                                    </swiper>
+                                </div>
+
+                                <!-- Sección de Imagen Mobil-->
+                                <div class="max-md:flex hidden w-full h-full justify-center items-center"
+                                    v-if="offerAll[activeIndex3]">
+                                    <img :src="offerAll[activeIndex3].img?.url" :alt="offerAll[activeIndex3].title"
                                         :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px] floating`]">
                                 </div>
 
@@ -61,6 +97,8 @@
                     </div>
                 </div>
             </div>
+
+
         </section>
 
     </div>
@@ -73,9 +111,18 @@ import { Offer } from '../../interfaces/offers/all_offers_response';
 
 // Vue
 import { ref, onMounted, onUnmounted, reactive } from 'vue';
+// Swiper
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.css';
+import 'swiper/css/effect-coverflow';
+import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+
+const modules = [Pagination, Navigation, EffectCoverflow, Autoplay];
 
 const offerAll = ref<Offer[]>([]);
 const activeIndex2 = ref(0);
+const activeIndex3 = ref(0);
 
 const visibility = reactive({
     section1: false,
@@ -108,6 +155,9 @@ function setActive2(index: number) {
     }
 }
 
+function onSlideChange(swiper: SwiperType) {
+    activeIndex3.value = swiper.activeIndex;
+}
 
 async function fetchData(query: string) {
     try {
@@ -147,7 +197,7 @@ onMounted(() => {
 </script>
 
 <style>
-.swiper-slide-opacity {
+/* .swiper-slide-opacity {
     opacity: 0.5;
     transition: opacity 0.3s ease;
 }
@@ -167,5 +217,5 @@ onMounted(() => {
 
 .swiper-pagination-bullet-active {
     background: #00c1de;
-}
+} */
 </style>

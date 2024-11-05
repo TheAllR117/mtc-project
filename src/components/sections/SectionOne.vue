@@ -6,7 +6,7 @@
         class="w-full h-full md:pb-[100px] px-[15px] mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px]">
 
         <div
-          class="w-full h-auto pt-[0px] pb-[50px] md:pb-[100px] flex flex-col relative bg-gradient-to-tl from-[#1D394D] to-[#2D5A7A] rounded-[20px] overflow-hidden max-md:px-5">
+          class="w-full h-auto pt-[0px] pb-[50px] md:pb-[100px] flex flex-col relative bg-gradient-to-tl from-bluecf to-bluemdcf rounded-[20px] overflow-hidden max-md:px-5">
 
           <div
             :class="[`${visibility.section1 ? 'opacity-10 ' : 'opacity-0 '} transition-all ease-in duration-[0.5s] absolute top-0 left-0 z-0 w-full h-full`]">
@@ -32,15 +32,22 @@
                   :class="['transition-all ease-in duration-[0.5s] w-full h-full flex justify-center items-center place-items-center content-center cursor-pointer hover:scale-100', activeIndex == index ? '' : 'scale-90']">
 
                   <div
-                    :class="['w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[200px] lg:h-[200px] xl:w-[260px] xl:h-[260px] 2xl:w-[330px] 2xl:h-[330px] transition-all ease-in duration-[0.5s] md:py-6 flex bg-[#1D394D] rounded-full relative z-10 justify-center items-center', { 'opacity-60': activeIndex !== index, 'opacity-100': activeIndex === index }]">
-                    <img :src="item.img?.url" class="w-[50%] h-auto" />
+                    :class="['w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[200px] lg:h-[200px] xl:w-[260px] xl:h-[260px] 2xl:w-[330px] 2xl:h-[330px] transition-all ease-in duration-[0.5s] md:py-6 flex bg-bluecf rounded-full relative z-10 justify-center items-center', { 'opacity-60': activeIndex !== index, 'opacity-100': activeIndex === index }]">
+                    <!-- <img :src="item.img?.url" class="w-[50%] h-auto" /> -->
+
+                    <img class="w-[50%] h-auto" v-lazy="{
+                      src: item.img?.url,
+                      loading: '/assets/img/placeholder.webp',
+                      error: '/assets/img/placeholder.webp',
+                      delay: 250
+                    }" loading="lazy" alt="" />
                   </div>
                 </div>
 
                 <div
                   class="absolute bottom-[-35px] left-0 w-full flex flex-row justify-center gap-x-3 md:gap-x-10 items-center bg-transparent">
                   <div v-for="(item, index) in missionsAll" :key="'dot-' + index" @click="setActive(index)"
-                    :class="['transition-all ease-in duration-[0.5s] w-[50px] md:w-[100px] h-2 rounded-full cursor-pointer', activeIndex == index ? 'bg-[#04B2CA]' : 'bg-[#D9D9D9]']">
+                    :class="['transition-all ease-in duration-[0.5s] w-[50px] md:w-[100px] h-2 rounded-full cursor-pointer', activeIndex == index ? 'bg-bluelightcf' : 'bg-[#D9D9D9]']">
                   </div>
                 </div>
 
@@ -60,7 +67,7 @@
                   </h2>
                 </transition>
 
-                <!-- <hr class="w-full h-0.5 mx-auto my-4 bg-[#04B2CA] border-0 rounded md:my-2"> -->
+                <!-- <hr class="w-full h-0.5 mx-auto my-4 bg-bluelightcf border-0 rounded md:my-2"> -->
 
                 <transition name="fade" mode="out-in">
                   <p :key="missionsAll[activeIndex].text?.markdown"
@@ -168,7 +175,7 @@ onMounted(() => {
 
 
 <style>
-.swiper-slide-opacity {
+/* .swiper-slide-opacity {
   opacity: 0.5;
   transition: opacity 0.3s ease;
 }
@@ -188,7 +195,7 @@ onMounted(() => {
 
 .swiper-pagination-bullet-active {
   background: #00c1de;
-}
+} */
 
 .fade-enter-active,
 .fade-leave-active {

@@ -1,6 +1,6 @@
 <template>
   <section
-    class="h-dvh flex items-stretch bg-no-repeat bg-cover relative text-white bg-gradient-to-br from-[#1D394D] to-[#5083C2] !font-muller p-5">
+    class="h-dvh flex items-stretch bg-no-repeat bg-cover relative text-white bg-gradient-to-br from-bluecf to-[#5083C2] !font-muller p-5">
 
     <div
       class="hidden md:flex lg:w-1/2 w-full items-center justify-center text-center md:px-16 px-0 z-1 bg-transparent rounded-[20px] relative">
@@ -8,7 +8,7 @@
     </div>
 
     <div
-      class="lg:w-1/2 w-full flex items-center justify-center text-center px-8 md:px-10 xl:px-14 2xl:px-16 z-1 bg-[#1D394D] rounded-[20px] relative">
+      class="lg:w-1/2 w-full flex items-center justify-center text-center px-8 md:px-10 xl:px-14 2xl:px-16 z-1 bg-bluecf rounded-[20px] relative">
       <div class="w-full py-6 z-20">
         <div class="text-left md:w-2/3 w-full px-0 mx-auto pb-0">
           <h1 class="text-3xl font-semibold">Bienvenido</h1>
@@ -35,10 +35,10 @@
           <div class="flex flex-col md:flex-row justify-between pt-4 max-md:gap-y-5">
             <ButtonLoading label="Iniciar sesión" :disable="!formValido" :is-loading="isLoading"
               width="!w-full md:!w-[60%]" width-loading="!w-2/12" border-radius="rounded-[25px]"
-              color-button="!bg-[#04B2CA]" color-button-hover="!bg-[#04B2CA80]" color-text="text-white"
+              color-button="!bg-bluelightcf" color-button-hover="!bg-[#04B2CA80]" color-text="text-white"
               size-text="text-[0.8em]" />
             <div
-              class="font-muller flex justify-center items-center transition-all ease-in duration-500 border-2 border-[#04B2CA] rounded-[25px] max-md:py-3 px-7 w-full md:w-[37%] hover:bg-[#04B2CA] hover:text-white uppercase font-black text-[0.8em] cursor-pointer">
+              class="font-muller flex justify-center items-center transition-all ease-in duration-500 border-2 border-[#04B2CA] rounded-[25px] max-md:py-3 px-7 w-full md:w-[37%] hover:bg-bluelightcf hover:text-white uppercase font-black text-[0.8em] cursor-pointer">
               Registrarme</div>
           </div>
 

@@ -2,71 +2,78 @@
     <div class="h-full w-full !font-muller bg-white overflow-hidden">
 
         <!-- Footer -->
-        <footer class="w-full bg-[#1D394D]" id="footer">
-            <div class="mx-auto max-w-full px-20">
+        <footer class="w-full bg-bluecf" id="section7">
+            <div class="mx-auto max-w-full md:px-20">
                 <!--Grid-->
                 <div class="py-16 flex justify-between items-center flex-col gap-8 lg:flex-row">
 
                     <a href="https://pagedone.io/" class="flex justify-center">
-                        <img src="/assets/img/logo-footer.png" alt="" class="w-[150px] h-auto">
+                        <img src="/assets/img/logo-footer.png" alt="" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} w-[150px] h-auto`]">
                     </a>
 
                     <ul
-                        class="text-lg text-center sm:flex items-cente justify-center gap-14 lg:gap-10 xl:gap-14 transition-all duration-500">
+                        class="max-lg:hidden flex text-lg text-center items-cente justify-center gap-14 lg:gap-10 xl:gap-14 transition-all duration-500 ">
                         <li class="text-white">
                             <div>
-                                <p>© 2023 Digitalquo.</p>
+                                <p :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} text-[0.85rem] md:text-[0.9rem] xl:text-[1.05rem]`]">© 2023 Digitalquo.</p>
                             </div>
                             <div class="flex flex-row gap-x-5">
-                                <p
-                                    class="transition-all ease-in duration-150 cursor-pointer border-x-2 border-x-transparent border-t-transparent border-t-2 border-b-2 border-white hover:border-2 hover:border-x-white hover:border-t-white px-2 py-1">
+                                <p :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 text-[0.85rem] md:text-[0.9rem] xl:text-[1.05rem] cursor-pointer border-x-2 border-x-transparent border-t-transparent border-t-2 border-b-2 border-white hover:border-2 hover:border-x-white hover:border-t-white px-2 py-1`]">
                                     Política de privacidad</p>
-                                <p
-                                    class="transition-all ease-in duration-150 cursor-pointer border-x-2 border-x-transparent border-t-transparent border-t-2 border-b-2 border-white hover:border-2 hover:border-x-white hover:border-t-white px-2 py-1">
+                                <p :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 text-[0.85rem] md:text-[0.9rem] xl:text-[1.05rem] cursor-pointer border-x-2 border-x-transparent border-t-transparent border-t-2 border-b-2 border-white hover:border-2 hover:border-x-white hover:border-t-white px-2 py-1`]">
                                     Política de Cookies</p>
                             </div>
                         </li>
                     </ul>
 
-                    <div class="flex  space-x-4 sm:justify-center">
+                    <div class="max-md:w-full flex gap-x-12 lg:gap-x-6 justify-center">
 
-                        <a href="javascript:;" class="w-9 h-9 flex justify-center items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                fill="none">
-                                <path id="Vector"
-                                    d="M11.3214 8.93666L16.4919 3.05566H15.2667L10.7772 8.16205L7.1914 3.05566H3.05566L8.47803 10.7774L3.05566 16.9446H4.28097L9.022 11.552L12.8088 16.9446H16.9446L11.3211 8.93666H11.3214ZM9.64322 10.8455L9.09382 10.0765L4.72246 3.95821H6.60445L10.1322 8.8959L10.6816 9.66481L15.2672 16.083H13.3852L9.64322 10.8458V10.8455Z"
-                                    fill="white" />
-                            </svg>
-                        </a>
-
-                        <a href="javascript:;" class="w-9 h-9 flex justify-center items-center">
-                            <svg class="w-[1.25rem] h-[1.125rem] text-white" viewBox="0 0 15 15" fill="none"
+                        <a href="javascript:;" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} w-9 h-9 flex justify-center items-center`]">
+                            <svg class=" w-[1.5rem] md:w-[1.5rem] lg:w-[1.4rem] xl:w-[1.4rem] 2xl:w-[1.5rem]" viewBox="0 0 25 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M4.70975 7.93663C4.70975 6.65824 5.76102 5.62163 7.0582 5.62163C8.35537 5.62163 9.40721 6.65824 9.40721 7.93663C9.40721 9.21502 8.35537 10.2516 7.0582 10.2516C5.76102 10.2516 4.70975 9.21502 4.70975 7.93663ZM3.43991 7.93663C3.43991 9.90608 5.05982 11.5025 7.0582 11.5025C9.05658 11.5025 10.6765 9.90608 10.6765 7.93663C10.6765 5.96719 9.05658 4.37074 7.0582 4.37074C5.05982 4.37074 3.43991 5.96719 3.43991 7.93663ZM9.97414 4.22935C9.97408 4.39417 10.0236 4.55531 10.1165 4.69239C10.2093 4.82946 10.3413 4.93633 10.4958 4.99946C10.6503 5.06259 10.8203 5.07916 10.9844 5.04707C11.1484 5.01498 11.2991 4.93568 11.4174 4.81918C11.5357 4.70268 11.6163 4.55423 11.649 4.39259C11.6817 4.23095 11.665 4.06339 11.6011 3.91109C11.5371 3.7588 11.4288 3.6286 11.2898 3.53698C11.1508 3.44536 10.9873 3.39642 10.8201 3.39635H10.8197C10.5955 3.39646 10.3806 3.48424 10.222 3.64043C10.0635 3.79661 9.97434 4.00843 9.97414 4.22935ZM4.21142 13.5892C3.52442 13.5584 3.15101 13.4456 2.90286 13.3504C2.57387 13.2241 2.33914 13.0738 2.09235 12.8309C1.84555 12.588 1.69278 12.3569 1.56527 12.0327C1.46854 11.7882 1.3541 11.4201 1.32287 10.7431C1.28871 10.0111 1.28189 9.79119 1.28189 7.93669C1.28189 6.08219 1.28927 5.86291 1.32287 5.1303C1.35416 4.45324 1.46944 4.08585 1.56527 3.84069C1.69335 3.51647 1.84589 3.28513 2.09235 3.04191C2.3388 2.79869 2.57331 2.64813 2.90286 2.52247C3.1509 2.42713 3.52442 2.31435 4.21142 2.28358C4.95417 2.24991 5.17729 2.24319 7.0582 2.24319C8.9391 2.24319 9.16244 2.25047 9.90582 2.28358C10.5928 2.31441 10.9656 2.42802 11.2144 2.52247C11.5434 2.64813 11.7781 2.79902 12.0249 3.04191C12.2717 3.2848 12.4239 3.51647 12.552 3.84069C12.6487 4.08513 12.7631 4.45324 12.7944 5.1303C12.8285 5.86291 12.8354 6.08219 12.8354 7.93669C12.8354 9.79119 12.8285 10.0105 12.7944 10.7431C12.7631 11.4201 12.6481 11.7881 12.552 12.0327C12.4239 12.3569 12.2714 12.5882 12.0249 12.8309C11.7784 13.0736 11.5434 13.2241 11.2144 13.3504C10.9663 13.4457 10.5928 13.5585 9.90582 13.5892C9.16306 13.6229 8.93994 13.6296 7.0582 13.6296C5.17645 13.6296 4.95395 13.6229 4.21142 13.5892ZM4.15307 1.03424C3.40294 1.06791 2.89035 1.18513 2.4427 1.3568C1.9791 1.53408 1.58663 1.77191 1.19446 2.1578C0.802277 2.54369 0.56157 2.93108 0.381687 3.38797C0.207498 3.82941 0.0885535 4.3343 0.0543922 5.07358C0.0196672 5.81402 0.0117188 6.05074 0.0117188 7.93663C0.0117188 9.82252 0.0196672 10.0592 0.0543922 10.7997C0.0885535 11.539 0.207498 12.0439 0.381687 12.4853C0.56157 12.9419 0.802334 13.3297 1.19446 13.7155C1.58658 14.1012 1.9791 14.3387 2.4427 14.5165C2.89119 14.6881 3.40294 14.8054 4.15307 14.839C4.90479 14.8727 5.1446 14.8811 7.0582 14.8811C8.9718 14.8811 9.212 14.8732 9.96332 14.839C10.7135 14.8054 11.2258 14.6881 11.6737 14.5165C12.137 14.3387 12.5298 14.1014 12.9219 13.7155C13.3141 13.3296 13.5543 12.9419 13.7347 12.4853C13.9089 12.0439 14.0284 11.539 14.062 10.7997C14.0962 10.0587 14.1041 9.82252 14.1041 7.93663C14.1041 6.05074 14.0962 5.81402 14.062 5.07358C14.0278 4.33424 13.9089 3.82913 13.7347 3.38797C13.5543 2.93135 13.3135 2.5443 12.9219 2.1578C12.5304 1.7713 12.137 1.53408 11.6743 1.3568C11.2258 1.18513 10.7135 1.06735 9.96388 1.03424C9.21256 1.00058 8.97236 0.992188 7.05876 0.992188C5.14516 0.992188 4.90479 1.00002 4.15307 1.03424Z"
-                                    fill="currentColor" />
+                                    d="M12.1396 0C5.57942 0 0.260742 5.31868 0.260742 11.8788C0.260742 17.8069 4.60407 22.7205 10.2839 23.6151V15.3133H7.26638V11.8788H10.2839V9.26164C10.2839 6.28213 12.0576 4.63914 14.7698 4.63914C16.0695 4.63914 17.4309 4.87079 17.4309 4.87079V7.79209H15.9293C14.4561 7.79209 13.9952 8.70922 13.9952 9.64892V11.8764H17.2871L16.7609 15.3109H13.9952V23.6127C19.6751 22.7229 24.0184 17.8081 24.0184 11.8788C24.0184 5.31868 18.6997 0 12.1396 0Z"
+                                    fill="#E6E6E6" />
                             </svg>
                         </a>
 
-                        <a href="javascript:;" class="w-9 h-9 flex justify-center items-center">
-                            <svg class="w-[1rem] h-[1rem] text-white" viewBox="0 0 13 12" fill="none"
+                        <a href="javascript:;" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} w-9 h-9 flex justify-center items-center`]">
+                            <svg class=" w-[1.5rem] md:w-[1.5rem] lg:w-[1.4rem] xl:w-[1.4rem] 2xl:w-[1.5rem]" viewBox="0 0 25 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M2.8794 11.5527V3.86835H0.318893V11.5527H2.87967H2.8794ZM1.59968 2.81936C2.4924 2.81936 3.04817 2.2293 3.04817 1.49188C3.03146 0.737661 2.4924 0.164062 1.61666 0.164062C0.74032 0.164062 0.167969 0.737661 0.167969 1.49181C0.167969 2.22923 0.723543 2.8193 1.5829 2.8193H1.59948L1.59968 2.81936ZM4.29668 11.5527H6.85698V7.26187C6.85698 7.03251 6.87369 6.80255 6.94134 6.63873C7.12635 6.17968 7.54764 5.70449 8.25514 5.70449C9.18141 5.70449 9.55217 6.4091 9.55217 7.44222V11.5527H12.1124V7.14672C12.1124 4.78652 10.8494 3.68819 9.16483 3.68819C7.78372 3.68819 7.17715 4.45822 6.84014 4.98267H6.85718V3.86862H4.29681C4.33023 4.5895 4.29661 11.553 4.29661 11.553L4.29668 11.5527Z"
-                                    fill="currentColor" />
+                                    d="M2.41855 19.3076C1.75855 19.3076 1.19375 19.0753 0.724155 18.6106C0.254555 18.1458 0.0193547 17.5865 0.0185547 16.9326V2.68262C0.0185547 2.02949 0.253755 1.47058 0.724155 1.00587C1.19455 0.541159 1.75935 0.308409 2.41855 0.307617H21.6186C22.2786 0.307617 22.8438 0.540367 23.3142 1.00587C23.7846 1.47137 24.0194 2.03028 24.0186 2.68262V16.9326C24.0186 17.5857 23.7838 18.1451 23.3142 18.6106C22.8446 19.0761 22.2794 19.3084 21.6186 19.3076H2.41855ZM12.0186 10.9951L21.6186 5.05762V2.68262L12.0186 8.62012L2.41855 2.68262V5.05762L12.0186 10.9951Z"
+                                    fill="#E6E6E6" />
                             </svg>
                         </a>
 
-                        <a href="javascript:;" class="w-9 h-9 flex justify-center items-center">
-                            <svg class="w-[1.25rem] h-[0.875rem] text-white" viewBox="0 0 16 12" fill="none"
+                        <a href="javascript:;" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} w-9 h-9 flex justify-center items-center`]">
+                            <svg class=" w-[1.5rem] md:w-[1.5rem] lg:w-[1.4rem] xl:w-[1.4rem] 2xl:w-[1.5rem]" viewBox="0 0 22 23" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M13.9346 1.13529C14.5684 1.30645 15.0665 1.80588 15.2349 2.43896C15.5413 3.58788 15.5413 5.98654 15.5413 5.98654C15.5413 5.98654 15.5413 8.3852 15.2349 9.53412C15.0642 10.1695 14.5661 10.669 13.9346 10.8378C12.7886 11.1449 8.19058 11.1449 8.19058 11.1449C8.19058 11.1449 3.59491 11.1449 2.44657 10.8378C1.81277 10.6666 1.31461 10.1672 1.14622 9.53412C0.839844 8.3852 0.839844 5.98654 0.839844 5.98654C0.839844 5.98654 0.839844 3.58788 1.14622 2.43896C1.31695 1.80353 1.81511 1.30411 2.44657 1.13529C3.59491 0.828125 8.19058 0.828125 8.19058 0.828125C8.19058 0.828125 12.7886 0.828125 13.9346 1.13529ZM10.541 5.98654L6.72178 8.19762V3.77545L10.541 5.98654Z"
-                                    fill="currentColor" />
+                                    d="M11.3139 0.947021C5.65066 0.947021 1.14653 5.34022 0.90323 10.8554L0.902634 10.8727C0.90185 10.9041 0.900598 10.942 0.899222 10.9836C0.895935 11.0831 0.891943 11.2039 0.891943 11.3086C0.891943 13.116 1.35788 14.8146 2.17248 16.2943L0.0185547 22.6678L6.63074 20.5642C8.04045 21.2719 9.63327 21.6703 11.3174 21.6703C17.0687 21.6703 21.7394 17.0381 21.7394 11.3086V11.3018V11.3017C21.7394 11.2261 21.7394 11.1294 21.735 11.0298L21.6976 10.1673H21.6729C21.101 4.97657 16.679 0.947021 11.3139 0.947021ZM15.9921 13.4734C16.0453 13.5487 16.0453 13.9133 15.8693 14.3378C15.6932 14.7624 14.8506 15.1502 14.4452 15.2022C14.1447 15.2406 13.7782 15.2607 13.3746 15.1883C13.2901 15.1732 13.2039 15.154 13.1163 15.13C12.8103 15.0462 12.4171 14.9343 11.9137 14.7471L11.9112 14.7461C11.1474 14.4616 10.4793 14.0404 9.93242 13.6127L9.93236 13.6127C9.11597 12.9742 8.56986 12.3212 8.37909 12.0866L8.34674 12.0467C8.32931 12.0252 8.31711 12.0101 8.31029 12.0022L8.30779 11.9993C8.24477 11.9267 7.98901 11.632 7.77289 11.2329C7.59807 10.91 7.44918 10.5189 7.44918 10.1217C7.44918 9.2858 7.92545 8.84694 8.14536 8.64431C8.16073 8.63014 8.17486 8.61713 8.18748 8.60521C8.38057 8.42292 8.60916 8.37765 8.74972 8.37765C8.89099 8.37765 9.03155 8.37826 9.15436 8.38377C9.1696 8.38441 9.18544 8.38432 9.20182 8.38422C9.32503 8.38348 9.47826 8.38256 9.62928 8.69575C9.68334 8.80797 9.76082 8.97067 9.8437 9.14471L9.84371 9.14474C10.0296 9.53516 10.2427 9.98263 10.2795 10.0452C10.3328 10.1364 10.3676 10.2428 10.2973 10.364C10.2863 10.3828 10.2762 10.4005 10.2666 10.4174C10.2139 10.5098 10.1751 10.5778 10.085 10.6668C10.0497 10.7024 10.0132 10.7407 9.97676 10.779L9.97673 10.779L9.97672 10.779C9.90825 10.8509 9.83989 10.9228 9.7792 10.9761L9.76842 10.9855C9.66336 11.076 9.55332 11.1739 9.67613 11.3562C9.79895 11.5385 10.2228 12.1337 10.8496 12.6158C11.5228 13.1335 12.1083 13.3524 12.4057 13.4635L12.4735 13.489L12.4736 13.4891C12.5019 13.4998 12.5262 13.5094 12.5463 13.5181C12.7571 13.6092 12.8806 13.5939 13.0034 13.4728C13.0305 13.4462 13.0709 13.4057 13.1191 13.3568C13.291 13.1825 13.5611 12.9014 13.6714 12.7595C13.8127 12.5778 13.9533 12.6084 14.1464 12.669C14.3402 12.7296 15.3773 13.1694 15.5882 13.2605C15.6295 13.2784 15.6682 13.2945 15.704 13.3095L15.7041 13.3095L15.7041 13.3095C15.8508 13.3707 15.9499 13.412 15.9921 13.4734ZM8.66431 9.57193L8.66432 9.57193L8.65862 9.58183L8.66431 9.57193Z"
+                                    fill="#E6E6E6" />
                             </svg>
                         </a>
 
                     </div>
+
+                    <ul
+                        class="max-lg:flex hidden text-lg text-center items-cente justify-center gap-14 lg:gap-10 xl:gap-14 transition-all duration-500">
+                        <li class="text-white">
+                            <div>
+                                <p :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} text-[0.85rem] md:text-[0.9rem] xl:text-[1.05rem]`]">© 2023 Digitalquo.</p>
+                            </div>
+                            <div class="flex flex-row gap-x-5">
+                                <p
+                                :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 text-[0.85rem] md:text-[0.9rem] xl:text-[1.05rem] cursor-pointer border-x-2 border-x-transparent border-t-transparent border-t-2 border-b-2 border-white hover:border-2 hover:border-x-white hover:border-t-white px-2 py-1`]">
+                                    Política de privacidad</p>
+                                <p
+                                :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 text-[0.85rem] md:text-[0.9rem] xl:text-[1.05rem] cursor-pointer border-x-2 border-x-transparent border-t-transparent border-t-2 border-b-2 border-white hover:border-2 hover:border-x-white hover:border-t-white px-2 py-1`]">
+                                    Política de Cookies</p>
+                            </div>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </footer>
@@ -92,7 +99,7 @@ const visibility = reactive({
 const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0,
+    threshold: 0.5,
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -114,6 +121,4 @@ onMounted(() => {
 </script>
 
 
-<style>
-
-</style>
+<style></style>

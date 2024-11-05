@@ -21,7 +21,7 @@
                                     <div class="grid w-full md:w-[90%] h-full grid-cols-12 items-center gap-4">
                                         <div class="col-span-12 w-full text-center md:text-left">
                                             <h2
-                                                :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} text-[1.7rem] md:text-[2rem] lg:text-[2rem] xl:text-[2.6rem] 2xl:text-[2.8rem] font-bold text-[#1D394D]`]">
+                                                :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} text-[1.7rem] md:text-[1.8rem] lg:text-[2rem] xl:text-[2.6rem] 2xl:text-[2.8rem] font-bold text-bluecf`]">
                                                 ¿Tienes alguna duda?</h2>
                                             <p
                                                 :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} mb-8 text-[0.9rem] md:text-[0.95rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.05rem] text-black max-md:px-6`]">
@@ -34,8 +34,8 @@
                                                         v-model="form.name" focus-color-border="focus:border-[#D4D4D4]"
                                                         color-text="text-[#D4D4D4]" border-radius="rounded-full"
                                                         bg-label="bg-white" bg-input="bg-white" border-width="border-[1px]"
-                                                        bg-label-dark="bg-[#ffffff]" color-border="border-[#D4D4D4]"
-                                                        :regexValidation="[textEmptyRegexValidation]" />
+                                                        bg-label-dark="bg-white" color-border="border-[#D4D4D4]"
+                                                        :regexValidation="[nameRegexValidation]" />
                                                 </div>
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex flex-col md:flex-row`]">
@@ -44,30 +44,30 @@
                                                         color-text="text-[#D4D4D4]" border-radius="rounded-full"
                                                         border-width="border-[1px]"
                                                         bg-label="bg-white" bg-input="bg-white"
-                                                        bg-label-dark="bg-[#ffffff]" color-border="border-[#D4D4D4]"
-                                                        :regexValidation="[textEmptyRegexValidation]" />
+                                                        bg-label-dark="bg-white" color-border="border-[#D4D4D4]"
+                                                        :regexValidation="[emailRegexValidation]" />
                                                 </div>
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} hidden md:flex flex-col w-full`]">
-                                                    <TextAreaCustom key="description" id="description" type="text"
-                                                        label="Descripción" v-model="form.comment" :value="form.comment"
+                                                    <TextAreaCustom key="comment" id="comment" type="text"
+                                                        label="Comentario*" v-model="form.comment" :value="form.comment"
                                                         focus-color-border="focus:border-[#D4D4D4]"
                                                         color-text="!text-[#D4D4D4]" border-radius="rounded-[20px]"
                                                         border-width="border-[1px]"
                                                         bg-label="bg-white" bg-input="bg-white"
-                                                        bg-label-dark="bg-[#ffffff]" color-border="border-[#D4D4D4]"
+                                                        bg-label-dark="bg-white" color-border="border-[#D4D4D4]"
                                                         :regexValidation="[comentaryRegexValidation]" rows="12" />
 
                                                 </div>
 
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex md:hidden flex-col w-full`]">
-                                                    <TextAreaCustom key="description" id="description" type="text"
-                                                        label="Descripción" v-model="form.comment" :value="form.comment"
+                                                    <TextAreaCustom key="comment" id="comment" type="text"
+                                                        label="Comentario*" v-model="form.comment" :value="form.comment"
                                                         focus-color-border="focus:border-[#D4D4D4]"
                                                         color-text="!text-[#D4D4D4]" border-radius="rounded-[20px]"
                                                         bg-label="bg-white" bg-input="bg-white"
-                                                        bg-label-dark="bg-[#ffffff]" color-border="border-[#D4D4D4]"
+                                                        bg-label-dark="bg-white" color-border="border-[#D4D4D4]"
                                                         :regexValidation="[comentaryRegexValidation]" rows="5" />
 
                                                 </div>
@@ -76,8 +76,8 @@
                                                     <ButtonLoading width="!w-[50%] md:!w-[40%] 2xl:!w-[30%]"
                                                         label="Enviar" border-radius="rounded-full"
                                                         :disable="!formValido" :is-loading="isLoading"
-                                                        color-button="!bg-[#04B2CA]"
-                                                        color-button-hover="!bg-[#04B2CA]/50" />
+                                                        color-button="!bg-bluelightcf"
+                                                        color-button-hover="!bg-bluelightcf/50" />
                                                 </div>
                                             </div>
                                         </div>
@@ -97,7 +97,7 @@
 
 <script lang="ts" setup>
 // Composables
-import { comentaryRegexValidation, nameRegexValidation, textEmptyRegexValidation, validateForm } from '../../composable/validator';
+import { comentaryRegexValidation, emailRegexValidation, nameRegexValidation, validateForm } from '../../composable/validator';
 // Components
 import TextAreaCustom from '../../components/TextAreaCustom.vue';
 import ButtonLoading from '../../components/ButtonLoading.vue';
@@ -121,17 +121,16 @@ const visibility = reactive({
 const form = reactive({
     name: '',
     email: '',
-    comment: '',
-    status: false,
-    type: false,
+    comment: 'Escribe tu cometario: ',
 });
 
 const formValido = computed(() => {
-    return validateForm(
-        { name: form.name, status: form.status },
-        { name: nameRegexValidation, status: nameRegexValidation }
-    );
-});
+  return validateForm(form, {
+    name: nameRegexValidation,
+    email: emailRegexValidation,
+    comment: comentaryRegexValidation
+  })
+})
 
 const observerOptions = {
     root: null,
