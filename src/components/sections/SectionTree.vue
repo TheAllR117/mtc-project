@@ -7,17 +7,17 @@
                 class="w-full h-full px-[15px] mx-auto sm:max-w-[540px] md:max-w-[720px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1260px]">
                 <div class="py-[30px] md:py-[50px] relative m-0 w-full h-full">
                     <div
-                        class="w-full h-full bg-gradient-to-tl from-[#23465E] to-[#4992C4] rounded-[20px] overflow-hidden px-5 md:px-14 pb-14">
+                        class="w-full h-full bg-gradient-to-tl from-[#23465E] to-[#4992C4] rounded-[20px] overflow-hidden px-5 md:px-10 lg:px-14 pb-14">
 
-                        <div class="w-full h-auto flex justify-center items-center mt-[60px] max-md:mb-[30px]">
+                        <div class="w-full h-auto flex justify-center items-center mt-[30px] lg:mt-[60px] max-lg:mb-[30px]">
                             <h2
-                                :class="[`${visibility.section3 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} text-white font-bold font-muller text-[1.6rem] sm:text-[1.6rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem] max-md:text-center`]">
-                                No estás solo nosotros <br class="md:hidden"> estamos contigo 😎
+                                :class="[`${visibility.section3 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} text-white font-bold font-muller text-[1.3rem] sm:text-[1.5rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem] max-md:text-center`]">
+                                No estás solo nosotros <br class="md:hidden"> estamos contigo <span class="ml-3 bg-[url(/assets/img/emoji-3.png)] bg-cover text-transparent">**</span>
                             </h2>
                         </div>
 
                         <div class="relative m-0 w-full h-auto flex justify-center items-center">
-                            <div class="w-full h-auto flex flex-col md:flex-row justify-between items-center md:px-7">
+                            <div class="w-full h-auto flex flex-col md:flex-row justify-between items-center md:px-5 lg:px-7">
 
                                 <!-- Sección de Texto Desktop-->
                                 <div
@@ -33,9 +33,9 @@
                                         ]">
                                         </div>
                                         <h4
-                                            class="text-white text-1.1rem md:text-[1.2rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5rem] font-bold">
+                                            class="text-white text-1.1rem md:text-[1rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5rem] font-bold">
                                             {{ item.title }}</h4>
-                                        <p class="text-white text-[0.9rem] md:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.1rem]"
+                                        <p class="text-white text-[0.9rem] md:text-[0.8rem] xl:text-[0.95rem] 2xl:text-[1.1rem]"
                                             v-html="item.text?.markdown"></p>
                                     </div>
 
@@ -88,7 +88,7 @@
                                 <div class="max-md:flex hidden w-full h-full justify-center items-center"
                                     v-if="offerAll[activeIndex3]">
                                     <img :src="offerAll[activeIndex3].img?.url" :alt="offerAll[activeIndex3].title"
-                                        :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px] floating`]">
+                                        :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[240px] sm:w-[240px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px] floating`]">
                                 </div>
 
                             </div>
@@ -137,7 +137,7 @@ const visibility = reactive({
 const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0,
+    threshold: 0.2,
 };
 
 const observer = new IntersectionObserver((entries) => {

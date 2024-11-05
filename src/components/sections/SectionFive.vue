@@ -8,14 +8,14 @@
           :class="[`${visibility.section5 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} w-full h-auto flex flex-col justify-center items-center my-[30px] text-center`]">
           <h2
             class="text-bluecf font-bold font-muller text-[1.2rem] sm:text-[1.8rem] md: lg:text-[2.2rem] xl:text-[2.3rem] 2xl:text-[2.5rem]">
-            ¿Cuántos timbres necesitas? 😉</h2>
+            ¿Cuántos timbres necesitas? <span class="ml-3 bg-[url(/assets/img/emoji-1.png)] bg-cover text-transparent">**</span> </h2>
           <p class="px-8 md:px-16">Contamos con paquetes prepago y planes pospago para que elijas <span
               class="text-[#04B2CA]">el que mejor se adapte a tu negocio:</span></p>
         </div>
         <div
           class="grid grid-cols-1 grid-rows-1 items-center justify-center gap-10 py-4 max-sm:px-[20px] max-md:px-[40px] md:w-full md:grid-cols-2 md:h-[730px] lg:h-[650px] lg:grid-cols-3">
           <div
-            :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
+            :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px] shadow-[0_0px_7px_3px_rgba(0,0,0,0.15)]`]">
             <div class="h-[22%] bg-bluecf p-6 text-center flex flex-col justify-center items-center">
               <h2
                 class="text-[1.5rem] text-xl font-bold leading-6 text-white lg:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem]">
@@ -57,7 +57,7 @@
             </div>
           </div>
           <div
-            :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
+            :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px] shadow-[0_0px_7px_3px_rgba(0,0,0,0.15)]`]">
             <div class="h-[22%] bg-bluelightcf px-2 py-6 text-center flex flex-col justify-center items-center">
               <h2
                 class="text-[1.5rem] text-xl font-bold leading-6 text-white lg:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem]">
@@ -135,7 +135,7 @@
           :class="[`${visibility.section5 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} w-full h-auto flex flex-col justify-center items-center my-[30px] text-center`]">
           <h2
             class="text-bluecf font-bold font-muller text-[1.2rem] sm:text-[1.8rem] md: lg:text-[2.2rem] xl:text-[2.3rem] 2xl:text-[2.5rem]">
-            ¿Cuántos timbres necesitas? 😉</h2>
+            ¿Cuántos timbres necesitas? <span class="ml-3 bg-[url(/assets/img/emoji-1.png)] bg-cover text-transparent">**</span></h2>
           <p class="px-8 md:px-16">Contamos con paquetes prepago y planes pospago para que elijas <span
               class="text-[#04B2CA]">el que mejor se adapte a tu negocio:</span></p>
         </div>
@@ -157,7 +157,7 @@
             }" class="mySwiper h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]">
 
             <swiper-slide
-              :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
+              :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px] shadow-[0_0px_7px_3px_rgba(0,0,0,0.15)]`]">
 
               <div class="h-[22%] bg-bluecf p-6 text-center flex flex-col justify-center items-center">
                 <h2
@@ -202,7 +202,7 @@
             </swiper-slide>
 
             <swiper-slide
-              :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px]`]">
+              :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px] shadow-[0_0px_7px_3px_rgba(0,0,0,0.15)]`]">
               <div class="h-[22%] bg-bluelightcf px-2 py-6 text-center flex flex-col justify-center items-center">
                 <h2
                   class="text-[1.5rem] text-xl font-bold leading-6 text-white lg:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem]">

@@ -16,8 +16,8 @@
 
           <div class="w-full h-auto flex justify-center items-center mt-[40px] md:mt-[60px] md:mb-[20px] relative z-10">
             <h2
-              class="text-white font-bold font-muller text-[1.3rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[1.9rem] 2xl:text-[2.3rem] md:mb-10 max-md:text-center">
-              ¡Facilitarte la vida es nuestra misión! 😎
+              class="text-white font-bold font-muller text-[1.3rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[1.9rem] 2xl:text-[2.3rem] md:mb-10 max-md:text-center ">
+              ¡Facilitarte la vida es nuestra misión! <span class="ml-3 bg-[url(/assets/img/emoji-3.png)] bg-cover text-transparent">**</span>
             </h2>
           </div>
 

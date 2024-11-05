@@ -12,7 +12,7 @@
                         <div class="w-full h-auto flex justify-center items-center my-[30px]">
                             <h2
                                 class="text-bluecf font-bold font-muller text-[1.6rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[2rem] 2xl:text-[2.2rem]">
-                                Nuestras <span class="text-[#04B2CA]">soluciones</span> 🤩</h2>
+                                Nuestras <span class="text-[#04B2CA]">soluciones</span> <span class="ml-3 bg-[url(/assets/img/emoji-4.png)] bg-cover text-transparent">**</span></h2>
                         </div>
 
                         <div
@@ -83,10 +83,10 @@
                                 1300: { slidesPerView: 1.15, spaceBetween: 15 },
                                 1500: { slidesPerView: 1.15, spaceBetween: 15 },
                             }"
-                            class="mySwiper max-md:!grid !hidden h-full text-white text-sm text-center font-bold leading-6 rounded-lg">
+                            class="mySwiper max-md:!grid !hidden h-full text-white text-sm text-center font-bold leading-6 rounded-lg ">
 
                             <swiper-slide v-for="(item, index) in solutionAll" :key="index"
-                                :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-[0.1s] rounded-[20px] shadow-lg text-bluecf overflow-hidden !h-[320px] group bg-white cursor-pointer `]">
+                                :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} my-5 transition-all ease-in duration-[0.1s] rounded-[20px] shadow-[0_0px_7px_3px_rgba(0,0,0,0.15)] text-bluecf overflow-hidden !h-[320px] group bg-white cursor-pointer `]">
                                 <div class="w-full !h-[60%] overflow-hidden relative">
                                     <!-- <img :src="item.img!.url" alt=""
                                         class="transition-all ease-in duration-[0.1s] relative-0 group-hover:scale-110"> -->
@@ -347,5 +347,18 @@ onMounted(() => {
     width: 326px;
     min-height: 310px;
     max-height: 600px;
+}
+
+/* .swiper-slide {
+    visibility: hidden;
+  
+}
+
+.swiper-slide-visible {
+    visibility: visible;
+} */
+
+.card {
+  box-shadow: 0px 0px 12px 2px rgba(0,0,0,.2);
 }
 </style>
