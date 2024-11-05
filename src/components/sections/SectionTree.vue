@@ -12,7 +12,7 @@
                         <div class="w-full h-auto flex justify-center items-center mt-[30px] lg:mt-[60px] max-lg:mb-[30px]">
                             <h2
                                 :class="[`${visibility.section3 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} text-white font-bold font-muller text-[1.3rem] sm:text-[1.5rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem] max-md:text-center`]">
-                                No estás solo nosotros <br class="md:hidden"> estamos contigo <span class="ml-3 bg-[url(/assets/img/emoji-3.png)] bg-cover text-transparent">**</span>
+                                No estás solo nosotros <br class="md:hidden"> estamos contigo <span class="ml-3 bg-[url(/assets/img/emoji-3.png)] bg-cover text-transparent ">**</span>
                             </h2>
                         </div>
 
