@@ -12,6 +12,7 @@
 </template>
 
 <script lang="ts" setup>
+//comment
 import SectionOne from '../components/sections/SectionOne.vue'
 import SectionTwo from '../components/sections/SectionTwo.vue'
 import SectionTree from '../components/sections/SectionTree.vue'
