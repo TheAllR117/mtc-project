@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white pt-[140px]">
+  <div class="bg-white pt-[80px] md:pt-[80px] lg:pt-[90px]">
     <SectionOne />
     <SectionTwo />
     <SectionTree />

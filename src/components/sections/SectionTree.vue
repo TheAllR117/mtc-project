@@ -1,18 +1,18 @@
 <template>
-    <div class="h-full w-full !font-muller bg-white overflow-hidden">
+    <div class="h-full w-full !font-muller bg-white overflow-hidden pb-16 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-36">
 
         <!-- Section 3 -->
         <section class="h-max bg-white font-muller" id="section3">
             <div
                 class="w-full h-full px-[15px] mx-auto sm:max-w-[540px] md:max-w-[720px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1260px]">
-                <div class="py-[30px] md:py-[50px] relative m-0 w-full h-full">
+                <div class="pt-2 relative m-0 w-full h-full">
                     <div
                         class="w-full h-full bg-gradient-to-tl from-[#23465E] to-[#4992C4] rounded-[20px] overflow-hidden px-5 md:px-10 lg:px-14 pb-14">
 
                         <div class="w-full h-auto flex justify-center items-center mt-[30px] lg:mt-[60px] max-lg:mb-[30px]">
                             <h2
                                 :class="[`${visibility.section3 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} text-white font-bold font-muller text-[1.3rem] sm:text-[1.5rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem] max-md:text-center`]">
-                                No estás solo nosotros <br class="md:hidden"> estamos contigo <span class="ml-3 bg-[url(/assets/img/emoji-3.png)] bg-cover text-transparent">**</span>
+                                No estás solo nosotros <br class="md:hidden"> estamos contigo <span class="ml-3 bg-[url(/assets/img/emoji-3.webp)] bg-cover text-transparent">**</span>
                             </h2>
                         </div>
 

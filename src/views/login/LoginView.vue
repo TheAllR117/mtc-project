@@ -4,7 +4,7 @@
 
     <div
       class="hidden md:flex lg:w-1/2 w-full items-center justify-center text-center md:px-16 px-0 z-1 bg-transparent rounded-[20px] relative">
-      <img src="/assets/img/bg-login.png" alt="" class="w-[500px] floating">
+      <img src="/assets/img/bg-login.webp" alt="" class="w-[500px] floating">
     </div>
 
     <div

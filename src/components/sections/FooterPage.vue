@@ -8,7 +8,7 @@
                 <div class="py-16 flex justify-between items-center flex-col gap-8 lg:flex-row">
 
                     <a href="https://pagedone.io/" class="flex justify-center">
-                        <img src="/assets/img/logo-footer.png" alt="" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} w-[150px] h-auto`]">
+                        <img src="/assets/img/logo-footer.webp" alt="" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} w-[150px] h-auto`]">
                     </a>
 
                     <ul

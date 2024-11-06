@@ -14,7 +14,7 @@
               class="mb-1 lg:mb-3 bg-gradient-to-tl from-[#23465E] to-[#4992C4] py-[30px] rounded-[30px_30px_0px_0px] flex justify-center items-center">
               <h6
                 class="text-center text-white text-[1.5rem] md:text-[1.7rem] lg:text-[1.9rem] xl:text-[2rem] 2xl:text-[2.2rem] font-bold">
-                Preguntas frecuentes <span class="ml-3 bg-[url(/assets/img/emoji-1.png)] bg-cover text-transparent">**</span></h6>
+                Preguntas frecuentes <span class="ml-3 bg-[url(/assets/img/emoji-1.webp)] bg-cover text-transparent">**</span></h6>
             </div>
 
             <div v-for="(item, index) in faqAllQuest" :key="index" class="" :class="[

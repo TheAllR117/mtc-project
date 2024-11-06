@@ -81,7 +81,7 @@
 
     <div
       :class="'transition-all ease-in duration-150 navbar-menu relative z-50 ' + (isMobileMenuOpen ? 'opacity-100 ' : 'opacity-0 pointer-events-none')">
-      <div class="navbar-backdrop fixed inset-0 bg-bluecf opacity-50"></div>
+      <div class="navbar-backdrop fixed inset-0 bg-bluecf opacity-50" @click="toggleMobileMenu"></div>
       <nav
         :class="'fixed bg-white top-0 bottom-0 flex flex-col w-70% max-w-sm py-5 px-5 overflow-y-auto rounded-[0px_10px_10px_0px] ' + (isMobileMenuOpen ? 'left-0 ' : 'left-[-350px]')">
 
