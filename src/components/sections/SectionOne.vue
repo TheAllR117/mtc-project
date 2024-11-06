@@ -17,7 +17,7 @@
           <div class="w-full h-auto flex justify-center items-center mt-[40px] md:mt-[60px] md:mb-[20px] relative z-10">
             <h2
               class="text-white font-bold font-muller text-[1.3rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[1.9rem] 2xl:text-[2.3rem] md:mb-10 max-md:text-center ">
-              ¡Facilitarte la vida es nuestra misión! <span class="ml-3 bg-[url(/assets/img/emoji-3.webp)] bg-cover text-transparent">**</span>
+              ¡Facilitarte la vida es nuestra misión! <span class="bg-[url(/assets/img/emoji-3.webp)] bg-cover text-transparent">**</span>
             </h2>
           </div>
 
@@ -28,7 +28,7 @@
               <div
                 class="bg-stripes-fuchsia grid grid-cols-3 gap-4 rounded-lg text-center font-mono text-sm font-bold leading-6 text-white relative">
 
-                <div v-for="(item, index) in missionsAll" :key="index" @click="setActive(index)"
+                <div v-for="(item, index) in missionsAll.slice(0, 3)" :key="index" @click="setActive(index)"
                   :class="['transition-all ease-in duration-[0.5s] w-full h-full flex justify-center items-center place-items-center content-center cursor-pointer hover:scale-100', activeIndex == index ? '' : 'scale-90']">
 
                   <div
@@ -46,7 +46,7 @@
 
                 <div
                   class="absolute bottom-[-55px] left-0 w-full flex flex-row justify-center gap-x-3 md:gap-x-10 items-center bg-transparent">
-                  <div v-for="(item, index) in missionsAll" :key="'dot-' + index" @click="setActive(index)"
+                  <div v-for="(item, index) in missionsAll.slice(0, 3)" :key="'dot-' + index" @click="setActive(index)"
                     :class="['transition-all ease-in duration-[0.5s] w-[40px] md:w-[60px] h-1.5 md:h-2 rounded-full cursor-pointer', activeIndex == index ? 'bg-bluelightcf' : 'bg-[#D9D9D9]']">
                   </div>
                 </div>
@@ -56,23 +56,23 @@
             </div>
 
             <!-- Right xSide: Details and Buttons -->
-            <div v-if="missionsAll && missionsAll[activeIndex]"
+            <div v-if="missionsAll.slice(0, 3) && missionsAll.slice(0, 3)[activeIndex]"
               class="md:w-[35%] h-auto md:px-16 max-md:mb-7 flex justify-center items-center">
               <div class="flex flex-col items-center justify-center text-center w-auto h-[150px]">
                 <transition name="fade" mode="out-in">
-                  <h2 :key="missionsAll[activeIndex].title" :class="[
+                  <h2 :key="missionsAll.slice(0, 3)[activeIndex].title" :class="[
                     'text-white text-[1.1rem] md:text-[1.2rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5em] font-bold border-b-[#04B2CA] border-b-2 mb-4 pb-2'
                   ]">
-                    {{ missionsAll[activeIndex].title }}
+                    {{ missionsAll.slice(0, 3)[activeIndex].title }}
                   </h2>
                 </transition>
 
                 <!-- <hr class="w-full h-0.5 mx-auto my-4 bg-bluelightcf border-0 rounded md:my-2"> -->
 
                 <transition name="fade" mode="out-in">
-                  <p :key="missionsAll[activeIndex].text?.markdown"
+                  <p :key="missionsAll.slice(0, 3)[activeIndex].text?.markdown"
                     class="text-white text-[0.9rem] md:text-[0.95rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.1rem] font-light"
-                    v-html="missionsAll[activeIndex].text?.markdown"></p>
+                    v-html="missionsAll.slice(0, 3)[activeIndex].text?.markdown"></p>
                 </transition>
               </div>
             </div>

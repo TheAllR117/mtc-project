@@ -9,41 +9,61 @@
                     <div
                         class="w-full h-full bg-gradient-to-tl from-[#23465E] to-[#4992C4] rounded-[20px] overflow-hidden px-5 md:px-10 lg:px-14 pb-14">
 
-                        <div class="w-full h-auto flex justify-center items-center mt-[30px] lg:mt-[60px] max-lg:mb-[30px]">
+                        <div
+                            class="w-full h-auto flex justify-center items-center mt-[30px] lg:mt-[60px] max-lg:mb-[30px]">
                             <h2
                                 :class="[`${visibility.section3 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} text-white font-bold font-muller text-[1.3rem] sm:text-[1.5rem] md: lg:text-[1.7rem] xl:text-[1.8rem] 2xl:text-[2rem] max-md:text-center`]">
-                                No estás solo nosotros <br class="md:hidden"> estamos contigo <span class="ml-3 bg-[url(/assets/img/emoji-3.webp)] bg-cover text-transparent">**</span>
+                                No estás solo nosotros <br class="md:hidden"> estamos contigo <span
+                                    class="bg-[url(/assets/img/emoji-3.webp)] bg-cover text-transparent">**</span>
                             </h2>
                         </div>
 
                         <div class="relative m-0 w-full h-auto flex justify-center items-center">
-                            <div class="w-full h-auto flex flex-col md:flex-row justify-between items-center md:px-5 lg:px-7">
+                            <div
+                                class="w-full h-auto flex flex-col md:flex-row justify-between items-center md:pr-5 lg:pr-7">
 
                                 <!-- Sección de Texto Desktop-->
-                                <div
-                                    class="max-md:hidden w-full h-full flex flex-col justify-center items-start max-md:mb-16 gap-y-10">
+                                <!-- <div
+                                    class="max-md:hidden w-[50%] h-full md:max-h-[330px] lg:max-h-[300px] xl:max-h-[370px] flex flex-col justify-start items-start max-md:mb-16 overflow-y-auto scroll-bar-color-left">
 
 
                                     <div v-for="(item, index) in offerAll" :key="index"
-                                        :class="[`${visibility.section3 ? 'animate-fadeRight' : 'animate-fadeRightOut  opacity-0'} relative cursor-pointer`]"
+                                        :class="[`${visibility.section3 ? 'animate-fadeRight' : 'animate-fadeRightOut  opacity-0'} relative cursor-pointer mb-10 pl-4`]"
                                         @click="setActive2(index)">
                                         <div :class="[
-                                            'w-1 h-full absolute top-0 left-[-20px] rounded-full transition-all',
+                                            'w-1 h-full absolute top-0 left-[0px] rounded-full transition-all',
                                             { 'bg-bluelightcf': activeIndex2 === index, 'bg-[#CACACA]': activeIndex2 !== index }
                                         ]">
                                         </div>
                                         <h4
-                                            class="text-white text-1.1rem md:text-[1rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5rem] font-bold">
+                                            class="text-white text-1.1rem md:text-[0.9rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.45rem] font-bold">
                                             {{ item.title }}</h4>
-                                        <p class="text-white text-[0.9rem] md:text-[0.8rem] xl:text-[0.95rem] 2xl:text-[1.1rem]"
+                                        <p class="text-white text-[0.9rem] md:text-[0.8rem] xl:text-[0.95rem] 2xl:text-[1.05rem]"
                                             v-html="item.text?.markdown"></p>
                                     </div>
 
+                                </div> -->
+
+                                <div ref="scrollContainer"
+                                    class="max-md:hidden w-[50%] h-full md:max-h-[340px] lg:max-h-[320px] xl:max-h-[370px] flex flex-col justify-start items-start max-md:mb-16 overflow-y-auto scroll-bar-color-left">
+                                    <div v-for="(item, index) in offerAll" :key="index" :class="[
+                                        `${visibility.section3 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} relative cursor-pointer mb-9 pl-4 pr-2`
+                                    ]" @click="setActive2(index)" ref="itemRefs">
+                                        <div :class="[
+                                            'w-1 h-full absolute top-0 left-[0px] rounded-full transition-all',
+                                            { 'bg-bluelightcf': activeIndex2 === index, 'bg-[#CACACA]': activeIndex2 !== index }
+                                        ]"></div>
+                                        <h4
+                                            class="text-white text-1.1rem md:text-[0.9rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.45rem] font-bold">
+                                            {{ item.title }}
+                                        </h4>
+                                        <p class="text-white text-[0.9rem] md:text-[0.8rem] xl:text-[0.95rem] 2xl:text-[1.05rem]"
+                                            v-html="item.text?.markdown"></p>
+                                    </div>
                                 </div>
 
-
                                 <!-- Sección de Imagen Desktop-->
-                                <div class="max-md:hidden w-full h-full flex justify-center items-center"
+                                <div class="max-md:hidden w-[50%] h-full flex justify-center items-center"
                                     v-if="offerAll[activeIndex2]">
                                     <img :src="offerAll[activeIndex2].img?.url" :alt="offerAll[activeIndex2].title"
                                         :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px] floating`]">
@@ -54,7 +74,7 @@
                                     class="max-md:flex hidden w-full h-full flex-col justify-center items-start gap-y-10">
                                     <swiper :css-mode="true" :mousewheel="true" :slides-per-view="3"
                                         :centeredSlides="true" :space-between="56" :speed="500" :grabCursor="true"
-                                         :pagination="{
+                                        :pagination="{
                                             clickable: true,
                                         }" :navigation="{
                                             nextEl: '.swiper-button-next',
@@ -117,12 +137,18 @@ import 'swiper/swiper-bundle.css';
 import 'swiper/css/effect-coverflow';
 import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
+import { watch } from 'vue';
 
 const modules = [Pagination, Navigation, EffectCoverflow, Autoplay];
 
 const offerAll = ref<Offer[]>([]);
 const activeIndex2 = ref(0);
 const activeIndex3 = ref(0);
+// Ref for the scroll container
+const scrollContainer = ref<HTMLElement | null>(null);
+
+// Ref for each item in the list
+const itemRefs = ref<(HTMLElement | null)[]>([]);
 
 const visibility = reactive({
     section1: false,
@@ -154,6 +180,39 @@ function setActive2(index: number) {
         console.warn(`Índice fuera de rango: ${index}`);
     }
 }
+
+const isItemVisible = (item: HTMLElement) => {
+    if (!scrollContainer.value) return false;
+
+    const containerRect = scrollContainer.value.getBoundingClientRect();
+    const itemRect = item.getBoundingClientRect();
+
+    // Verificar si el item está fuera de la vista (por encima o por debajo del contenedor)
+    return itemRect.top >= containerRect.top && itemRect.bottom <= containerRect.bottom;
+};
+
+// Observar cambios en el índice activo para hacer scroll al item correspondiente
+watch(activeIndex2, (newIndex) => {
+    if (newIndex === null) return;
+
+    const item = itemRefs.value[newIndex];
+    if (item && scrollContainer.value) {
+        // Si el índice es 0, asegurarse de que el scroll vaya al inicio
+        if (newIndex === 0) {
+            scrollContainer.value.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        // Si el item no es visible, hacer scroll hacia él
+        else if (!isItemVisible(item)) {
+            scrollContainer.value.scrollTo({
+                top: item.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    }
+});
 
 function onSlideChange(swiper: SwiperType) {
     activeIndex3.value = swiper.activeIndex;
@@ -218,4 +277,26 @@ onMounted(() => {
 .swiper-pagination-bullet-active {
     background: #00c1de;
 } */
+
+.scroll-bar-color-left::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+.scroll-bar-color-left::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+/* Handle */
+.scroll-bar-color-left::-webkit-scrollbar-thumb {
+    background: #04B2CA;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.scroll-bar-color-left::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+}
 </style>

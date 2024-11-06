@@ -28,7 +28,7 @@
 
                     <div class="max-md:w-full flex gap-x-12 lg:gap-x-6 justify-center">
 
-                        <a href="javascript:;" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} w-9 h-9 flex justify-center items-center`]">
+                        <a href="javascript:;" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 w-9 h-9 flex justify-center items-center scale-100 hover:scale-[0.8]`]">
                             <svg class=" w-[1.5rem] md:w-[1.5rem] lg:w-[1.4rem] xl:w-[1.4rem] 2xl:w-[1.5rem]" viewBox="0 0 25 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -37,7 +37,7 @@
                             </svg>
                         </a>
 
-                        <a href="javascript:;" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} w-9 h-9 flex justify-center items-center`]">
+                        <a href="javascript:;" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 w-9 h-9 flex justify-center items-center scale-100 hover:scale-[0.8]`]">
                             <svg class=" w-[1.5rem] md:w-[1.5rem] lg:w-[1.4rem] xl:w-[1.4rem] 2xl:w-[1.5rem]" viewBox="0 0 25 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -46,7 +46,7 @@
                             </svg>
                         </a>
 
-                        <a href="javascript:;" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} w-9 h-9 flex justify-center items-center`]">
+                        <a href="javascript:;" :class="[`${visibility.section7 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 w-9 h-9 flex justify-center items-center scale-100 hover:scale-[0.8]`]">
                             <svg class=" w-[1.5rem] md:w-[1.5rem] lg:w-[1.4rem] xl:w-[1.4rem] 2xl:w-[1.5rem]" viewBox="0 0 22 23" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
