@@ -1,14 +1,14 @@
 <template>
-  <div class="h-full w-full !font-muller bg-white overflow-hidden">
+  <div class="h-full w-full !font-muller bg-white overflow-hidden pb-16 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-36">
 
     <!-- Section 5 -->
     <section class="font-muller h-max w-full" id="section5">
-      <div class="max-md:hidden block relative m-0 h-full w-full py-[50px] md:px-[70px] md:py-[130px]">
+      <div class="max-md:hidden block relative m-0 h-full w-full md:px-[70px]">
         <div
-          :class="[`${visibility.section5 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} w-full h-auto flex flex-col justify-center items-center my-[30px] text-center`]">
+          :class="[`${visibility.section5 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} w-full h-auto flex flex-col justify-center items-center mb-[30px] text-center`]">
           <h2
             class="text-bluecf font-bold font-muller text-[1.2rem] sm:text-[1.8rem] md: lg:text-[2.2rem] xl:text-[2.3rem] 2xl:text-[2.5rem]">
-            ¿Cuántos timbres necesitas? <span class="ml-3 bg-[url(/assets/img/emoji-1.png)] bg-cover text-transparent">**</span> </h2>
+            ¿Cuántos timbres necesitas? <span class="ml-3 bg-[url(/assets/img/emoji-1.webp)] bg-cover text-transparent">**</span> </h2>
           <p class="px-8 md:px-16">Contamos con paquetes prepago y planes pospago para que elijas <span
               class="text-[#04B2CA]">el que mejor se adapte a tu negocio:</span></p>
         </div>
@@ -104,7 +104,7 @@
             <div
               class="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[20px] bg-bluecf p-6 text-center lg:w-[85%]">
               <div
-                class="transition-all ease-in duration-[0.2s] absolute left-0 top-0 z-[4] h-full w-full bg-[url('/assets/img/stamps-bg.jpeg')] bg-cover bg-center group-hover/item:scale-110">
+                class="transition-all ease-in duration-[0.2s] absolute left-0 top-0 z-[4] h-full w-full bg-[url('/assets/img/stamps-bg.webp')] bg-cover bg-center group-hover/item:scale-110">
               </div>
               <div class="absolute left-0 top-0 z-[5] h-full w-full bg-gradient-to-r from-[#1D394DF2] to-[#2D5A7AF2]">
               </div>
@@ -130,12 +130,12 @@
         </div>
       </div>
 
-      <div class="max-md:block hidden relative m-0 h-full w-full py-[50px] md:px-[70px] md:py-[130px]">
+      <div class="max-md:block hidden relative m-0 h-full w-full md:px-[70px]">
         <div
-          :class="[`${visibility.section5 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} w-full h-auto flex flex-col justify-center items-center my-[30px] text-center`]">
+          :class="[`${visibility.section5 ? 'animate-fadeDown' : 'animate-fadeDownOut opacity-0'} w-full h-auto flex flex-col justify-center items-center mb-[30px] text-center`]">
           <h2
             class="text-bluecf font-bold font-muller text-[1.2rem] sm:text-[1.8rem] md: lg:text-[2.2rem] xl:text-[2.3rem] 2xl:text-[2.5rem]">
-            ¿Cuántos timbres necesitas? <span class="ml-3 bg-[url(/assets/img/emoji-1.png)] bg-cover text-transparent">**</span></h2>
+            ¿Cuántos timbres necesitas? <span class="ml-3 bg-[url(/assets/img/emoji-1.webp)] bg-cover text-transparent">**</span></h2>
           <p class="px-8 md:px-16">Contamos con paquetes prepago y planes pospago para que elijas <span
               class="text-[#04B2CA]">el que mejor se adapte a tu negocio:</span></p>
         </div>
@@ -257,7 +257,7 @@
             <div
               class="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[20px] bg-bluecf p-6 text-center lg:w-[85%]">
               <div
-                class="transition-all ease-in duration-[0.2s] absolute left-0 top-0 z-[4] h-full w-full bg-[url('/assets/img/stamps-bg.jpeg')] bg-cover bg-center group-hover/item:scale-110">
+                class="transition-all ease-in duration-[0.2s] absolute left-0 top-0 z-[4] h-full w-full bg-[url('/assets/img/stamps-bg.webp')] bg-cover bg-center group-hover/item:scale-110">
               </div>
               <div class="absolute left-0 top-0 z-[5] h-full w-full bg-gradient-to-r from-[#1D394DF2] to-[#2D5A7AF2]">
               </div>

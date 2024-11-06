@@ -12,7 +12,7 @@
 
                                 <div
                                     class="w-full h-full hidden md:flex md:justify-start xl:justify-center items-center">
-                                    <img src="/assets/img/contact.png" alt=""
+                                    <img src="/assets/img/contact.webp" alt=""
                                         :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[300px] md:w-[300px] lg:w-[380px] xl:w-[425px] 2xl:w-[450px]`]">
                                 </div>
 

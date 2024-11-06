@@ -1,12 +1,12 @@
 <template>
-  <div class="h-full w-full !font-muller bg-white overflow-hidden">
+  <div class="h-full w-full !font-muller bg-white overflow-hidden pb-16 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-36">
 
     <section class="h-max font-muller bg-white" id="section1">
       <div
-        class="w-full h-full md:pb-[100px] px-[15px] mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px]">
+        class="w-full h-full px-[15px] mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px]">
 
         <div
-          class="w-full h-auto pt-[0px] pb-[50px] md:pb-[100px] flex flex-col relative bg-gradient-to-tl from-bluecf to-bluemdcf rounded-[20px] overflow-hidden max-md:px-5">
+          class="w-full h-auto pt-[0px] pb-[50px] md:pb-[100px] flex flex-col relative bg-gradient-to-tl from-bluecf to-bluemdcf rounded-[20px] overflow-hidden max-md:px-5 lg:h-[500po] xl:h-[600px] 2xl:h-[700px] xl:justify-center ">
 
           <div
             :class="[`${visibility.section1 ? 'opacity-10 ' : 'opacity-0 '} transition-all ease-in duration-[0.5s] absolute top-0 left-0 z-0 w-full h-full`]">
@@ -17,7 +17,7 @@
           <div class="w-full h-auto flex justify-center items-center mt-[40px] md:mt-[60px] md:mb-[20px] relative z-10">
             <h2
               class="text-white font-bold font-muller text-[1.3rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[1.9rem] 2xl:text-[2.3rem] md:mb-10 max-md:text-center ">
-              ¡Facilitarte la vida es nuestra misión! <span class="ml-3 bg-[url(/assets/img/emoji-3.png)] bg-cover text-transparent">**</span>
+              ¡Facilitarte la vida es nuestra misión! <span class="ml-3 bg-[url(/assets/img/emoji-3.webp)] bg-cover text-transparent">**</span>
             </h2>
           </div>
 
@@ -45,9 +45,9 @@
                 </div>
 
                 <div
-                  class="absolute bottom-[-35px] left-0 w-full flex flex-row justify-center gap-x-3 md:gap-x-10 items-center bg-transparent">
+                  class="absolute bottom-[-55px] left-0 w-full flex flex-row justify-center gap-x-3 md:gap-x-10 items-center bg-transparent">
                   <div v-for="(item, index) in missionsAll" :key="'dot-' + index" @click="setActive(index)"
-                    :class="['transition-all ease-in duration-[0.5s] w-[50px] md:w-[100px] h-2 rounded-full cursor-pointer', activeIndex == index ? 'bg-bluelightcf' : 'bg-[#D9D9D9]']">
+                    :class="['transition-all ease-in duration-[0.5s] w-[40px] md:w-[60px] h-1.5 md:h-2 rounded-full cursor-pointer', activeIndex == index ? 'bg-bluelightcf' : 'bg-[#D9D9D9]']">
                   </div>
                 </div>
 

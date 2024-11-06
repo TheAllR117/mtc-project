@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full w-full !font-muller bg-white overflow-hidden">
+    <div class="h-full w-full !font-muller bg-white overflow-hidden pb-16 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-36">
 
         <!-- Section 4 -->
         <section class="h-[550px] md:h-[320px] bg-gradient-to-tl from-bluecf to-bluemdcf" id="section4">
@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="w-full h-full flex justify-center items-center">
-                            <img src="/assets/img/compu.png" alt=""
+                            <img src="/assets/img/compu.webp" alt=""
                                 :class="[`${visibility.section4 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[450px]`]">
                         </div>
 

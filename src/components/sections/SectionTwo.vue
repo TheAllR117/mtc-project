@@ -1,18 +1,17 @@
 <template>
-    <div class="h-full w-full !font-muller bg-white overflow-hidden">
+    <div class="h-full w-full !font-muller bg-white overflow-hidden pb-16 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-36">
 
         <!-- Section 2 -->
         <section class="h-max bg-white" id="section2">
             <div
-                class="w-full h-full mx-auto sm:max-w-[540px] md:max-w-[840px] md:text-left lg:max-w-[1000px] xl:max-w-[1240px] 2xl:max-w-[1620px]">
-                <div class="py-[30px] md:py-[50px] relative m-0 w-full h-full">
+                class="w-full h-full mx-auto  md:max-w-[840px] md:text-left lg:max-w-[1000px] xl:max-w-[1240px] 2xl:max-w-[1620px]">
+                <div class="relative m-0 w-full h-full">
                     <div
                         class="w-full h-full border-2 border-transparent bg-white rounded-[20px] overflow-hidden md:px-14 pb-4 md:pb-14">
 
-                        <div class="w-full h-auto flex justify-center items-center my-[30px]">
-                            <h2
-                                class="text-bluecf font-bold font-muller text-[1.6rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[2rem] 2xl:text-[2.2rem]">
-                                Nuestras <span class="text-[#04B2CA]">soluciones</span> <span class="ml-3 bg-[url(/assets/img/emoji-4.png)] bg-cover text-transparent">**</span></h2>
+                        <div class="w-full h-auto flex justify-center items-center mb-[-10px] md:my-[30px]">
+                            <h2 :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} text-bluecf font-bold font-muller text-[1.6rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[2rem] 2xl:text-[2.2rem] `]">
+                                Nuestras <span class="text-[#04B2CA]">soluciones</span> <span class="ml-3 bg-[url(/assets/img/emoji-4.webp)] bg-cover text-transparent">**</span></h2>
                         </div>
 
                         <div
