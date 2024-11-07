@@ -12,16 +12,16 @@
 
                                 <div
                                     class="w-full h-full hidden md:flex md:justify-start xl:justify-center items-center">
-                                    <!-- <img src="/assets/img/contact.webp" alt=""
-                                        :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[300px] md:w-[300px] lg:w-[380px] xl:w-[425px] 2xl:w-[450px]`]"> -->
+                                    <img src="/assets/img/contact.webp" alt=""
+                                        :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[300px] md:w-[300px] lg:w-[380px] xl:w-[425px] 2xl:w-[450px]`]">
 
-                                    <img :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[300px] md:w-[300px] lg:w-[380px] xl:w-[425px] 2xl:w-[450px] rounded-full`]"
+                                    <!-- <img :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[300px] md:w-[300px] lg:w-[380px] xl:w-[425px] 2xl:w-[450px] rounded-full`]"
                                         v-lazy="{
                                             src: '/assets/img/contact.webp',
                                             loading: '/assets/img/placeholder.webp',
                                             error: '/assets/img/placeholder.webp',
                                             delay: 250
-                                        }" loading="lazy" alt="" />
+                                        }" loading="lazy" alt="" /> -->
                                 </div>
 
                                 <div class="w-full h-full flex justify-start items-center">
@@ -35,7 +35,7 @@
                                                 :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} mb-8 text-[0.9rem] md:text-[0.95rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.05rem] text-black max-md:px-6`]">
                                                 Contáctanos y te responderemos en un tiempo máximo de 24 horas.
                                             </p>
-                                            <div class="flex flex-col gap-4 md:gap-8">
+                                            <form @submit.prevent="sendMeesage()" class="flex flex-col gap-4 md:gap-8">
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex flex-col md:flex-row`]">
                                                     <InputCustom key="name" id="name" type="text" label="Nombre"
@@ -67,7 +67,6 @@
                                                         color-border="border-[#D4D4D4]"
                                                         height-text-area=" !h-[200px] resize-none"
                                                         :regexValidation="[comentaryRegexValidation]" rows="1" />
-
                                                 </div>
 
                                                 <div
@@ -91,7 +90,7 @@
                                                         color-button="!bg-bluelightcf"
                                                         color-button-hover="!bg-bluelightcf/50" />
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -104,6 +103,8 @@
             </div>
         </section>
     </div>
+
+    <ModalCustom :is-open="showModal" :close-modal="closeModal" :title="messageModal.title" :description="messageModal.description" />
 </template>
 
 
@@ -116,10 +117,20 @@ import ButtonLoading from '../../components/ButtonLoading.vue';
 import InputCustom from '../../components/InputCustom.vue';
 // Vue
 import { ref, onMounted, onUnmounted, reactive, computed } from 'vue';
+import ModalCustom from '../ModalCustom.vue';
 
 const showScrollTopButton = ref<boolean>(false);
-const isLoading = ref<boolean>(false);
+const isLoading = ref<boolean>(false)
+const showModal = ref<boolean>(false)
 
+const messageModal = ref({
+    title: '',
+    description: ['']
+})
+
+function closeModal() {
+    showModal.value = false
+}
 const visibility = reactive({
     section1: false,
     section2: false,
@@ -173,6 +184,24 @@ function handleScroll() {
 //         window.removeEventListener('scroll', handleScroll);
 //     });
 // });
+async function sendMeesage() {
+    isLoading.value = true
+    try {
+        // en caso de ser exitoso se navega al dashboard
+        // router.push('/dashboard')
+        setTimeout(() => {
+            messageModal.value.title = 'Contacto';
+            messageModal.value.description = ['Lo sentimos, ocurrio un error al enviar tu mensaje.'];
+            showModal.value = true;
+            isLoading.value = false;
+        }, 2000);
+    } catch (err) {
+        isLoading.value = false
+        messageModal.value.title = 'Contacto'
+        messageModal.value.description = [err!.toString()]
+        showModal.value = true
+    }
+}
 
 onMounted(() => {
     const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));

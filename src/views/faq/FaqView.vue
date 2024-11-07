@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white pt-[100px] !font-muller">
+  <div class="bg-white pt-[90px] !font-muller">
 
     <SectionSix />
 
