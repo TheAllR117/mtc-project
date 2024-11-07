@@ -12,8 +12,16 @@
 
                                 <div
                                     class="w-full h-full hidden md:flex md:justify-start xl:justify-center items-center">
-                                    <img src="/assets/img/contact.webp" alt=""
-                                        :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[300px] md:w-[300px] lg:w-[380px] xl:w-[425px] 2xl:w-[450px]`]">
+                                    <!-- <img src="/assets/img/contact.webp" alt=""
+                                        :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[300px] md:w-[300px] lg:w-[380px] xl:w-[425px] 2xl:w-[450px]`]"> -->
+
+                                    <img :class="[`${visibility.section6 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} w-[325px] sm:w-[300px] md:w-[300px] lg:w-[380px] xl:w-[425px] 2xl:w-[450px] rounded-full`]"
+                                        v-lazy="{
+                                            src: '/assets/img/contact.webp',
+                                            loading: '/assets/img/placeholder.webp',
+                                            error: '/assets/img/placeholder.webp',
+                                            delay: 250
+                                        }" loading="lazy" alt="" />
                                 </div>
 
                                 <div class="w-full h-full flex justify-start items-center">
@@ -30,45 +38,49 @@
                                             <div class="flex flex-col gap-4 md:gap-8">
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex flex-col md:flex-row`]">
-                                                    <InputCustom key="name" id="name" type="text" label="Nombre*"
+                                                    <InputCustom key="name" id="name" type="text" label="Nombre"
                                                         v-model="form.name" focus-color-border="focus:border-[#D4D4D4]"
-                                                        color-text="text-[#D4D4D4]" border-radius="rounded-full"
-                                                        bg-label="bg-white" bg-input="bg-white" border-width="border-[1px]"
-                                                        bg-label-dark="bg-white" color-border="border-[#D4D4D4]"
+                                                        color-text="text-bluecf" border-radius="rounded-full"
+                                                        bg-label="bg-white" bg-input="bg-white"
+                                                        border-width="border-[1px]" bg-label-dark="bg-white"
+                                                        color-border="border-[#D4D4D4]"
                                                         :regexValidation="[nameRegexValidation]" />
                                                 </div>
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex flex-col md:flex-row`]">
-                                                    <InputCustom key="email" id="email" type="email" label="Email*"
+                                                    <InputCustom key="email" id="email" type="email" label="Email"
                                                         v-model="form.email" focus-color-border="focus:border-[#D4D4D4]"
-                                                        color-text="text-[#D4D4D4]" border-radius="rounded-full"
-                                                        border-width="border-[1px]"
-                                                        bg-label="bg-white" bg-input="bg-white"
-                                                        bg-label-dark="bg-white" color-border="border-[#D4D4D4]"
+                                                        color-text="text-bluecf" border-radius="rounded-full"
+                                                        border-width="border-[1px]" bg-label="bg-white"
+                                                        bg-input="bg-white" bg-label-dark="bg-white"
+                                                        color-border="border-[#D4D4D4]"
                                                         :regexValidation="[emailRegexValidation]" />
                                                 </div>
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} hidden md:flex flex-col w-full`]">
                                                     <TextAreaCustom key="comment" id="comment" type="text"
-                                                        label="Comentario*" v-model="form.comment" :value="form.comment"
+                                                        label="Comentario" v-model="form.comment" :value="form.comment"
                                                         focus-color-border="focus:border-[#D4D4D4]"
-                                                        color-text="!text-[#D4D4D4]" border-radius="rounded-[20px]"
-                                                        border-width="border-[1px]"
-                                                        bg-label="bg-white" bg-input="bg-white"
-                                                        bg-label-dark="bg-white" color-border="border-[#D4D4D4]"
-                                                        :regexValidation="[comentaryRegexValidation]" rows="12" />
+                                                        color-text="!text-bluecf" border-radius="rounded-[20px]"
+                                                        border-width="border-[1px]" bg-label="bg-white"
+                                                        bg-input="bg-white" bg-label-dark="bg-white"
+                                                        color-border="border-[#D4D4D4]"
+                                                        height-text-area=" h-[200px] resize-none"
+                                                        :regexValidation="[comentaryRegexValidation]" rows="1" />
 
                                                 </div>
 
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex md:hidden flex-col w-full`]">
                                                     <TextAreaCustom key="comment" id="comment" type="text"
-                                                        label="Comentario*" v-model="form.comment" :value="form.comment"
+                                                        label="Comentario" v-model="form.comment" :value="form.comment"
                                                         focus-color-border="focus:border-[#D4D4D4]"
-                                                        color-text="!text-[#D4D4D4]" border-radius="rounded-[20px]"
+                                                        color-text="!text-bluecf" border-radius="rounded-[20px]"
                                                         bg-label="bg-white" bg-input="bg-white"
-                                                        bg-label-dark="bg-white" color-border="border-[#D4D4D4]"
-                                                        :regexValidation="[comentaryRegexValidation]" rows="5" />
+                                                        border-width="border-[1px]" bg-label-dark="bg-white"
+                                                        color-border="border-[#D4D4D4]"
+                                                        height-text-area=" h-[200px] resize-none"
+                                                        :regexValidation="[comentaryRegexValidation]" rows="1" />
 
                                                 </div>
                                                 <div
@@ -121,15 +133,15 @@ const visibility = reactive({
 const form = reactive({
     name: '',
     email: '',
-    comment: 'Escribe tu cometario: ',
+    comment: '',
 });
 
 const formValido = computed(() => {
-  return validateForm(form, {
-    name: nameRegexValidation,
-    email: emailRegexValidation,
-    comment: comentaryRegexValidation
-  })
+    return validateForm(form, {
+        name: nameRegexValidation,
+        email: emailRegexValidation,
+        comment: comentaryRegexValidation
+    })
 })
 
 const observerOptions = {
@@ -150,16 +162,28 @@ function handleScroll() {
     showScrollTopButton.value = window.scrollY >= 500;
 }
 
+// onMounted(() => {
+//     const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
+//     sections.forEach((section) => section && observer.observe(section));
+
+//     window.addEventListener('scroll', handleScroll);
+
+//     onUnmounted(() => {
+//         observer.disconnect();
+//         window.removeEventListener('scroll', handleScroll);
+//     });
+// });
+
 onMounted(() => {
     const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
     sections.forEach((section) => section && observer.observe(section));
 
     window.addEventListener('scroll', handleScroll);
+});
 
-    onUnmounted(() => {
-        observer.disconnect();
-        window.removeEventListener('scroll', handleScroll);
-    });
+onUnmounted(() => {
+    observer.disconnect();
+    window.removeEventListener('scroll', handleScroll);
 });
 </script>
 

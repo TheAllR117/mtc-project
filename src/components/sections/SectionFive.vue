@@ -16,15 +16,17 @@
           class="grid grid-cols-1 grid-rows-1 items-center justify-center gap-10 py-4 max-sm:px-[20px] max-md:px-[40px] md:w-full md:grid-cols-2 md:h-[730px] lg:h-[650px] lg:grid-cols-3">
           <div
             :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px] shadow-[0_0px_7px_3px_rgba(0,0,0,0.15)]`]">
-            <div class="h-[22%] bg-bluecf p-6 text-center flex flex-col justify-center items-center">
-              <h2
+            <div class="h-[22%] bg-bluecf p-6 text-center flex flex-col justify-center items-center" v-if="packageTitlesAll.length != 0">
+              <div v-html="packageTitlesAll[0].titlePlan?.markdown"></div>
+              <div v-html="packageTitlesAll[0].descriptionPlan?.markdown"></div>
+              <!-- <h2
                 class="text-[1.5rem] text-xl font-bold leading-6 text-white lg:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem]">
-                Planes pospago:</h2>
-              <p
+                Planes pospago:</h2> -->
+              <!-- <p
                 class="mt-2 text-[0.85rem] leading-tight text-white sm:text-[0.8rem] md:text-[0.85rem] lg:text-[0.83rem] xl:text-[0.83rem] 2xl:text-[1.1rem]">
                 <b>Para empresas grandes</b>, adquiere un <br />
                 plan y págalos conforme se utilicen
-              </p>
+              </p> -->
             </div>
             <div class="h-[78%] w-full">
               <div v-for="(plan, index) in postpaidPlanAll" :key="index" :class="[
@@ -58,8 +60,10 @@
           </div>
           <div
             :class="[`${visibility.section5 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} h-[650px] md:h-full w-full items-center justify-center overflow-hidden rounded-[20px] shadow-[0_0px_7px_3px_rgba(0,0,0,0.15)]`]">
-            <div class="h-[22%] bg-bluelightcf px-2 py-6 text-center flex flex-col justify-center items-center">
-              <h2
+            <div class="h-[22%] bg-bluelightcf px-2 py-6 text-center flex flex-col justify-center items-center" v-if="packageTitlesAll.length != 0">
+              <div v-html="packageTitlesAll[1].titlePlan?.markdown"></div>
+              <div v-html="packageTitlesAll[1].descriptionPlan?.markdown"></div>
+              <!-- <h2
                 class="text-[1.5rem] text-xl font-bold leading-6 text-white lg:text-[1.6rem] xl:text-[1.7rem] 2xl:text-[1.8rem]">
                 Planes prepago:</h2>
               <p
@@ -67,7 +71,7 @@
                 <b>Para pequeñas empresas</b>, adquiere el
                 <br />
                 paquete de timbres que vayas a utilizar
-              </p>
+              </p> -->
             </div>
             <div class="h-[78%] w-full overflow-y-auto">
 
@@ -291,19 +295,21 @@
 
 <script lang="ts" setup>
 // Interfaces
+import { PackagePlansTitle } from '../../interfaces/package_title/package_titles_all_response';
 import { PrepaidPackage } from '../../interfaces/prepaid/prepaid_packages_all_response';
 import { PostpaidPlan } from '../../interfaces/postpaid/postpaid_packages_all_response';
 // Vue
-import { ref, onMounted, onUnmounted, reactive } from 'vue';
+import { ref, onMounted, onUnmounted, reactive, onBeforeMount } from 'vue';
 import IconEast from '../icons/IconEast.vue';
 
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/swiper-bundle.css';
-import 'swiper/css/effect-coverflow';
-import { Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+// import { Swiper, SwiperSlide } from 'swiper/vue';
+// import 'swiper/swiper-bundle.css';
+// import 'swiper/css/effect-coverflow';
+// import { Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
 
-const modules = [Pagination, Navigation, EffectCoverflow];
+// const modules = [Pagination, Navigation, EffectCoverflow];
 
+const packageTitlesAll = ref<PackagePlansTitle[]>([]);
 const prepaidPackageAll = ref<PrepaidPackage[]>([]);
 const postpaidPlanAll = ref<PostpaidPlan[]>([]);
 
@@ -352,6 +358,10 @@ function scrollToTop() {
 }
 
 async function loadData() {
+
+  const packageTitlesData = await fetchData(`query packagePlansTitlesAll { packagePlansTitles (orderBy: createdAt_ASC) { titlePlan { markdown } descriptionPlan { markdown } }}`);
+  if (packageTitlesData?.data?.packagePlansTitles) packageTitlesAll.value = packageTitlesData.data.packagePlansTitles;
+
   const postpaidData = await fetchData(`query AllPostpaidPlans { postpaidPlans { numberStamps priceStampPackage } }`);
   if (postpaidData?.data?.postpaidPlans) postpaidPlanAll.value = postpaidData.data.postpaidPlans;
 
@@ -359,16 +369,20 @@ async function loadData() {
   if (prepaidData?.data?.prepaidPackages) prepaidPackageAll.value = prepaidData.data.prepaidPackages;
 }
 
+onBeforeMount(() => {
+  loadData();
+})
+
 onMounted(() => {
   const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
   sections.forEach((section) => section && observer.observe(section));
-
-  loadData();
-
-  onUnmounted(() => {
-    observer.disconnect();
-  });
+  
 });
+
+onUnmounted(() => {
+  observer.disconnect();
+});
+
 </script>
 
 

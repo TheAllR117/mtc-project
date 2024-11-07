@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white pt-[100px] !font-muller">
 
-    <SectionSix/>
+    <SectionSix />
 
     <!-- Section 7 -->
     <section class="pb-24 pt-24" v-if="faqAllQuest.length != 0">
@@ -14,16 +14,18 @@
               class="mb-1 lg:mb-3 bg-gradient-to-tl from-[#23465E] to-[#4992C4] py-[30px] rounded-[30px_30px_0px_0px] flex justify-center items-center">
               <h6
                 class="text-center text-white text-[1.5rem] md:text-[1.7rem] lg:text-[1.9rem] xl:text-[2rem] 2xl:text-[2.2rem] font-bold">
-                Preguntas frecuentes <span class="bg-[url(/assets/img/emoji-1.webp)] bg-cover text-transparent">**</span></h6>
+                Preguntas frecuentes <span
+                  class="bg-[url(/assets/img/emoji-1.webp)] bg-cover text-transparent">**</span></h6>
             </div>
 
             <div v-for="(item, index) in faqAllQuest" :key="index" class="" :class="[
-                'border-b-[2px] border-[#04B2CA] py-10',
-                index === faqAllQuest.length - 1 ? 'border-b-[2px] border-transparent' : 'border-b-[2px] border-[#04B2CA]'
-              ]" >
+              'border-b-[2px] border-[#04B2CA] py-10',
+              index === faqAllQuest.length - 1 ? 'border-b-[2px] border-transparent' : 'border-b-[2px] border-[#04B2CA]'
+            ]">
               <button @click="toggleAccordion(index)"
                 class="accordion-toggle group inline-flex items-center justify-between text-xl font-normal leading-8 w-full transition duration-500">
-                <h5 class="text-bluecf text-left text-[1.1rem] sm:text-[1.2rem]  md:text-[1.4rem] xl:text-[1.6rem] 2xl:text-[1.8rem] font-bold">
+                <h5
+                  class="text-bluecf text-left text-[1.1rem] sm:text-[1.2rem]  md:text-[1.4rem] xl:text-[1.6rem] 2xl:text-[1.8rem] font-bold">
                   {{ item.title }}</h5>
                 <svg
                   :class="[`${activeIndex == index ? 'rotate-180' : 'rotate-0'} w-[40px] lg:w-[40px] xl:w-[40px] 2xl:w-[50px] h-[40px] lg:h-[40px] xl:h-[40px] 2xl:h-[50px] text-bluecf transition-transform duration-[0.6s] transform`]"
@@ -47,7 +49,7 @@
 
     <!-- Footer -->
 
-    <FooterPage/>
+    <FooterPage />
     <!-- Social link -->
     <SocialLinks />
 
@@ -56,11 +58,12 @@
 
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted, reactive} from 'vue';
+import { ref, onMounted, onUnmounted, reactive } from 'vue';
 import { FAQ, FAQAllCfdiResponse } from '../../interfaces/faq/faq_all_response';
 import SectionSix from '../../components/sections/SectionSix.vue';
 import FooterPage from '../../components/sections/FooterPage.vue';
 import SocialLinks from '../../components/sections/SocialLinks.vue';
+import { onBeforeMount } from 'vue';
 
 const faqAllQuest = ref<FAQ[]>([])
 const activeIndex = ref<number | null>(null);
@@ -151,9 +154,16 @@ onMounted(async () => {
     if (elemento) observer.observe(elemento);
   });
 
-  const data = await getBlogs();
 
-  console.log('Datos obtenidos de getBlogs:', data);
+});
+
+onUnmounted(() => {
+  observer.disconnect(); // Limpia el observer al desmontar el componente
+});
+
+
+onBeforeMount(async () => {
+  const data = await getBlogs();
 
   if (data) {
     const result = data as FAQAllCfdiResponse;
@@ -181,11 +191,8 @@ onMounted(async () => {
   } else {
     console.error("La llamada a getBlogs no devolvió datos.");
   }
-});
+})
 
-onUnmounted(() => {
-  observer.disconnect(); // Limpia el observer al desmontar el componente
-});
 </script>
 
 

@@ -12,12 +12,21 @@
             :class="[`${visibility.section1 ? 'opacity-10 ' : 'opacity-0 '} transition-all ease-in duration-[0.5s] absolute top-0 left-0 z-0 w-full h-full`]">
             <img src="/assets/img/texture.png" alt=""
               :class="[`${visibility.section1 ? 'animate-fadeRight ' : 'animate-fadeRightOut '} transition-all ease-in duration-[0.5s] w-full`]">
+
+            <!-- <img :class="[`${visibility.section1 ? 'animate-fadeRight ' : 'animate-fadeRightOut '} transition-all ease-in duration-[0.5s] w-full`]" v-lazy="{
+              src: '/assets/img/texture.png',
+              loading: '/assets/img/placeholder.webp',
+              error: '/assets/img/placeholder.webp',
+              delay: 250
+            }" loading="lazy" alt="" /> -->
+
           </div>
 
           <div class="w-full h-auto flex justify-center items-center mt-[40px] md:mt-[60px] md:mb-[20px] relative z-10">
             <h2
               class="text-white font-bold font-muller text-[1.3rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[1.9rem] 2xl:text-[2.3rem] md:mb-10 max-md:text-center ">
-              ¡Facilitarte la vida es nuestra misión! <span class="bg-[url(/assets/img/emoji-3.webp)] bg-cover text-transparent">**</span>
+              ¡Facilitarte la vida es nuestra misión! <span
+                class="bg-[url(/assets/img/emoji-3.webp)] bg-cover text-transparent">**</span>
             </h2>
           </div>
 
@@ -45,9 +54,9 @@
                 </div>
 
                 <div
-                  class="absolute bottom-[-55px] left-0 w-full flex flex-row justify-center gap-x-3 md:gap-x-10 items-center bg-transparent">
+                  class="absolute bottom-[-55px] left-0 w-full flex flex-row justify-center gap-x-3 md:gap-x-5 items-center bg-transparent">
                   <div v-for="(item, index) in missionsAll.slice(0, 3)" :key="'dot-' + index" @click="setActive(index)"
-                    :class="['transition-all ease-in duration-[0.5s] w-[40px] md:w-[60px] h-1.5 md:h-2 rounded-full cursor-pointer', activeIndex == index ? 'bg-bluelightcf' : 'bg-[#D9D9D9]']">
+                    :class="['transition-all ease-in duration-[0.5s] w-[40px] md:w-[50px] h-1 md:h-1 rounded-full cursor-pointer', activeIndex == index ? 'bg-bluelightcf' : 'bg-[#D9D9D9]']">
                   </div>
                 </div>
 
@@ -91,7 +100,7 @@
 // Interfaces
 import { Mission } from '../../interfaces/missions/all_missions_response';
 // Vue
-import { ref, onMounted, onUnmounted, reactive } from 'vue';
+import { ref, onMounted, onUnmounted, reactive, onBeforeMount } from 'vue';
 
 const missionsAll = ref<Mission[]>([]);
 const showScrollTopButton = ref<boolean>(false);
@@ -155,11 +164,30 @@ async function loadData() {
 
 }
 
+// onMounted(() => {
+//   const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
+//   sections.forEach((section) => section && observer.observe(section));
+
+//   loadData();
+
+//   const interval = setInterval(() => activeIndex.value = (activeIndex.value + 1) % missionsAll.value.length, 5000);
+
+//   window.addEventListener('scroll', handleScroll);
+
+//   onUnmounted(() => {
+//     observer.disconnect();
+//     clearInterval(interval);
+//     window.removeEventListener('scroll', handleScroll);
+//   });
+// });
+
+onBeforeMount(() => {
+  loadData();
+})
+
 onMounted(() => {
   const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
   sections.forEach((section) => section && observer.observe(section));
-
-  loadData();
 
   const interval = setInterval(() => activeIndex.value = (activeIndex.value + 1) % missionsAll.value.length, 5000);
 
@@ -170,7 +198,9 @@ onMounted(() => {
     clearInterval(interval);
     window.removeEventListener('scroll', handleScroll);
   });
+
 });
+
 </script>
 
 

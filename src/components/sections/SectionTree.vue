@@ -45,9 +45,9 @@
                                 </div> -->
 
                                 <div ref="scrollContainer"
-                                    class="max-md:hidden w-[50%] h-full md:max-h-[340px] lg:max-h-[320px] xl:max-h-[370px] flex flex-col justify-start items-start max-md:mb-16 overflow-y-auto scroll-bar-color-left">
+                                    class="max-md:hidden w-[50%] h-full md:max-h-[350px] lg:max-h-[330px] xl:max-h-[380px] flex flex-col justify-start items-start max-md:mb-16 overflow-y-auto scroll-bar-color-left">
                                     <div v-for="(item, index) in offerAll" :key="index" :class="[
-                                        `${visibility.section3 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} relative cursor-pointer mb-9 pl-4 pr-2`
+                                        `${visibility.section3 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} relative cursor-pointer mb-10 pl-4 pr-2`
                                     ]" @click="setActive2(index)" ref="itemRefs">
                                         <div :class="[
                                             'w-1 h-full absolute top-0 left-[0px] rounded-full transition-all',
@@ -63,10 +63,17 @@
                                 </div>
 
                                 <!-- Sección de Imagen Desktop-->
-                                <div class="max-md:hidden w-[50%] h-full flex justify-center items-center"
+                                <div class="max-md:hidden w-[50%] h-full flex justify-center items-center scale-75"
                                     v-if="offerAll[activeIndex2]">
-                                    <img :src="offerAll[activeIndex2].img?.url" :alt="offerAll[activeIndex2].title"
-                                        :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px] floating`]">
+                                    <!-- <img :src="offerAll[activeIndex2].img?.url" :alt="offerAll[activeIndex2].title"
+                                        > -->
+                                    <img :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px]`]"
+                                        v-lazy="{
+                                            src: offerAll[activeIndex2].img?.url,
+                                            loading: '/assets/img/placeholder.webp',
+                                            error: '/assets/img/placeholder.webp',
+                                            delay: 250
+                                        }" loading="lazy" alt="" />
                                 </div>
 
                                 <!-- Sección de Texto Mobil-->
@@ -107,8 +114,16 @@
                                 <!-- Sección de Imagen Mobil-->
                                 <div class="max-md:flex hidden w-full h-full justify-center items-center"
                                     v-if="offerAll[activeIndex3]">
-                                    <img :src="offerAll[activeIndex3].img?.url" :alt="offerAll[activeIndex3].title"
-                                        :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[240px] sm:w-[240px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px] floating`]">
+                                    <!-- <img :src="offerAll[activeIndex3].img?.url" :alt="offerAll[activeIndex3].title"
+                                        :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[240px] sm:w-[240px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px]`]"> -->
+
+                                    <img :class="[`${visibility.section3 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[240px] sm:w-[240px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px]`]"
+                                        v-lazy="{
+                                            src: offerAll[activeIndex3].img?.url,
+                                            loading: '/assets/img/placeholder.webp',
+                                            error: '/assets/img/placeholder.webp',
+                                            delay: 250
+                                        }" loading="lazy" :alt="offerAll[activeIndex3].title" />
                                 </div>
 
                             </div>
@@ -130,7 +145,7 @@
 import { Offer } from '../../interfaces/offers/all_offers_response';
 
 // Vue
-import { ref, onMounted, onUnmounted, reactive } from 'vue';
+import { ref, onMounted, onUnmounted, reactive, onBeforeMount } from 'vue';
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.css';
@@ -240,11 +255,27 @@ async function loadData() {
     if (offersData?.data?.offers) offerAll.value = offersData.data.offers;
 }
 
+// onMounted(() => {
+//     const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
+//     sections.forEach((section) => section && observer.observe(section));
+
+//     loadData();
+
+//     const interval2 = setInterval(() => activeIndex2.value = (activeIndex2.value + 1) % offerAll.value.length, 5000);
+
+//     onUnmounted(() => {
+//         observer.disconnect();
+//         clearInterval(interval2);
+//     });
+// });
+
+onBeforeMount(() => {
+  loadData();
+})
+
 onMounted(() => {
     const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
     sections.forEach((section) => section && observer.observe(section));
-
-    loadData();
 
     const interval2 = setInterval(() => activeIndex2.value = (activeIndex2.value + 1) % offerAll.value.length, 5000);
 
@@ -256,7 +287,7 @@ onMounted(() => {
 </script>
 
 <style>
-/* .swiper-slide-opacity {
+.swiper-slide-opacity {
     opacity: 0.5;
     transition: opacity 0.3s ease;
 }
@@ -267,8 +298,8 @@ onMounted(() => {
 
 .swiper-pagination-bullet {
     background: #c2c2c2;
-    width: 130px;
-    height: 6px;
+    width: 30px;
+    height: 3px;
     border-radius: 3px;
     opacity: 1;
     margin: 0 4px;
@@ -276,7 +307,19 @@ onMounted(() => {
 
 .swiper-pagination-bullet-active {
     background: #00c1de;
-} */
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.swiper-slide {
+    width: 326px;
+    min-height: 310px;
+    max-height: 600px;
+}
 
 .scroll-bar-color-left::-webkit-scrollbar {
     width: 7px;

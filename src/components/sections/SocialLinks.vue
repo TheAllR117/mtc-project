@@ -68,16 +68,28 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// onMounted(() => {
+//     const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
+//     sections.forEach((section) => section && observer.observe(section));
+
+//     window.addEventListener('scroll', handleScroll);
+
+//     onUnmounted(() => {
+//         observer.disconnect();
+//         window.removeEventListener('scroll', handleScroll);
+//     });
+// });
+
 onMounted(() => {
     const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
     sections.forEach((section) => section && observer.observe(section));
 
     window.addEventListener('scroll', handleScroll);
+});
 
-    onUnmounted(() => {
-        observer.disconnect();
-        window.removeEventListener('scroll', handleScroll);
-    });
+onUnmounted(() => {
+    observer.disconnect();
+    window.removeEventListener('scroll', handleScroll);
 });
 </script>
 

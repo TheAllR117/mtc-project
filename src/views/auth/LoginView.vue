@@ -5,6 +5,13 @@
     <div
       class="hidden md:flex lg:w-1/2 w-full items-center justify-center text-center md:px-16 px-0 z-1 bg-transparent rounded-[20px] relative">
       <img src="/assets/img/bg-login.webp" alt="" class="w-[500px] floating">
+
+      <!-- <img class="w-[500px] floating" v-lazy="{
+        src: '/assets/img/bg-login.webp',
+        loading: '/assets/img/placeholder.webp',
+        error: '/assets/img/placeholder.webp',
+        delay: 0
+      }" loading="lazy" alt="" /> -->
     </div>
 
     <div
@@ -37,9 +44,11 @@
               width="!w-full md:!w-[60%]" width-loading="!w-2/12" border-radius="rounded-[25px]"
               color-button="!bg-bluelightcf" color-button-hover="!bg-[#04B2CA80]" color-text="text-white"
               size-text="text-[0.8em]" />
-            <div
+
+            <router-link to="/register"
               class="font-muller flex justify-center items-center transition-all ease-in duration-500 border-2 border-[#04B2CA] rounded-[25px] max-md:py-3 px-7 w-full md:w-[37%] hover:bg-bluelightcf hover:text-white uppercase font-black text-[0.8em] cursor-pointer">
-              Registrarme</div>
+              Registrarme
+            </router-link>
           </div>
 
         </form>
@@ -54,7 +63,7 @@
 import ButtonLoading from '../../components/ButtonLoading.vue'
 import InputCustom from '../../components/InputCustom.vue'
 import ModalCustom from '../../components/ModalCustom.vue'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 import { computed, reactive, ref } from 'vue'
 import {
   emailRegexValidation,
@@ -63,7 +72,7 @@ import {
 } from '../../composable/validator'
 
 
-const router = useRouter()
+// const router = useRouter()
 
 const form = reactive({
   email: null,
@@ -93,8 +102,13 @@ async function login() {
   isLoading.value = true
   try {
     // en caso de ser exitoso se navega al dashboard
-    router.push('/dashboard')
-    isLoading.value = false
+    // router.push('/dashboard')
+    setTimeout(() => {
+      messageModal.value.title = 'Inicio de sesión';
+      messageModal.value.description = ['Lo sentimos, cuenta no registrada o activada.'];
+      showModal.value = true;
+      isLoading.value = false;
+    }, 2000);
   } catch (err) {
     isLoading.value = false
     messageModal.value.title = 'Inicio de sesión'
@@ -106,7 +120,7 @@ async function login() {
 
 
 <style>
-.floating { 
+.floating {
   animation: float 3s infinite linear;
 }
 
@@ -114,6 +128,7 @@ async function login() {
   from {
     transform: rotate(0deg) translate3d(10px, 0, 0) rotate(0deg);
   }
+
   to {
     transform: rotate(360deg) translate3d(10px, 0, 0) rotate(-360deg);
   }

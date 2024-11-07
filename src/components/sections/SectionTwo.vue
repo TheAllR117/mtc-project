@@ -154,16 +154,16 @@ import { Solution } from '../../interfaces/solutions/solutions_all_response';
 // Icon
 import IconInfo from '../../components/icons/IconInfo.vue';
 // Vue
-import { ref, onMounted, onUnmounted, reactive } from 'vue';
+import { ref, onMounted, onUnmounted, reactive, onBeforeMount } from 'vue';
 // Swiper
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/swiper-bundle.css';
-import 'swiper/css/effect-coverflow';
-import { Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+// import { Swiper, SwiperSlide } from 'swiper/vue';
+// import 'swiper/swiper-bundle.css';
+// import 'swiper/css/effect-coverflow';
+// import { Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
 
 const solutionAll = ref<Solution[]>([]);
 const showScrollTopButton = ref<boolean>(false);
-const modules = [Pagination, Navigation, EffectCoverflow];
+// const modules = [Pagination, Navigation, EffectCoverflow];
 
 const visibility = reactive({
     section1: false,
@@ -216,11 +216,28 @@ async function loadData() {
     if (solutionsData?.data?.solution) solutionAll.value = solutionsData.data.solution;
 }
 
+// onMounted(() => {
+//     const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
+//     sections.forEach((section) => section && observer.observe(section));
+
+//     loadData();
+
+//     window.addEventListener('scroll', handleScroll);
+
+//     onUnmounted(() => {
+//         observer.disconnect();
+//         window.removeEventListener('scroll', handleScroll);
+//     });
+// });
+
+
+onBeforeMount(() => {
+  loadData();
+})
+
 onMounted(() => {
     const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
     sections.forEach((section) => section && observer.observe(section));
-
-    loadData();
 
     window.addEventListener('scroll', handleScroll);
 

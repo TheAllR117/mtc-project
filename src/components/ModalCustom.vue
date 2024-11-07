@@ -12,15 +12,15 @@
             enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95">
             <DialogPanel
-              class="flex flex-col justify-between items-center w-full max-w-md transform overflow-hidden rounded-2xl bg-center bg-no-repeat bg-cover bg-[url('/img/Aviso-01.webp')] h-[320px] sm:h-[390px] px-6 py-3 font-lato transition-all ease-in duration-[0.3s] relative "
+              class="flex flex-col justify-between items-center w-full max-w-md transform overflow-hidden rounded-2xl bg-center bg-no-repeat bg-cover bg-[url('/assets/img/Aviso-01.webp')] h-[390px] sm:h-[390px] px-6 py-3 font-muller transition-all ease-in duration-[0.3s] relative "
               v-if="typeModal == 0">
-              <DialogTitle as="h3" class="font-bold text-xl text-gray w-full h-[30px] mt-6">
+              <DialogTitle as="h3" class="font-bold text-xl text-white w-full h-[30px] mt-6">
                 {{ title }}
               </DialogTitle>
 
               <div class="snap-x mx-auto snap-mandatory h-[100px] flex w-full overflow-scroll no-scrollbar"
                 ref="carousel">
-                <div class="snap-start text-gray h-[100px] w-full flex-shrink-0 flex items-center justify-center text-lg"
+                <div class="snap-start text-white h-[100px] w-full flex-shrink-0 flex items-center justify-center text-lg"
                   v-for="(message, index) in description" :key="index">
                   {{ message }}
                 </div>
