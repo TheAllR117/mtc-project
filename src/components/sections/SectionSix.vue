@@ -65,7 +65,7 @@
                                                         border-width="border-[1px]" bg-label="bg-white"
                                                         bg-input="bg-white" bg-label-dark="bg-white"
                                                         color-border="border-[#D4D4D4]"
-                                                        height-text-area=" h-[200px] resize-none"
+                                                        height-text-area=" !h-[200px] resize-none"
                                                         :regexValidation="[comentaryRegexValidation]" rows="1" />
 
                                                 </div>
@@ -79,7 +79,7 @@
                                                         bg-label="bg-white" bg-input="bg-white"
                                                         border-width="border-[1px]" bg-label-dark="bg-white"
                                                         color-border="border-[#D4D4D4]"
-                                                        height-text-area=" h-[200px] resize-none"
+                                                        height-text-area=" !h-[200px] resize-none"
                                                         :regexValidation="[comentaryRegexValidation]" rows="1" />
 
                                                 </div>
