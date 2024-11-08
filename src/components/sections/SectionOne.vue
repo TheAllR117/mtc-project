@@ -1,12 +1,13 @@
 <template>
   <div class="h-full w-full !font-muller bg-white overflow-hidden pb-16 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-36">
 
-    <section class="h-max font-muller bg-white" id="section1">
+    <section class="h-max font-muller bg-white max-md:px-[20px]" id="section1">
+      <!-- Desktop -->
       <div
-        class="w-full h-full px-[15px] mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px]">
+        class="max-md:hidden block w-full h-full px-[15px] mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px]">
 
         <div
-          class="w-full h-auto pt-[0px] pb-[50px] md:pb-[100px] flex flex-col relative bg-gradient-to-tl from-bluecf to-bluemdcf rounded-[20px] overflow-hidden max-md:px-5 lg:h-[500po] xl:h-[600px] 2xl:h-[700px] xl:justify-center ">
+          class="flex w-full h-auto pt-[0px] pb-[50px] md:pb-[100px] flex-col relative bg-gradient-to-tl from-bluecf to-bluemdcf rounded-[20px] overflow-hidden max-md:px-5 lg:h-[500po] xl:h-[600px] 2xl:h-[700px] xl:justify-center ">
 
           <div
             :class="[`${visibility.section1 ? 'opacity-10 ' : 'opacity-0 '} transition-all ease-in duration-[0.5s] absolute top-0 left-0 z-0 w-full h-full`]">
@@ -33,7 +34,7 @@
           <div class="flex flex-col max-md:flex-col-reverse items-center justify-between md:flex-row relative h-auto">
 
             <!-- Left Side: Company Info -->
-            <div class="mb-8 w-full h-auto md:mb-0 md:w-[65%]">
+            <div class="mb-8 w-full h-auto md:mb-0 md:w-[60%] lg:w-[65%]">
               <div
                 class="bg-stripes-fuchsia grid grid-cols-3 gap-4 rounded-lg text-center font-mono text-sm font-bold leading-6 text-white relative">
 
@@ -66,11 +67,11 @@
 
             <!-- Right xSide: Details and Buttons -->
             <div v-if="missionsAll.slice(0, 3) && missionsAll.slice(0, 3)[activeIndex]"
-              class="md:w-[35%] h-auto md:px-16 max-md:mb-7 flex justify-center items-center">
+              class="md:w-[40%] lg:w-[35%] h-auto md:px-16 max-md:mb-7 flex justify-center items-center">
               <div class="flex flex-col items-center justify-center text-center w-auto h-[150px]">
                 <transition name="fade" mode="out-in">
                   <h2 :key="missionsAll.slice(0, 3)[activeIndex].title" :class="[
-                    'text-white text-[1.1rem] md:text-[1.2rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5em] font-bold border-b-[#04B2CA] border-b-2 mb-4 pb-2'
+                    'text-white text-[1.1rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[1.4rem] 2xl:text-[1.5em] font-bold border-b-[#04B2CA] border-b-2 mb-4 pb-2'
                   ]">
                     {{ missionsAll.slice(0, 3)[activeIndex].title }}
                   </h2>
@@ -80,7 +81,7 @@
 
                 <transition name="fade" mode="out-in">
                   <p :key="missionsAll.slice(0, 3)[activeIndex].text?.markdown"
-                    class="text-white text-[0.9rem] md:text-[0.95rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.1rem] font-light"
+                    class="text-white text-[0.8rem] md:text-[0.8rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.1rem] font-light"
                     v-html="missionsAll.slice(0, 3)[activeIndex].text?.markdown"></p>
                 </transition>
               </div>
@@ -91,6 +92,84 @@
         </div>
 
       </div>
+
+      <!-- Mobil -->
+      <div
+        class="max-md:flex flex-col hidden w-full h-full max-md:py-[20px] relative mx-auto sm:max-w-[740px] md:max-w-[940px] md:text-left lg:max-w-[1260px] xl:max-w-[1440px] 2xl:max-w-[1900px] bg-gradient-to-tl from-bluecf to-bluemdcf rounded-[20px] overflow-hidden max-md:px-5 lg:h-[500po] xl:h-[600px] 2xl:h-[700px] xl:justify-center">
+
+        <div
+          :class="[`${visibility.section1 ? 'opacity-10 ' : 'opacity-0 '} transition-all ease-in duration-[0.5s] absolute top-0 left-0 z-0 w-full h-full`]">
+          <img src="/assets/img/texture.png" alt=""
+            :class="[`${visibility.section1 ? 'animate-fadeRight ' : 'animate-fadeRightOut '} transition-all ease-in duration-[0.5s] w-full h-full`]">
+        </div>
+
+        <div class="w-full h-auto flex justify-center items-center mt-[10px] mb-[10px] relative z-10">
+          <h2
+            class="text-white font-bold font-muller text-[1.2rem] sm:text-[1.7rem] md: lg:text-[1.8rem] xl:text-[1.9rem] 2xl:text-[2.3rem] md:mb-10 max-md:text-center ">
+            ¡Facilitarte la vida es nuestra misión! <span
+              class="bg-[url(/assets/img/emoji-3.webp)] bg-cover text-transparent">**</span>
+          </h2>
+        </div>
+
+        <!-- Sección de Texto Mobil-->
+        <div
+          class="max-md:flex hidden w-full flex-col justify-center items-start gap-y-10  h-auto pt-[0px] pb-[20px] relative ">
+          <swiper :css-mode="true" :mousewheel="true" :slides-per-view="3" :centeredSlides="true" :space-between="56"
+            :speed="500" :grabCursor="true" :pagination="{
+              clickable: true,
+            }" :navigation="{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }" :modules="modules" :breakpoints="{
+              0: { slidesPerView: 1, spaceBetween: 56 },
+              500: { slidesPerView: 1, spaceBetween: 56 },
+              1024: { slidesPerView: 1, spaceBetween: 56 },
+              1300: { slidesPerView: 1, spaceBetween: 56 },
+              1500: { slidesPerView: 1, spaceBetween: 56 },
+            }" class="mySwiper !h-max !w-full flex justify-center" @slideChange="onSlideChange">
+
+            <swiper-slide v-for="(item, index) in missionsAll.slice(0, 3)" :key="index"
+              :class="[`${visibility.section1 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} !w-full !h-full !min-h-full !max-h-full flex flex-col justify-center items-center gap-y-10 pcenter`]">
+              <h4
+                class="text-white text-[0.95rem] md:text-[1.2rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5rem] font-bold border-b-2 border-bluelightcf w-max px-2 text-center pb-3">
+                {{ item.title }}</h4>
+              <p class="text-white text-[0.9rem] md:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.1rem] text-center pt-3"
+                v-html="item.text?.markdown"></p>
+            </swiper-slide>
+
+            <div class="slider__controls py-[20px] flex justify-center items-center">
+              <div class="slider__pagination"></div>
+            </div>
+
+          </swiper>
+        </div>
+
+        <!-- Sección de Imagen Mobil-->
+        <div class="max-md:flex hidden w-full h-full justify-center items-center" v-if="missionsAll[activeIndexMb]">
+
+          <transition name="fade" mode="out-in">
+            <img v-if="activeIndexMb == activeIndexMb" :key="activeIndexMb"
+              :class="[`rounded-full p-8 bg-bluecf w-[170px] sm:w-[170px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[500px] h-[170px] sm:h-[170px] md:h-[375px] lg:h-[400px] xl:h-[425px] 2xl:h-[500px]`]"
+              v-lazy="{
+                src: missionsAll[activeIndexMb].img?.url,
+                loading: '/assets/img/placeholder.webp',
+                error: '/assets/img/placeholder.webp',
+                delay: 50
+              }" loading="lazy" :alt="missionsAll[activeIndexMb].title" />
+          </transition>
+
+          <!-- <transition name="fade" mode="out-in">
+            <h2 :key="missionsAll.slice(0, 3)[activeIndex].title" :class="[
+              'text-white text-[1.1rem] md:text-[1.2rem] lg:text-[1.3rem] xl:text-[1.4rem] 2xl:text-[1.5em] font-bold border-b-[#04B2CA] border-b-2 mb-4 pb-2'
+            ]">
+              {{ missionsAll.slice(0, 3)[activeIndex].title }}
+            </h2>
+          </transition> -->
+        </div>
+
+      </div>
+
+
     </section>
   </div>
 </template>
@@ -101,10 +180,18 @@
 import { Mission } from '../../interfaces/missions/all_missions_response';
 // Vue
 import { ref, onMounted, onUnmounted, reactive, onBeforeMount } from 'vue';
+// Swiper
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.css';
+import 'swiper/css/effect-coverflow';
+import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 
+const modules = [Pagination, Navigation, EffectCoverflow, Autoplay];
 const missionsAll = ref<Mission[]>([]);
 const showScrollTopButton = ref<boolean>(false);
 const activeIndex = ref(0);
+const activeIndexMb = ref(0);
 
 const visibility = reactive({
   section1: false,
@@ -141,6 +228,10 @@ function handleScroll() {
   showScrollTopButton.value = window.scrollY >= 500;
 }
 
+function onSlideChange(swiper: SwiperType) {
+  activeIndexMb.value = swiper.activeIndex;
+}
+
 async function fetchData(query: string) {
   try {
     const response = await fetch(
@@ -164,23 +255,6 @@ async function loadData() {
 
 }
 
-// onMounted(() => {
-//   const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
-//   sections.forEach((section) => section && observer.observe(section));
-
-//   loadData();
-
-//   const interval = setInterval(() => activeIndex.value = (activeIndex.value + 1) % missionsAll.value.length, 5000);
-
-//   window.addEventListener('scroll', handleScroll);
-
-//   onUnmounted(() => {
-//     observer.disconnect();
-//     clearInterval(interval);
-//     window.removeEventListener('scroll', handleScroll);
-//   });
-// });
-
 onBeforeMount(() => {
   loadData();
 })
@@ -189,7 +263,7 @@ onMounted(() => {
   const sections = ['#section1', '#section2', '#section3', '#section4', '#section5', '#section6', '#section7'].map((id) => document.querySelector(id));
   sections.forEach((section) => section && observer.observe(section));
 
-  const interval = setInterval(() => activeIndex.value = (activeIndex.value + 1) % missionsAll.value.length, 5000);
+  const interval = setInterval(() => activeIndex.value = (activeIndex.value + 1) % missionsAll.value.slice(0, 3).length, 5000);
 
   window.addEventListener('scroll', handleScroll);
 
@@ -238,5 +312,10 @@ onMounted(() => {
 /* .fade-leave-active en versiones antiguas de Vue */
   {
   opacity: 0;
+}
+
+.pcenter{
+  place-items: center;
+  text-align: -webkit-center;
 }
 </style>

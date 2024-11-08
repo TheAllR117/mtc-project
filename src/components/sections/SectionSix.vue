@@ -39,7 +39,8 @@
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex flex-col md:flex-row`]">
                                                     <InputCustom key="name" id="name" type="text" label="Nombre"
-                                                        v-model="form.name" focus-color-border="focus:border-[#D4D4D4]"
+                                                        v-model="form.name" :value="form.name"
+                                                        focus-color-border="focus:border-[#D4D4D4]"
                                                         color-text="text-bluecf" border-radius="rounded-full"
                                                         bg-label="bg-white" bg-input="bg-white"
                                                         border-width="border-[1px]" bg-label-dark="bg-white"
@@ -49,7 +50,8 @@
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex flex-col md:flex-row`]">
                                                     <InputCustom key="email" id="email" type="email" label="Email"
-                                                        v-model="form.email" focus-color-border="focus:border-[#D4D4D4]"
+                                                        v-model="form.email" :value="form.email"
+                                                        focus-color-border="focus:border-[#D4D4D4]"
                                                         color-text="text-bluecf" border-radius="rounded-full"
                                                         border-width="border-[1px]" bg-label="bg-white"
                                                         bg-input="bg-white" bg-label-dark="bg-white"
@@ -84,11 +86,16 @@
                                                 </div>
                                                 <div
                                                     :class="[`${visibility.section6 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} flex w-full justify-end`]">
-                                                    <ButtonLoading width="!w-[50%] md:!w-[40%] 2xl:!w-[30%]"
-                                                        label="Enviar" border-radius="rounded-full"
-                                                        :disable="!formValido" :is-loading="isLoading"
+                                                    <!-- <ButtonLoading width="w-[50%] md:w-[40%] 2xl:w-[30%]" label="Enviar"
+                                                        border-radius="rounded-full" :disable="!formValido"
+                                                        :is-loading="isLoading" color-button="!bg-bluelightcf"
+                                                        color-button-hover="!bg-bluelightcf/50" /> -->
+                                                    <ButtonLoading label="Enviar" :disable="!formValido"
+                                                        :is-loading="isLoading" width="!w-full md:!w-[40%]"
+                                                        width-loading="!w-2/12" border-radius="rounded-[25px]"
                                                         color-button="!bg-bluelightcf"
-                                                        color-button-hover="!bg-bluelightcf/50" />
+                                                        color-button-hover="!bg-[#04B2CA80]" color-text="text-white"
+                                                        size-text="text-[0.8em]" />
                                                 </div>
                                             </form>
                                         </div>
@@ -104,7 +111,8 @@
         </section>
     </div>
 
-    <ModalCustom :is-open="showModal" :close-modal="closeModal" :title="messageModal.title" :description="messageModal.description" />
+    <ModalCustom :is-open="showModal" :close-modal="closeModal" :title="messageModal.title"
+        :description="messageModal.description" />
 </template>
 
 
@@ -118,6 +126,8 @@ import InputCustom from '../../components/InputCustom.vue';
 // Vue
 import { ref, onMounted, onUnmounted, reactive, computed } from 'vue';
 import ModalCustom from '../ModalCustom.vue';
+// EmailJS
+import emailjs from "@emailjs/browser";
 
 const showScrollTopButton = ref<boolean>(false);
 const isLoading = ref<boolean>(false)
@@ -184,23 +194,73 @@ function handleScroll() {
 //         window.removeEventListener('scroll', handleScroll);
 //     });
 // });
+// async function sendMeesage() {
+//     isLoading.value = true
+//     try {
+//         // en caso de ser exitoso se navega al dashboard
+//         // router.push('/dashboard')
+//         setTimeout(() => {
+//             messageModal.value.title = 'Contacto';
+//             messageModal.value.description = ['Lo sentimos, ocurrio un error al enviar tu mensaje.'];
+//             showModal.value = true;
+//             isLoading.value = false;
+//         }, 2000);
+//     } catch (err) {
+//         isLoading.value = false
+//         messageModal.value.title = 'Contacto'
+//         messageModal.value.description = [err!.toString()]
+//         showModal.value = true
+//     }
+// }
+
+function clearForm() {
+    form.name = '',
+        form.email = '',
+        form.comment = ''
+    console.log('Limpio')
+}
+
 async function sendMeesage() {
-    isLoading.value = true
-    try {
-        // en caso de ser exitoso se navega al dashboard
-        // router.push('/dashboard')
-        setTimeout(() => {
+    const templateParams = {
+        to_name: form.name,
+        from_name: 'Prueba',
+        email: form.email,
+        message: form.comment,
+    };
+
+    isLoading.value = true;
+
+    if (form.name && form.email && form.comment && formValido) {
+        emailjs.init("kaHynZ5VHw-0uFV4l");
+        try {
+            // openModal("#sentSuccesfully"); // Abre el modal de éxito
+            await emailjs.send("service_0t739ew", "template_6c3w8v9", templateParams);
             messageModal.value.title = 'Contacto';
-            messageModal.value.description = ['Lo sentimos, ocurrio un error al enviar tu mensaje.'];
+            messageModal.value.description = ['Correo enviado correctamente'];
             showModal.value = true;
             isLoading.value = false;
-        }, 2000);
-    } catch (err) {
+            clearForm()
+        } catch (error) {
+            // openModal("#incorrectShipment"); // Abre el modal de error
+            // console.error("FAILED...", error);
+
+            isLoading.value = false
+            messageModal.value.title = 'Contacto'
+            messageModal.value.description = [error!.toString()]
+            showModal.value = true
+        }
+    } else {
+
         isLoading.value = false
         messageModal.value.title = 'Contacto'
-        messageModal.value.description = [err!.toString()]
+        messageModal.value.description = ['Datos incompletos']
         showModal.value = true
+
+        // console.log('datos incompletos');
+        // openModal("#incorrectShipment"); // Abre el modal de error
     }
+
+    isLoading.value = false;
 }
 
 onMounted(() => {

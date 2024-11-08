@@ -73,8 +73,8 @@
           </div>
           <div class="flex shrink-0">
 
-            <router-link to="/" class="-m-1.5 p-1.5" @click="scrollToTop()">
-              <button href="/" class="-m-1.5 p-1.5">
+            <router-link to="/" @click="scrollToTop()">
+
                 <!-- <img src="/assets/img/logo.png" alt="" class="w-[100px] h-auto"> -->
 
                 <img class="w-[100px] h-auto" v-lazy="{
@@ -83,7 +83,7 @@
                   error: '/assets/img/placeholder.webp',
                   delay: 0
                 }" loading="lazy" alt="" />
-              </button>
+
             </router-link>
 
           </div>
@@ -185,12 +185,12 @@
                 <p class="text-[0.85rem] md:text-[0.9rem] xl:text-[1rem]">© 2023 Digitalquo.</p>
               </div>
               <div class="flex flex-col gap-x-5">
-                <router-link to="/privacy-policy">
+                <router-link to="/privacy-policy" @click="toggleMobileMenu">
                   <p
                     class="transition-all ease-in duration-150 text-[0.85rem] md:text-[0.9rem] xl:text-[1rem] cursor-pointer border-x-2 border-x-transparent border-t-transparent border-t-2 border-b-2 border-[#C4C4C4] hover:border-2 hover:border-x-[#C4C4C4] hover:border-t-[#C4C4C4] px-2 py-1">
                     Política de privacidad</p>
                 </router-link>
-                <router-link to="/privacy-cookies">
+                <router-link to="/privacy-cookies" @click="toggleMobileMenu">
                   <p
                     class="transition-all ease-in duration-150 text-[0.85rem] md:text-[0.9rem] xl:text-[1rem] cursor-pointer border-x-2 border-x-transparent border-t-transparent border-t-2 border-b-2 border-[#C4C4C4] hover:border-2 hover:border-x-[#C4C4C4] hover:border-t-[#C4C4C4] px-2 py-1">
                     Política de Cookies</p>

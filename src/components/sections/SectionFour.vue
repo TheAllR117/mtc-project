@@ -2,7 +2,7 @@
     <div class="h-full w-full !font-muller bg-white overflow-hidden pb-16 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-36">
 
         <!-- Section 4 -->
-        <section class="h-[550px] md:h-[320px] bg-gradient-to-tl from-bluecf to-bluemdcf" id="section4">
+        <!-- <section class="h-[550px] md:h-[320px] bg-gradient-to-tl from-bluecf to-bluemdcf" id="section4">
             <div class="w-full h-full px-[15px] mx-auto sm:max-w-[540px] md:max-w-[850px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px] flex justify-center items-center"
                 v-if="BannerAll.length != 0">
                 <div class="relative m-0 w-full h-auto flex justify-center items-center">
@@ -10,8 +10,35 @@
                         class="absolute top-[50%] left-0 translate-y-[-50%] w-full h-auto flex flex-col md:flex-row justify-between items-center px-2 md:px-0">
 
                         <div class="w-full h-full flex flex-col justify-center items-start max-md:mb-16 text-white">
-                            <div v-html="BannerAll[0].titleBanner!.markdown"></div>
-                            <div v-html="BannerAll[0].contentBanner!.markdown"></div>
+                            <div :class="[`${visibility.section4 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} text-white text-[1.5rem] sm:text-[1.6rem] md: lg:text-[2.25rem] xl:text-[2.3rem] 2xl:text-[2.5rem] font-bold font-muller leading-[2.3rem] lg:leading-[3.3rem] mb-2`]" v-html="BannerAll[0].titleBanner!.markdown"></div>
+                            <div :class="[`${visibility.section4 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} text-white text-[0.8rem] sm:text-[0.8rem] md: lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem] font-normal font-muller`]" v-html="BannerAll[0].contentBanner!.markdown"></div>
+                        </div>
+
+                        <div class="w-full h-full flex justify-center items-center">
+                            <img :class="[`${visibility.section4 ? 'animate-fadeLeft' : 'animate-fadeLeftOut opacity-0'} w-[325px] sm:w-[350px] md:w-[375px] lg:w-[400px] xl:w-[425px] 2xl:w-[450px]`]"
+                                v-lazy="{
+                                    src: BannerAll[0].imgBanner?.url,
+                                    loading: '/assets/img/placeholder.webp',
+                                    error: '/assets/img/placeholder.webp',
+                                    delay: 250
+                                }" loading="lazy" alt="" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <section class="min-h-[320px] max-h-[300dvh] bg-gradient-to-tl from-bluecf to-bluemdcf" id="section4">
+            <div class="w-full h-full px-[15px] mx-auto sm:max-w-[540px] md:max-w-[850px] md:text-left lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px] flex justify-center items-center"
+                v-if="BannerAll.length != 0">
+                <div class="relative m-0 w-full h-auto flex justify-center items-center">
+                    <div
+                        class="flex flex-col md:flex-row justify-evenly items-center w-full h-auto py-16 px-2 md:px-0">
+
+                        <div class="w-full h-full flex flex-col justify-center items-start max-md:mb-16 text-white">
+                            <div :class="[`${visibility.section4 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} text-white text-[1.5rem] sm:text-[1.6rem] md: lg:text-[2.25rem] xl:text-[2.3rem] 2xl:text-[2.5rem] font-bold font-muller leading-[2.3rem] lg:leading-[3.3rem] mb-2`]" v-html="BannerAll[0].titleBanner!.markdown"></div>
+                            <div :class="[`${visibility.section4 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} text-white text-[0.8rem] sm:text-[0.8rem] md: lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.1rem] font-normal font-muller`]" v-html="BannerAll[0].contentBanner!.markdown"></div>
                             <!-- <h2
                                 :class="[`${visibility.section4 ? 'animate-fadeRight' : 'animate-fadeRightOut opacity-0'} text-white text-[1.5rem] sm:text-[1.6rem] md: lg:text-[2.25rem] xl:text-[2.3rem] 2xl:text-[2.5rem] font-bold font-muller leading-[2.3rem] lg:leading-[3.3rem] mb-2`]">
                                 Olvídate de las facturas <br> complicadas</h2>

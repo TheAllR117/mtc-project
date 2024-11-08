@@ -25,10 +25,10 @@
               <button @click="toggleAccordion(index)"
                 class="accordion-toggle group inline-flex items-center justify-between text-xl font-normal leading-8 w-full transition duration-500">
                 <h5
-                  class="text-bluecf text-left text-[1.1rem] sm:text-[1.2rem]  md:text-[1.4rem] xl:text-[1.6rem] 2xl:text-[1.8rem] font-bold">
+                  class="text-bluecf text-left text-[1.1rem] sm:text-[1.2rem] md:text-[1.4rem] xl:text-[1.6rem] 2xl:text-[1.8rem] font-bold w-[80%]">
                   {{ item.title }}</h5>
                 <svg
-                  :class="[`${activeIndex == index ? 'rotate-180' : 'rotate-0'} w-[40px] lg:w-[40px] xl:w-[40px] 2xl:w-[50px] h-[40px] lg:h-[40px] xl:h-[40px] 2xl:h-[50px] text-bluecf transition-transform duration-[0.6s] transform`]"
+                  :class="[`${activeIndex == index ? 'rotate-180 text-bluelightcf' : 'rotate-0 text-bluecf'} w-[40px] lg:w-[40px] xl:w-[40px] 2xl:w-[50px] h-[40px] lg:h-[40px] xl:h-[40px] 2xl:h-[50px] transition-transform duration-[0.6s] transform`]"
                   viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25"
@@ -59,7 +59,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, reactive } from 'vue';
-import { FAQ, FAQAllCfdiResponse } from '../../interfaces/faq/faq_all_response';
+import { FAQ } from '../../interfaces/faq/faq_all_response';
 import SectionSix from '../../components/sections/SectionSix.vue';
 import FooterPage from '../../components/sections/FooterPage.vue';
 import SocialLinks from '../../components/sections/SocialLinks.vue';
@@ -78,20 +78,18 @@ const visibility = reactive<Visibility>({
   section7: false,
 });
 
-// Configuración del Intersection Observer
 const opciones = {
   root: null,
   rootMargin: '0px',
-  threshold: 0, // 80% de intersección para activar
+  threshold: 0, 
 };
 
-// Crear el Intersection Observer para manejar la visibilidad de múltiples elementos
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    const sectionId = entry.target.id as keyof Visibility; // Asegúrate de que `sectionId` es una clave de Visibility
+    const sectionId = entry.target.id as keyof Visibility;
 
     if (entry.isIntersecting) {
-      visibility[sectionId] = true; // Actualiza la visibilidad según el ID
+      visibility[sectionId] = true;
     } else {
       visibility[sectionId] = false;
     }
@@ -103,38 +101,29 @@ function toggleAccordion(index: number) {
   activeIndex.value = activeIndex.value === index ? null : index;
 }
 
-async function getBlogs() {
-  let query = `query faq {
-  faqs(orderBy: createdAt_DESC, last: 100) {
-    title
-    text {
-      html
-      markdown
-      raw
-      text
-    }
-    id
-  }
-}`
-  // API CALL
+async function fetchData(query: string) {
   try {
-    let res = await fetch(
-      // 'https://api-us-west-2.hygraph.com/v2/cln93v6c9168901ukf44r4tyv/master',
+    const response = await fetch(
       'https://api-us-west-2.hygraph.com/v2/cm2xfy7jh052307wawy5a538s/master',
-
       {
         method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify({ query })
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ query }),
       }
-    )
-    res = await res.json()
-    return res
+    );
+    return await response.json();
   } catch (error) {
-    console.log(error)
+    console.error('Error en la llamada a la API:', error);
+    return null;
   }
+}
+
+async function loadData() {
+  const faqAllQuestData = await fetchData(`query faq { faqs(orderBy: createdAt_ASC, last: 100) { title text { html markdown raw  text } id }
+}`);
+
+  if (faqAllQuestData!.data!.faqs) faqAllQuest.value = faqAllQuestData.data.faqs;
+
 }
 
 onMounted(async () => {
@@ -154,43 +143,14 @@ onMounted(async () => {
     if (elemento) observer.observe(elemento);
   });
 
-
 });
 
 onUnmounted(() => {
   observer.disconnect(); // Limpia el observer al desmontar el componente
 });
 
-
 onBeforeMount(async () => {
-  const data = await getBlogs();
-
-  if (data) {
-    const result = data as FAQAllCfdiResponse;
-    console.log('Resultado después del casting:', result);
-
-    if (result.data && result.data.faqs) {
-      faqAllQuest.value = result.data.faqs; // Asigna los FAQs directamente
-
-      // Acceder al texto de la primera FAQ
-      if (faqAllQuest.value.length > 0) {
-        const firstFAQ = faqAllQuest.value[0];
-
-        // Acceder a los diferentes formatos de texto
-        const textHTML = firstFAQ.text?.html; // Accediendo al HTML
-        const textMarkdown = firstFAQ.text?.markdown; // Accediendo al Markdown
-        const textRaw = firstFAQ.text?.raw?.children![0]?.children![0]?.text; // Accediendo al texto crudo
-
-        console.log('Texto HTML:', textHTML);
-        console.log('Texto Markdown:', textMarkdown);
-        console.log('Texto Crudo:', textRaw);
-      }
-    } else {
-      console.error("No se encontraron faqs en la respuesta.");
-    }
-  } else {
-    console.error("La llamada a getBlogs no devolvió datos.");
-  }
+  await loadData()
 })
 
 </script>

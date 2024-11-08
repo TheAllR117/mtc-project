@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full w-full !font-muller bg-white overflow-hidden pb-16 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-36" >
+    <div class="h-full w-full !font-muller bg-white overflow-hidden pb-16 md:pb-16 lg:pb-20 xl:pb-24 2xl:pb-36">
 
         <!-- Section 2 -->
         <section class="h-max bg-white" id="section2">
@@ -10,15 +10,17 @@
                         class="w-full h-full border-2 border-transparent bg-white rounded-[20px] overflow-hidden px-5 md:px-14 pb-4 md:pb-14">
 
                         <div class="w-full h-auto flex justify-center items-center mb-[30px] md:my-[30px]">
-                            <h2 :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} text-bluecf font-bold font-muller text-[1.6rem] sm:text-[1.7rem] lg:text-[1.8rem] xl:text-[2rem] 2xl:text-[2.2rem] `]">
-                                Nuestras <span class="text-[#04B2CA]">soluciones</span> <span class="bg-[url(/assets/img/emoji-4.webp)] bg-cover text-transparent">**</span></h2>
+                            <h2
+                                :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} text-bluecf font-bold font-muller text-[1.6rem] sm:text-[1.7rem] lg:text-[1.8rem] xl:text-[2rem] 2xl:text-[2.2rem] `]">
+                                Nuestras <span class="text-[#04B2CA]">soluciones</span> <span
+                                    class="bg-[url(/assets/img/emoji-4.webp)] bg-cover text-transparent">**</span></h2>
                         </div>
 
                         <div
                             class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4 gap-14 font-mono text-white text-sm text-center font-bold leading-6 rounded-lg">
 
 
-                            <div v-for="(item, index) in solutionAll" :key="index"
+                            <!-- <div v-for="(item, index) in solutionAll" :key="index"
                                 :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} transition-all ease-in duration-150 rounded-[20px] shadow-lg text-bluecf overflow-hidden h-[320px] group bg-white hover:bg-bluecf cursor-pointer `]">
 
                                 <div class="w-full h-[60%] overflow-hidden relative">
@@ -65,10 +67,66 @@
                                         </p>
                                     </div>
                                 </div>
+                            </div> -->
+
+                        </div>
+
+                        <div
+                            class="mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4 gap-14 items-start lg:max-w-none">
+
+                            <div v-for="(item, index) in solutionAll" :key="index"
+                                :class="[`${visibility.section2 ? 'animate-fadeUp' : 'animate-fadeUpOut opacity-0'} flex flex-col h-full min-h-[320px] transition-all ease-in duration-150 border border-slate-200 rounded-[20px] shadow-lg text-bluecf overflow-hidden group bg-white hover:bg-bluecf cursor-pointer `]">
+                                <!-- Image -->
+                                <!-- <img class="object-cover h-48 w-full bg-yellow" src="./equal-height-01.jpg" width="304" height="192" alt="Course 01"> -->
+
+                                <img class="transition-all ease-in duration-150 relative-0 group-hover:scale-110 object-cover h-48 w-full"
+                                    v-lazy="{
+                                        src: item.img!.url,
+                                        loading: '/assets/img/placeholder.webp',
+                                        error: '/assets/img/placeholder.webp',
+                                        delay: 250
+                                    }" loading="lazy" alt="" width="304" height="192" />
+                                <!-- Card Content -->
+                                <div
+                                    class="flex-1 flex flex-col p-6 rounded-[40px_0px_0px_0px] relative  transition-all ease-in duration-150 w-full text-left z-10 bg-white mt-[-35px] group-hover:bg-bluecf">
+                                    <svg width="53" height="45" viewBox="0 0 53 45" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="transition-all ease-in duration-150 absolute top-[-45px] right-[-1px] fill-white group-hover:fill-bluecf">
+                                        <path
+                                            d="M52.5 2.64622V45H2.5C41.3887 39.765 51.8466 16.0617 52.5 2.64622V0C52.5434 0.825567 52.5456 1.71089 52.5 2.64622Z" />
+                                    </svg>
+                                    <!-- Card body -->
+                                    <div class="flex-1">
+                                        <!-- Header -->
+                                        <div class="w-full h-auto flex justify-between items-center font-muller">
+                                            <p
+                                                class="transition-all ease-in duration-150 text-bluecf group-hover:text-white text-[1.1rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.4rem] font-muller font-bold">
+                                                {{ item.title }}
+                                            </p>
+                                            <div class="relative group/item" v-if="item.infoTooltip != ''">
+                                                <IconInfo class="group-hover:text-white hover:scale-90" />
+                                                <div
+                                                    class="absolute right-0 hidden w-max max-w-[210px] p-2 mt-2 text-[0.7rem] text-white bg-black rounded-lg shadow-lg group-hover/item:block leading-4 font-muller">
+                                                    {{ item.infoTooltip }}
+                                                    <div
+                                                        class="absolute top-[-0.25rem] left-[93%] transform -translate-x-1/2 w-2 h-2 bg-black rotate-45">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="transition-all ease-in duration-150 w-full h-[1.5px] bg-graycf my-2 group-hover:bg-bluelightcf">
+                                        </div>
+                                        <p
+                                            class="transition-all ease-in duration-150 text-bluecf group-hover:text-white font-muller text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1.1rem] font-light">
+                                            {{ item.text }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
-<!-- 
+                        <!-- 
                         <swiper :css-mode="true" :mousewheel="true" :slides-per-view="1.15" :centeredSlides="true"
                             :space-between="15" :speed="500" :grabCursor="true" :pagination="{
                                 clickable: true,
@@ -232,7 +290,7 @@ async function loadData() {
 
 
 onBeforeMount(() => {
-  loadData();
+    loadData();
 })
 
 onMounted(() => {
@@ -294,6 +352,6 @@ onMounted(() => {
 } */
 
 .card {
-  box-shadow: 0px 0px 12px 2px rgba(0,0,0,.2);
+    box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, .2);
 }
 </style>
